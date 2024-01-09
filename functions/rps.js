@@ -63,7 +63,7 @@ async run() {
   .setTitle("Rock Paper Scisscors")
   .setDescription("Choose your choice")
   .setColor("Green")
-  .setThumbnail(player.avatarURL())
+  .setThumbnail(this.player.avatarURL())
  const msg = await this.edit({embeds:[embed], components:[Row]},this.message)
  try {
   const filter = (i) => i.user.id == this.player.id
@@ -71,24 +71,24 @@ async run() {
  let played = false
  const bot = this.choices[randomN(0,2)]
   i.deferUpdate()
-if(i.user.id == player.id) {
+if(i.user.id == this.player.id) {
    played = true
    collector.stop()
    Row.components.find(x => x.data.custom_id == i.customId).setDisabled(true)
    if(this.win[`${bot}`] == i.customId) {
-     await this.edit({embeds:[new EmbedBuilder().setThumbnail(player.avatarURL()).setTitle("Rock Paper Scissors").setDescription(`You Won!, Your choice: ${this.emojis[`${i.customId}`]}, My Choice: ${this.emojis[`${bot}`]}`)],components:[Row]},msg)
+     await this.edit({embeds:[new EmbedBuilder().setThumbnail(this.player.avatarURL()).setTitle("Rock Paper Scissors").setDescription(`You Won!, Your choice: ${this.emojis[`${i.customId}`]}, My Choice: ${this.emojis[`${bot}`]}`)],components:[Row]},msg)
    }
    else {
      if(i.customId == bot) {
-     await this.edit({embeds:[new EmbedBuilder().setThumbnail(player.avatarURL()).setTitle("Rock Paper Scissors").setDescription(`Game Tied!, Our Choice: ${this.emojis[`${bot}`]}`)],components:[Row]},msg)
+     await this.edit({embeds:[new EmbedBuilder().setThumbnail(this.player.avatarURL()).setTitle("Rock Paper Scissors").setDescription(`Game Tied!, Our Choice: ${this.emojis[`${bot}`]}`)],components:[Row]},msg)
      } else {
-     await this.edit({embeds:[new EmbedBuilder().setTitle("Rock Paper Scissors").setDescription(`You Lost!, Your choice: ${this.emojis[`${i.customId}`]}, My Choice: ${this.emojis[`${bot}`]}`).setThumbnail(player.avatarURL())],components:[Row]},msg)
+     await this.edit({embeds:[new EmbedBuilder().setTitle("Rock Paper Scissors").setDescription(`You Lost!, Your choice: ${this.emojis[`${i.customId}`]}, My Choice: ${this.emojis[`${bot}`]}`).setThumbnail(this.player.avatarURL())],components:[Row]},msg)
      }}
  }
   }
   catch(e) {
    Row.components.forEach(x => x.setDisabled(true))
-   this.edit({embeds:[new EmbedBuilder().setTitle("Rock Paper Scissors").setDescription('Game Ended: Timed Out').setThumbnail(player.avatarURL()).setColor('Red')],components:[Row]},msg)
+   this.edit({embeds:[new EmbedBuilder().setTitle("Rock Paper Scissors").setDescription('Game Ended: Timed Out').setThumbnail(this.player.avatarURL()).setColor('Red')],components:[Row]},msg)
  }
 }
 else {
