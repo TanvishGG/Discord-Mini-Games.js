@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TanvishGG/Discord-Mini-Games.git"
+    "url": "git+https://github.com/TanvishGG/Discord-Mini-Games.js.git"
   },
   "keywords": [
     "discord",
@@ -18,9 +18,9 @@
   "author": "TanvishGG",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/TanvishGG/Discord-Mini-Games/issues"
+    "url": "https://github.com/TanvishGG/Discord-Mini-Games.js/issues"
   },
-  "homepage": "https://github.com/TanvishGG/Discord-Mini-Games#readme",
+  "homepage": "https://github.com/TanvishGG/Discord-Mini-Games.js#readme",
   "dependencies": {
     "discord.js": "^14.14.1"
   }
