@@ -1,0 +1,27 @@
+{
+  "name": "discordjs-games",
+  "version": "1.0.0",
+  "description": "a package to implement mini-games using discord.js v14",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TanvishGG/discordjs-games.git"
+  },
+  "keywords": [
+    "discord",
+    "mini-games",
+    "discord.js"
+  ],
+  "author": "TanvishGG",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/TanvishGG/discordjs-games/issues"
+  },
+  "homepage": "https://github.com/TanvishGG/discordjs-games#readme",
+  "dependencies": {
+    "discord.js": "^14.14.1"
+  }
+}
