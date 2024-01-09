@@ -27,6 +27,7 @@ class RockPaperScissors {
       }
       this.time = gameOptions?.time ?? 30000;
       this.replied = false;
+      this.randomN = (min,max) => {return Math.floor(Math.random()*max)+min;}
       this.edit = async (messageOptions,replyMessage) => {
         if(this.isSlash == true) {
           messageOptions.fetchReply = true;
@@ -69,13 +70,12 @@ async run() {
  const msg = await this.edit({embeds:[embed], components:[Row]},this.message)
  try {
   const filter = (i) => i.user.id == this.player.id
- const i = msg.awaitMessageComponent({filter:filter, time:30000})
+ const i = await msg.awaitMessageComponent({filter:filter, time:this.time})
  let played = false
- const bot = this.choices[randomN(0,2)]
+ const bot = this.choices[this.randomN(0,2)]
   i.deferUpdate()
 if(i.user.id == this.player.id) {
    played = true
-   collector.stop()
    Row.components.find(x => x.data.custom_id == i.customId).setDisabled(true)
    if(this.win[`${bot}`] == i.customId) {
      await this.edit({embeds:[new EmbedBuilder().setThumbnail(this.player.avatarURL()).setTitle("Rock Paper Scissors").setDescription(`You Won!, Your choice: ${this.emojis[`${i.customId}`]}, My Choice: ${this.emojis[`${bot}`]}`)],components:[Row]},msg)
