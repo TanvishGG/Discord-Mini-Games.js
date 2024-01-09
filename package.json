@@ -4,7 +4,7 @@
   "description": "a package to implement mini-games using discord.js v14",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"no text\""
   },
   "repository": {
     "type": "git",
