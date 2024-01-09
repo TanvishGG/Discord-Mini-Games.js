@@ -26,13 +26,15 @@ class RockPaperScissors {
       throw new TypeError("opponent must be an instance of Discord User");
       }
       this.time = gameOptions?.time ?? 30000;
+      this.replied = false;
       this.edit = async (messageOptions,replyMessage) => {
         if(this.isSlash == true) {
           messageOptions.fetchReply = true;
           return await replyMessage.editReply(messageOptions)
         }
         else {
-          return await replyMessage.edit(messageOptions)
+          if(this.replied == false) {this.replied=true; return await this.message.reply(messageOptions);}
+          else return await replyMessage.edit(messageOptions)
         }
       }
       this.emojis = {
