@@ -1,4 +1,4 @@
-# discordjs-games
+# Discord-Mini-Games
 a package to implement mini-games using discord.js v14
 
 ## Available Games
@@ -15,7 +15,7 @@ a package to implement mini-games using discord.js v14
 ## Example
 1. RockPaperScissors
 ```js
-const {RockPaperScissors} = require('discordjs-games');
+const {RockPaperScissors} = require('discord-mini-games');
 const gameOptions = {
     isSlash:false,
     time:30000,
