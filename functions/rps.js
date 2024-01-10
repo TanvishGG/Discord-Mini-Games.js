@@ -1,11 +1,11 @@
 const discord = require('discord.js');
 const {EmbedBuilder,ButtonBuilder,ButtonStyle,ActionRowBuilder,ComponentType} = require('discord.js')
-class RockPaperScissors {
+class RockPaperScissors{
   /**
-   * Initialises a new instance of rock paper scissors game
-   * @param {`Message/Interaction`} message The message object
-   * @param {`GameOptions-Object`} gameOptions The game Options Object
-   * @returns {RockPaperScissors} Game instance
+   * Initialises a new instance of Rock Paper Scissors Game.
+   * @param {`Message/Interaction`} message The Message object.
+   * @param {`GameOptions-Object`} gameOptions The Game Options Object.
+   * @returns {RockPaperScissors} Game instance.
    */
 
     constructor(message,gameOptions) {
