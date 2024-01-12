@@ -3,6 +3,7 @@ const gtn = require('./functions/gtn');
 const rtc = require('./functions/rtc');
 const cf = require('./functions/cf');
 const fts = require('./functions/fts');
+const wordle = require('./functions/wordle');
 const dare = require('./functions/dare');
 const truth = require('./functions/truth');
 const joke = require('./functions/joke');
@@ -13,6 +14,7 @@ module.exports = {
     RepeatTheColor: rtc,
     CoinFlip: cf,
     FindTheStone: fts,
+    Wordle:wordle,
     Dare: dare,
     Truth: truth,
     Joke:joke,

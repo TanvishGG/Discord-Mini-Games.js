@@ -7,10 +7,11 @@ a package to implement mini-games using discord.js v14
 3. RepeatTheColor -> Single Player
 4. FindTheStone -> Single Player
 5. CoinFlip -> Single Player
-6. Joke
-7. Truth 
-8. Dare
-9. EightBall
+6. Wordle -> Single Player
+7. Joke
+8. Truth 
+9. Dare
+10. EightBall
 ## Game Options
 ```js
 {
