@@ -1,6 +1,7 @@
 const discord = require('discord.js');
 const {createCanvas,registerFont} = require('canvas')
-const {EmbedBuilder,ButtonBuilder,ButtonStyle,ActionRowBuilder,ComponentType} = require('discord.js')
+const words = require('./assets/words.json').words
+registerFont(__dirname+'/assets/Roboto-Medium.ttf', {family:'Roboto'})
 class Wordle{
   /**
    * Initialises a new instance of Wordle Game.
@@ -22,7 +23,7 @@ class Wordle{
         }
       }
       this.player = this.isSlash == true ? this.message?.user : this.message?.author;
-      this.time = gameOptions?.time ?? 60000;
+      this.time = gameOptions?.time ?? 180000;
       this.replied = false;
       this.randomN = (min,max) => {return Math.floor(Math.random()*max)+min;}
       this.edit = async (messageOptions,replyMessage) => {
@@ -36,8 +37,7 @@ class Wordle{
           else return await replyMessage.edit(messageOptions)
         }
       }
-      this.words = require('../assets/words.json').words;
-      this.word = this.words[this.randomN(0,this.words.length)]
+      this.word = words[this.randomN(0,words.length)]
     }
     /**
      * Starts The Game.
@@ -49,7 +49,6 @@ if(this.isSlash == true) {
 const canvas = createCanvas(300,300);
 const context = canvas.getContext('2d');
 context.fillStyle ='#7d7c78'
-registerFont('./assets/Roboto-Medium.ttf', {family:'Roboto'})
 context.fillRect(1,1,canvas.width -1,canvas.height-1)
 const gridSize = 60;
 const gridColor = '#000000';
