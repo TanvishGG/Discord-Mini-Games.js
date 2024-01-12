@@ -1,11 +1,11 @@
 const discord = require('discord.js');
 const {EmbedBuilder,ButtonBuilder,ButtonStyle,ActionRowBuilder,ComponentType} = require('discord.js')
-class CoinFlip{
+class FindTheStone {
   /**
-   * Initialises a new instance of CoinFlip Game.
+   * Initialises a new instance of Find The Stone Game.
    * @param {`Message/Interaction`} message The Message object.
    * @param {`GameOptions-Object`} gameOptions The game Options Object.
-   * @returns {CoinFlip} Game instance.
+   * @returns {FindTheStone} Game instance.
    */
 
     constructor(message,gameOptions) {
@@ -42,47 +42,52 @@ class CoinFlip{
      */
 async run() {
   if(this.isSlash == true) {
-    await this.message.deferReply().catch(() => {});
+    this.message.deferReply().catch(() => {});
   }
-  function cfEm(text,color) {
+  function ftsEm(text,color) {
     const embed = new EmbedBuilder()
-   .setTitle("Coin Flip")
-   .setDescription(text)
-   .setColor(color)
-   .setThumbnail(this.player.avatarURL())
-   return embed;
+    .setTitle("Find The Stone")
+    .setImage('https://tanvish.me/assets/images/cups_temp.jpg')
+    .setDescription(text)
+    .setColor(color)
+    return embed;
   }
   function randomN(min,max) {
-    return Math.floor(Math.random() *(max-min+1) + min);
+return Math.floor(Math.random() *(max-min+1) + min);
   }
-  var Row = new ActionRowBuilder().addComponents(new ButtonBuilder().setCustomId('heads').setStyle(ButtonStyle.Secondary).setLabel('Heads'), new ButtonBuilder().setCustomId('tails').setStyle(ButtonStyle.Secondary).setLabel('Tails'))
- const msg = await this.edit({embeds:[cfEm('Choose Heads or Tails','Green')],components:[Row]},this.message)
-  const collector = msg.createMessageComponentCollector({ componentType: ComponentType.Button, time:15000})
-  let played = false;
-  const choices = ['heads','tails']
-  const bot = choices[randomN(0,1)]
-  collector.on('collect', async (i) => {
-    i.deferUpdate()
+const choices = ['yellow','red','blue']
+var Row = new ActionRowBuilder().addComponents(new ButtonBuilder().setCustomId('yellow').setStyle(ButtonStyle.Secondary).setEmoji('🟡'),new ButtonBuilder().setCustomId('red').setStyle(ButtonStyle.Secondary).setEmoji('🔴'),new ButtonBuilder().setCustomId('blue').setEmoji('🔵').setStyle(ButtonStyle.Secondary))
+const bot = choices[randomN(0,2)]
+const msg = await this.edit({embeds:[ftsEm('Find the cup which has a stone under it!','Green')],components:[Row]},this.message)
+let played = false;
+const collector = msg.createMessageComponentCollector({ componentType: ComponentType.Button,time:15000})
+collector.on('collect', async (i) => {
+  i.deferUpdate()
 if(i.user.id == this.player.id) {
-   played = true;
-   collector.stop()
-   Row.components.find(x => x.data.custom_id == i.customId).setDisabled(true)
-   if(i.customId == bot) {
-    await this.edit({embeds:[cfEm(`You won!, it was ${bot.toUpperCase()}`,`Yellow`)],components:[Row]},msg)
-   }
-   else {
-    await this.edit({embeds:[cfEm(`You Lost!, it was ${bot.toUpperCase()}`,`Red`)],components:[Row]},msg)
-   }
+  played = true;
+  collector.stop()
+  Row.components.find(x => x.data.custom_id == i.customId).setDisabled(true)
+  if(i.customId == bot) {
+    await this.edit({embeds:[ftsEm(`You Won!, it was ${bot.toUpperCase()} Cup`,'Yellow')],components:[Row]},msg)
+    return "win";
   }
-  })
-  collector.on('end', collected => {
-    if(played == false) {
-      Row.components.forEach(x => x.setDisabled(true))
-      this.edit({embeds:[cfEm(`Game Ended: Timed Out`,'Red')],components:[Row]},msg)
-    }
-  })
+  else {
+    await this.edit({embeds:[ftsEm(`You Lost!, it was ${bot.toUpperCase()} Cup`,'Red')],components:[Row]},msg)
+    return "lost";
+  }
+}
+})
+collector.on('end', async () => {
+  if(played == false) {
+    Row.components.forEach(x => x.setDisabled(true))
+ await this.edit({embeds:[ftsEm('Game Ended: Timed Out','Red')],components:[Row]},msg)
+ return "timeup";
+  }
+})
+  
 }
 
+
   }
 
-module.exports = CoinFlip;
+  module.exports = FindTheStone;

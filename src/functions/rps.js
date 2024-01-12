@@ -79,18 +79,22 @@ if(i.user.id == this.player.id) {
    Row.components.find(x => x.data.custom_id == i.customId).setDisabled(true)
    if(this.win[`${bot}`] == i.customId) {
      await this.edit({embeds:[new EmbedBuilder().setThumbnail(this.player.avatarURL()).setTitle("Rock Paper Scissors").setDescription(`You Won!, Your choice: ${this.emojis[`${i.customId}`]}, My Choice: ${this.emojis[`${bot}`]}`)],components:[Row]},msg)
+     return "win";
    }
    else {
      if(i.customId == bot) {
      await this.edit({embeds:[new EmbedBuilder().setThumbnail(this.player.avatarURL()).setTitle("Rock Paper Scissors").setDescription(`Game Tied!, Our Choice: ${this.emojis[`${bot}`]}`)],components:[Row]},msg)
+     return "tie";
      } else {
      await this.edit({embeds:[new EmbedBuilder().setTitle("Rock Paper Scissors").setDescription(`You Lost!, Your choice: ${this.emojis[`${i.customId}`]}, My Choice: ${this.emojis[`${bot}`]}`).setThumbnail(this.player.avatarURL())],components:[Row]},msg)
+     return "lose";
      }}
  }
   }
   catch(e) {
    Row.components.forEach(x => x.setDisabled(true))
    this.edit({embeds:[new EmbedBuilder().setTitle("Rock Paper Scissors").setDescription('Game Ended: Timed Out').setThumbnail(this.player.avatarURL()).setColor('Red')],components:[Row]},msg)
+   return "timeup"
  }
 }
 else {
@@ -137,16 +141,18 @@ if(i.user.id == this.opponent.id && op.played==false) {
 }
 if(p.played == true && op.played == true) {
 var string = "";
+var status = "";
 collector.stop();
-if(op.choice == p.choice) { string = `Game Tied! Both choose ${this.emojis[p.choice]}`}
-if(op.choice == this.win[p.choice]) { string = `${this.opponent} Won! ${this.emojis[op.choice]} beats ${this.emojis[p.choice]}`}
-if(win[op.choice] == p.choice) { string = `${this.player} Won! ${this.emojis[p.choice]} beats ${this.emojis[op.choice]}`}
+if(op.choice == p.choice) { string = `Game Tied! Both choose ${this.emojis[p.choice]}`;status = "tie"}
+if(op.choice == this.win[p.choice]) { string = `${this.opponent} Won! ${this.emojis[op.choice]} beats ${this.emojis[p.choice]}`;status="opponent"}
+if(win[op.choice] == p.choice) { string = `${this.player} Won! ${this.emojis[p.choice]} beats ${this.emojis[op.choice]}`;status="player"}
 this.edit({
   embeds:[
     new EmbedBuilder().setTitle('Rock Paper Scissors')
     .setDescription(string).setColor('Green')],
     components:[]
 })
+return status;
 }
 })
 collector.on('end', async() => {
@@ -158,6 +164,7 @@ collector.on('end', async() => {
     .setTitle('Rock Paper Scissors')
   ],components:[]},msg)
 })
+return "timeup";
 }
 else {
   this.edit({
@@ -169,6 +176,7 @@ else {
     .setColor('Red')
   ]
   },msg)
+  return "decline";
 }
 }
 catch(e) {
@@ -180,6 +188,7 @@ catch(e) {
     .setDescription(`${this.opponent} did not respond in time`)
     .setColor('Red')],
    components:[]},msg)
+   return "timeup";
 }
 }
 }

@@ -95,6 +95,7 @@ collector.on('collect', i => {
    this.edit({embeds:[new EmbedBuilder().setTitle("Repeat The Color").setDescription("You Won!").setColor("Yellow")],components:[Row]},msg)
    played = true;
    collector.stop();
+   return "win";
   }
   {
   this.edit({components:[Row]},msg)
@@ -104,7 +105,7 @@ collector.on('collect', i => {
     this.edit({embeds:[new EmbedBuilder().setTitle("Repeat The Color").setDescription('You Lost!, You failed to remember the color sequence').setColor('Red')]},msg)
     played = true;
     collector.stop()
-
+ return "lose";
   }
   } else {
   	i.deferUpdate();
@@ -114,6 +115,7 @@ collector.on('collect', i => {
 collector.on('end', collected => {
 if(played == false) {
   this.edit({embeds:[new EmbedBuilder().setTitle("Repeat The Color").setDescription('Game Over: Timed Out').setColor('Red')],components:[Row]},msg)
+  return "timeup";
 }
  });
 }

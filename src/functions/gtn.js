@@ -76,6 +76,7 @@ collector.on('collect', m => {
         played = true;
         collector.stop();
         this.edit({embeds:[embedGen(`You guessed it right!, the number was ${number}`,'Green')]},msg)
+        return "win"
     }
     else{
      tries--;
@@ -86,11 +87,13 @@ collector.on('collect', m => {
      }
      else {
         this.edit({embeds:[embedGen(`You guessed ${m.content} which is wrong, you have ${tries} tries left\nNumber is ${lower(number,m.content)} than ${m.content}`,'Red')]},msg)
+        return "lose"
     }}
     });
 collector.on('end', collected => {
     if(played == false) {
         this.edit({embeds:[embedGen('Game Ended: Timed Out','Red')]},msg)
+        return "timeup"
     }
 })
 }

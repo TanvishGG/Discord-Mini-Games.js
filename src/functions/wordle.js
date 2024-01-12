@@ -22,7 +22,7 @@ class Wordle{
         }
       }
       this.player = this.isSlash == true ? this.message?.user : this.message?.author;
-      this.time = gameOptions?.time ?? 45000;
+      this.time = gameOptions?.time ?? 60000;
       this.replied = false;
       this.randomN = (min,max) => {return Math.floor(Math.random()*max)+min;}
       this.edit = async (messageOptions,replyMessage) => {
@@ -119,12 +119,14 @@ collector.on('collect', m => {
     played = true;
     collector.stop()
     this.edit(wordEmbed(canvas,"Green","You Won!"),msg)
+    return "win";
   }
   else {
     chance++
     if(chance == 5) {
       played = true;
       this.edit(wordEmbed(canvas,"Red","You Lost!, The word was "+this.word),msg)
+      return "lose";
      }
     else {
     this.edit(wordEmbed(canvas,"Red"),msg)
@@ -134,6 +136,7 @@ collector.on('collect', m => {
 collector.on('end', () => {
    if(played == false) {
     this.edit(wordEmbed(canvas,'Red','Game Over: Timed Out!'),msg)
+    return "timeup";
    }
 })
   }
