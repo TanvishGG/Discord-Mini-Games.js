@@ -13,10 +13,11 @@ class CoinFlip{
       this.message = message;
       if(gameOptions && typeof gameOptions !== 'object') throw new TypeError("gameOptions must be an object");
       this.isSlash = gameOptions?.isSlash ?? false;
-      if(this.isSlash == true && !(this.message instanceof discord.CommandInteraction)){
+      if(this.isSlash == true) {
+      if(!(this.message instanceof discord.CommandInteraction)){
         throw new TypeError("message must be an instance of command interaction") 
-      } else {
-        if(!(this.message instanceof discord.Message)) {
+      }} else {
+      if(!(this.message instanceof discord.Message)) {
           throw new TypeError("message must be an instance of Discord message")
         }
       }
