@@ -26,22 +26,24 @@ class GuessTheNumber{
       this.replied = false;
       this.randomN = (min,max) => {return Math.floor(Math.random()*max)+min;}
       this.edit = async (messageOptions,replyMessage) => {
-        if(this.isSlash == true) {
-          messageOptions.fetchReply = true;
-          return await replyMessage.editReply(messageOptions)
-        }
-        else {
-          if(this.replied == false) {
-          this.replied=true; return await this.message.reply(messageOptions);}
-          else return await replyMessage.edit(messageOptions)
-        }
-      }
-
+        messageOptions.fetchReply = true;
+         if(this.replied == false) {
+            this.replied=true; 
+            if(this.isSlash == true) return await messageOptions.editReply(messageOptions)
+            return await this.message.reply(messageOptions);}
+            else return await replyMessage.edit(messageOptions)
+         }
+      this.options = gameOptions;
+      this.onWin = gameOptions?.onWin ?? null;
+      this.onLose = gameOptions?.onLose ?? null;
+      if(this.onWin && typeof this.onWin !== 'function') throw new TypeError('onWin must be a functon');
+      if(this.onLose && typeof this.onLose !== 'function') throw new TypeError('onLose must be a funtion');
+   
     }
     /**
      * Starts The Game.
      */
-async run(onWin) {
+async run() {
   if(this.isSlash == true) {
     await this.message.deferReply().catch(() => {});
   }
@@ -58,8 +60,8 @@ function random(min, max) {
 
 function embedGen(text, color) {
     const embed = new discord.EmbedBuilder()
-    .setTitle("Guess The Number")
-    .setDescription(`Guess the number iam thinking of in 3 tries which lies between 1-20 ${text ? `\n\n\`\`\`${text}\`\`\``:""}`)
+    .setTitle(this.options.title ??"Guess The Number")
+    .setDescription(`${this.options?.startDes ?? `Guess the number iam thinking of in 3 tries which lies between 1-20`} ${text ? `\n\n\`\`\`${text}\`\`\``:""}`)
     .setColor(color)
     .setTimestamp()
     .setThumbnail(this.player.avatarURL());
@@ -76,25 +78,24 @@ collector.on('collect', async m => {
         m.delete();
         played = true;
         collector.stop();
-        this.edit({embeds:[embedGen(`You guessed it right!, the number was ${number}`,'Green')]},msg)
-    if(onWin) await onWin();
+        this.edit({embeds:[embedGen(this.options?.winDes?.replace(/{number}/g,number) ?? `You guessed it right!, the number was ${number}`,'Green')]},msg)
+    if(this.onWin) await this.onWin();
     }
     else{
      tries--;
      m.delete()
      if(tries == 0) {
      played = true;
-     this.edit({embeds:[embedGen(`You Lost. You guessed ${m.content}, but the number was ${number}`,'Red')]},msg)
+     this.edit({embeds:[embedGen(this.options?.loseDes?.replace(/{user_option}/g,m.content)?.replace(/{number}/g,number) ?? `You Lost. You guessed ${m.content}, but the number was ${number}`,'Red')]},msg)
      }
      else {
-        this.edit({embeds:[embedGen(`You guessed ${m.content} which is wrong, you have ${tries} tries left\nNumber is ${lower(number,m.content)} than ${m.content}`,'Red')]},msg)
-        return "lose"
+        this.edit({embeds:[embedGen(this.options?.retryDes?.replace(/{user_option}/g,m.content)?.replace(/{tries}/g,tries)?.replace(/{status}/g,lower(number,m.content)) ?? `You guessed ${m.content} which is wrong, you have ${tries} tries left\nNumber is ${lower(number,m.content)} than ${m.content}`,'Red')]},msg)
+      if(this.onLose) await this.onLose();
     }}
     });
 collector.on('end', collected => {
     if(played == false) {
-        this.edit({embeds:[embedGen('Game Ended: Timed Out','Red')]},msg)
-        return "timeup"
+        this.edit({embeds:[embedGen(this.options?.timeUpDes ?? 'Game Ended: Timed Out','Red')]},msg)
     }
 })
 }

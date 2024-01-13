@@ -30,15 +30,13 @@ class RockPaperScissors{
       this.replied = false;
       this.randomN = (min,max) => {return Math.floor(Math.random()*max)+min;}
       this.edit = async (messageOptions,replyMessage) => {
-        if(this.isSlash == true) {
           messageOptions.fetchReply = true;
-          return await replyMessage.editReply(messageOptions)
-        }
-        else {
-          if(this.replied == false) {this.replied=true; return await this.message.reply(messageOptions);}
-          else return await replyMessage.edit(messageOptions)
-        }
-      }
+           if(this.replied == false) {
+              this.replied=true; 
+              if(this.isSlash == true) return await messageOptions.editReply(messageOptions)
+              return await this.message.reply(messageOptions);}
+              else return await replyMessage.edit(messageOptions)
+            }
       this.emojis = {
         "rock":"🪨",
         "paper":"📜",
@@ -50,22 +48,29 @@ class RockPaperScissors{
         "scissor":"rock"
       }
       this.choices = ['rock','paper','scissor']
+      this.options = gameOptions;
+      this.onWin = gameOptions?.onWin ?? null;
+      this.onLose = gameOptions?.onLose ?? null;
+      this.onTie = gameOptions?.onTie ?? null;
+      if(this.onWin && typeof this.onWin !== 'function') throw new TypeError('onWin must be a functon');
+      if(this.onLose && typeof this.onLose !== 'function') throw new TypeError('onLose must be a funtion');
+      if(this.onTie && typeof this.onTie !== 'function') throw new TypeError('onTie must be a function');
 
     }
  /**
   * Starts the game
   */
-async run(onWin) {
+async run() {
   if(this.isSlash == true) {
-    this.message.deferReply();
+   await this.message.deferReply();
   }
   if(!this.opponent) {
   var Row = new ActionRowBuilder().addComponents(new ButtonBuilder().setCustomId('rock').setStyle(ButtonStyle.Secondary).setEmoji('🪨'),
   new ButtonBuilder().setCustomId('paper').setStyle(ButtonStyle.Secondary).setEmoji('📜'),
   new ButtonBuilder().setCustomId('scissor').setStyle(ButtonStyle.Secondary).setEmoji('✂️'))
   const embed = new EmbedBuilder()
-  .setTitle("Rock Paper Scisscors")
-  .setDescription("Choose your choice")
+  .setTitle(this.options?.title ?? "Rock Paper Scisscors")
+  .setDescription(this.options?.startDes ?? "Choose your choice")
   .setColor("Green")
   .setThumbnail(this.player.avatarURL())
  const msg = await this.edit({embeds:[embed], components:[Row]},this.message)
@@ -79,28 +84,28 @@ if(i.user.id == this.player.id) {
    played = true
    Row.components.find(x => x.data.custom_id == i.customId).setDisabled(true)
    if(this.win[`${bot}`] == i.customId) {
-     await this.edit({embeds:[new EmbedBuilder().setThumbnail(this.player.avatarURL()).setTitle("Rock Paper Scissors").setDescription(`You Won!, Your choice: ${this.emojis[`${i.customId}`]}, My Choice: ${this.emojis[`${bot}`]}`)],components:[Row]},msg)
-     if(onWin) await onWin();
+     await this.edit({embeds:[new EmbedBuilder().setThumbnail(this.player.avatarURL()).setTitle(this.options?.title ?? "Rock Paper Scissors").setDescription(this.options?.winDes?.replace(/{user_option}/g,this.emojis[i.customId])?.replace(/{bot_option}/g,this.emojis[bot]) ?? `You Won!, Your choice: ${this.emojis[`${i.customId}`]}, My Choice: ${this.emojis[`${bot}`]}`)],components:[Row]},msg)
+     if(this.onWin) await await this.onWin();
    }
    else {
      if(i.customId == bot) {
-     await this.edit({embeds:[new EmbedBuilder().setThumbnail(this.player.avatarURL()).setTitle("Rock Paper Scissors").setDescription(`Game Tied!, Our Choice: ${this.emojis[`${bot}`]}`)],components:[Row]},msg)
-     return "tie";
+     await this.edit({embeds:[new EmbedBuilder().setThumbnail(this.player.avatarURL()).setTitle(this.options?.title ?? "Rock Paper Scissors").setDescription(this.options?.tieDes?.replace(/{user_option}/g,this.emojis[i.customId])?.replace(/{bot_option}/g,this.emojis[bot]) ?? `Game Tied!, Our Choice: ${this.emojis[`${bot}`]}`)],components:[Row]},msg)
+     if(this.onTie) await this.onTie();
      } else {
-     await this.edit({embeds:[new EmbedBuilder().setTitle("Rock Paper Scissors").setDescription(`You Lost!, Your choice: ${this.emojis[`${i.customId}`]}, My Choice: ${this.emojis[`${bot}`]}`).setThumbnail(this.player.avatarURL())],components:[Row]},msg)
-     return "lose";
+     await this.edit({embeds:[new EmbedBuilder().setTitle(this.options?.title ?? "Rock Paper Scissors").setDescription(this.options?.loseDes?.replace(/{bot_option}/g,this.emojis[bot])?.replace(/{user_option}/g,this.emojis[i.customId]) ?? `You Lost!, Your choice: ${this.emojis[`${i.customId}`]}, My Choice: ${this.emojis[`${bot}`]}`).setThumbnail(this.player.avatarURL())],components:[Row]},msg)
+     if(this.onLose) await this.onLose();
      }}
  }
   }
   catch(e) {
    Row.components.forEach(x => x.setDisabled(true))
-   this.edit({embeds:[new EmbedBuilder().setTitle("Rock Paper Scissors").setDescription('Game Ended: Timed Out').setThumbnail(this.player.avatarURL()).setColor('Red')],components:[Row]},msg)
+   this.edit({embeds:[new EmbedBuilder().setTitle(this.options?.title ?? "Rock Paper Scissors").setDescription(this.options?.timeUpDes ?? 'Game Ended: Timed Out').setThumbnail(this.player.avatarURL()).setColor('Red')],components:[Row]},msg)
    return "timeup"
  }
 }
 else {
  const msg = await this.edit({content:this.opponent,embeds:[
-  new EmbedBuilder().setTitle("Rock Paper Scissors").setDescription(`${this.player} has challenged you to a game of Rock Paper Scissors`).setColor('Navy')
+  new EmbedBuilder().setTitle(this.options?.title ?? "Rock Paper Scissors").setDescription(this.options?.confirmDes ?? `${this.player} has challenged you to a game of Rock Paper Scissors`).setColor('Navy')
  ],
 components:[new ActionRowBuilder().addComponents(
   new ButtonBuilder().setCustomId('yes').setLabel('Accept').setStyle(ButtonStyle.Success),
@@ -120,8 +125,8 @@ this.edit({
   content:"",
   embeds: [
     new EmbedBuilder()
-    .setTitle('Rock Paper Scissors')
-    .setDescription('Choose your choice')
+    .setTitle(this?.options?.title ?? 'Rock Paper Scissors')
+    .setDescription(this.options?.startDes ?? 'Choose your choice')
     .setColor('Aqua')
   ],
   components:[Row]
@@ -142,27 +147,28 @@ if(i.user.id == this.opponent.id && op.played==false) {
 }
 if(p.played == true && op.played == true) {
 var string = "";
-var status = "";
+var status = {}
 collector.stop();
-if(op.choice == p.choice) { string = `Game Tied! Both choose ${this.emojis[p.choice]}`;status = "tie"}
-if(op.choice == this.win[p.choice]) { string = `${this.opponent} Won! ${this.emojis[op.choice]} beats ${this.emojis[p.choice]}`;status="opponent"}
-if(win[op.choice] == p.choice) { string = `${this.player} Won! ${this.emojis[p.choice]} beats ${this.emojis[op.choice]}`;status="player"}
+if(op.choice == p.choice) { string = this.options?.tieDes?.replace(/{option}/g,this.emojis[p.choice]) ?? `Game Tied! Both choose ${this.emojis[p.choice]}`;}
+if(op.choice == this.win[p.choice]) { string = this.options?.winDes?.replace(/{winner}/g,`${this.opponent}`)?.replace(/{loser}/g,`${this.player}`)?.replace(/{winner_choice}/g,this.emojis[op.choice])?.replace(/{loser_choice}/g,this.emojis[p.choice]) ?? `${this.opponent} Won! ${this.emojis[op.choice]} beats ${this.emojis[p.choice]}`;status = {winner:this.opponent,loser:this.player}}
+if(win[op.choice] == p.choice) { string = this.options?.winDes?.replace(/{winner}/g,`${this.player}`)?.replace(/{loser}/g,`${this.opponent}`)?.replace(/{winner_choice}/g,this.emojis[p.choice])?.replace(/{loser_choice}/g,this.emojis[op.choice]) ?? `${this.player} Won! ${this.emojis[p.choice]} beats ${this.emojis[op.choice]}`;status = {winner:this.player,loser:this.opponent}}
 this.edit({
   embeds:[
-    new EmbedBuilder().setTitle('Rock Paper Scissors')
+    new EmbedBuilder().setTitle(this.options?.title ?? 'Rock Paper Scissors')
     .setDescription(string).setColor('Green')],
     components:[]
 })
-return status;
+if(op.choice == p.choice && this.onTie) await this.onTie();
+else if(this.onWin) await this.onWin(status.winner,status.loser);
 }
 })
 collector.on('end', async() => {
   if(p.played == true && op.played == true) return;
   this.edit({embeds: [
     new EmbedBuilder()
-    .setDescription(`Game Ended: Timed Out`)
+    .setDescription(this.options?.timeUpDes ?? `Game Ended: Timed Out`)
     .setColor('Red')
-    .setTitle('Rock Paper Scissors')
+    .setTitle(this.options?.title ?? 'Rock Paper Scissors')
   ],components:[]},msg)
 })
 return "timeup";
@@ -172,8 +178,8 @@ else {
   content:"",
   embeds:[
     new EmbedBuilder()
-    .setTitle('Rock Paper Scissors')
-    .setDescription(`${this.opponent} has declined your challenge`)
+    .setTitle(this.options?.title ?? 'Rock Paper Scissors')
+    .setDescription(this.options?.declineDes ?? `${this.opponent} has declined your challenge`)
     .setColor('Red')
   ]
   },msg)
@@ -185,8 +191,8 @@ catch(e) {
     content:"",
     embeds: [
     new EmbedBuilder()
-    .setTitle('Rock Paper Scissors')
-    .setDescription(`${this.opponent} did not respond in time`)
+    .setTitle(this.options?.title ?? 'Rock Paper Scissors')
+    .setDescription(this.options?.noResDes ?? `${this.opponent} did not respond in time`)
     .setColor('Red')],
    components:[]},msg)
    return "timeup";

@@ -26,22 +26,23 @@ class RepeatTheColor{
       this.replied = false;
       this.randomN = (min,max) => {return Math.floor(Math.random()*max)+min;}
       this.edit = async (messageOptions,replyMessage) => {
-        if(this.isSlash == true) {
-          messageOptions.fetchReply = true;
-          return await replyMessage.editReply(messageOptions)
-        }
-        else {
-          if(this.replied == false) {
-          this.replied=true; return await this.message.reply(messageOptions);}
+      messageOptions.fetchReply = true;
+       if(this.replied == false) {
+          this.replied=true; 
+          if(this.isSlash == true) return await messageOptions.editReply(messageOptions)
+          return await this.message.reply(messageOptions);}
           else return await replyMessage.edit(messageOptions)
         }
+      this.options = gameOptions;
+      this.onWin = gameOptions?.onWin ?? null;
+      this.onLose = gameOptions?.onLose ?? null;
+      if(this.onWin && typeof this.onWin !== 'function') throw new TypeError('onWin must be a functon');
+      if(this.onLose && typeof this.onLose !== 'function') throw new TypeError('onLose must be a funtion');
       }
-
-    }
     /**
      * Starts The Game.
      */
-async run(onWin) {
+async run() {
   if(this.isSlash == true) {
     await this.message.deferReply().catch(() => {});
   }
@@ -74,13 +75,13 @@ Row.addComponents(new ButtonBuilder().setCustomId(color).setCustomId(color).setE
 }
 
 const embed = new EmbedBuilder()
-.setTitle("Repeat The Color")
-.setDescription(`Remember the below color sequence\n ${emojis[`${color1}`]}${emojis[color2]}${emojis[color3]}${emojis[color4]}${emojis[color5]}`)
+.setTitle(this.options?.title ?? "Repeat The Color")
+.setDescription(`${this.options?.startDes ?? `Remember the below color sequence`}\n ${emojis[`${color1}`]}${emojis[color2]}${emojis[color3]}${emojis[color4]}${emojis[color5]}`)
 .setColor('Green');
 const msg = await this.edit({embeds:[embed]},this.message)
 const EditEmbed = new EmbedBuilder()
-.setTitle("Repeat The Color")
-.setDescription("Now repeat the color sequence")
+.setTitle(this.options?.title ?? "Repeat The Color")
+.setDescription(this.options?.startDes2 ?? "Now repeat the color sequence")
 .setColor('Green');
 setTimeout(() => {this.edit({embeds:[EditEmbed],components:[Row]},msg)}, 5000)
 const collector = msg.createMessageComponentCollector({ componentType: ComponentType.Button, time: 30000 });
@@ -93,20 +94,20 @@ collector.on('collect', async i => {
     color++;
   Row.components.find(x => x.data.custom_id == i.customId).setDisabled(true)
   if(color == 6) {
-   this.edit({embeds:[new EmbedBuilder().setTitle("Repeat The Color").setDescription("You Won!").setColor("Yellow")],components:[Row]},msg)
+   this.edit({embeds:[new EmbedBuilder().setTitle(this.options?.winDes ?? "Repeat The Color").setDescription("You Won!").setColor("Yellow")],components:[Row]},msg)
    played = true;
    collector.stop();
-   if(onWin) await onWin();
+   if(this.onWin) await this.onWin();
   }
   {
   this.edit({components:[Row]},msg)
   }
   }
   else {
-    this.edit({embeds:[new EmbedBuilder().setTitle("Repeat The Color").setDescription('You Lost!, You failed to remember the color sequence').setColor('Red')]},msg)
+    this.edit({embeds:[new EmbedBuilder().setTitle(this.options?.title ?? "Repeat The Color").setDescription(this.options?.loseDes ?? 'You Lost!, You failed to remember the color sequence').setColor('Red')]},msg)
     played = true;
     collector.stop()
- return "lose";
+ if(this.onLose) await this.onLose();
   }
   } else {
   	i.deferUpdate();
@@ -115,8 +116,7 @@ collector.on('collect', async i => {
 
 collector.on('end', collected => {
 if(played == false) {
-  this.edit({embeds:[new EmbedBuilder().setTitle("Repeat The Color").setDescription('Game Over: Timed Out').setColor('Red')],components:[Row]},msg)
-  return "timeup";
+  this.edit({embeds:[new EmbedBuilder().setTitle(this.options?.title ?? "Repeat The Color").setDescription(this.options?.timeUpDes ?? 'Game Over: Timed Out').setColor('Red')],components:[Row]},msg)
 }
  });
 }

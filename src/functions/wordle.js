@@ -28,24 +28,27 @@ class Wordle{
       this.replied = false;
       this.randomN = (min,max) => {return Math.floor(Math.random()*max)+min;}
       this.edit = async (messageOptions,replyMessage) => {
-        if(this.isSlash == true) {
-          messageOptions.fetchReply = true;
-          return await replyMessage.editReply(messageOptions)
-        }
-        else {
-          if(this.replied == false) {
-          this.replied=true; return await this.message.reply(messageOptions);}
-          else return await replyMessage.edit(messageOptions)
-        }
-      }
+        messageOptions.fetchReply = true;
+         if(this.replied == false) {
+            this.replied=true; 
+            if(this.isSlash == true) return await messageOptions.editReply(messageOptions)
+            return await this.message.reply(messageOptions);}
+            else return await replyMessage.edit(messageOptions)
+          }
       this.word = words[this.randomN(0,words.length)]
+      this.options = gameOptions;
+      this.onWin = gameOptions?.onWin ?? null;
+      this.onLose = gameOptions?.onLose ?? null;
+      if(this.onWin && typeof this.onWin !== 'function') throw new TypeError('onWin must be a functon');
+      if(this.onLose && typeof this.onLose !== 'function') throw new TypeError('onLose must be a funtion');
+
     }
     /**
      * Starts The Game.
      */
-async run(onWin) {
+async run() {
 if(this.isSlash == true) {
-  this.message.deferReply().catch(() => {});
+  await this.message.deferReply().catch(() => {});
 }
 const canvas = createCanvas(300,300);
 const context = canvas.getContext('2d');
@@ -103,7 +106,7 @@ function wordEmbed(canvas,color,des) {
 const image = new discord.AttachmentBuilder().setFile(canvas.toBuffer()).setName('wordle.png')
 const embed = new discord.EmbedBuilder()
 .setColor(color)
-.setTitle("Wordle")
+.setTitle(this.options?.title ?? "Wordle")
 .setImage("attachment://wordle.png")
 if(des) embed.setDescription(des)
 return {embeds:[embed],files:[image] };
@@ -118,16 +121,16 @@ collector.on('collect', async m => {
   if(result == "win") {
     played = true;
     collector.stop()
-    this.edit(wordEmbed(canvas,"Green","You Won!"),msg);
-    if(onWin) await onWin();
+    this.edit(wordEmbed(canvas,"Green",this.options?.winDes?.replace(/{word}/g,this.word) ?? "You Won!"),msg);
+    if(this.onWin) await this.onWin();
 
   }
   else {
     chance++
     if(chance == 5) {
       played = true;
-      this.edit(wordEmbed(canvas,"Red","You Lost!, The word was "+this.word),msg)
-      return "lose";
+      this.edit(wordEmbed(canvas,"Red",this.options?.loseDes?.replace(/{word}/g,this.word) ?? "You Lost!, The word was "+this.word),msg)
+      if(this.onLose) await this.onLose();
      }
     else {
     this.edit(wordEmbed(canvas,"Red"),msg)
@@ -137,7 +140,6 @@ collector.on('collect', async m => {
 collector.on('end', () => {
    if(played == false) {
     this.edit(wordEmbed(canvas,'Red','Game Over: Timed Out!'),msg)
-    return "timeup";
    }
 })
   }
