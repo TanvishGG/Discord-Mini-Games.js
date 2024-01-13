@@ -1,6 +1,6 @@
 # EightBall
 
-A game, where you can ask the bot a yes/no question.
+A Game, where you can ask the bot a yes/no question.
 
 ## Importing
 
@@ -15,4 +15,4 @@ let message = message || interaction; // Message Object Or Interaction Object
 let question = "Am I Dumb?"; // A yes/no question.
 await EightBall(message,question);
 ```
-<small> returns messageObject of the Game. </small>
+returns messageObject of the Game.

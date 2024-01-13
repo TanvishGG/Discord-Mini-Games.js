@@ -1,3 +1,5 @@
+# Home
+Hello, Thank you for using this library.
 
 ## Available Games And Docs
 1. [RockPaperScissors](./rock-paper-scissors)
@@ -10,5 +12,14 @@
 8. [Truth](./truth)
 9. [Dare](./dare)
 10. [EightBall](./8ball)
+
+## Installing 
+```
+npm install discord-mini-games.js@latest
+```
+## Bugs, Issues & Feature Requests 
+
+Make a new Issue in [Github Repo](https://github.com/TanvishGG/Discord-Mini-Games.js)
+
 
 ### Made with ❤️ by [TanvishGG](https://github.com/TanvishGG)
