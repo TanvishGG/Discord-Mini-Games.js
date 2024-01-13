@@ -1,5 +1,3 @@
-# Discord-Mini-Games.js
-a package to implement mini-games using discord.js v14
 
 ## Available Games And Docs
 1. [RockPaperScissors](./rock-paper-scissors)
