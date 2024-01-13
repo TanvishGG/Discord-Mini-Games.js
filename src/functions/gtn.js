@@ -41,7 +41,7 @@ class GuessTheNumber{
     /**
      * Starts The Game.
      */
-async run() {
+async run(onWin) {
   if(this.isSlash == true) {
     await this.message.deferReply().catch(() => {});
   }
@@ -71,13 +71,13 @@ const msg = await this.edit({embeds:[embedGen(null,"Blue")]},this.message)
 const collectorFilter = m => m && m.author.id == this.player.id && !isNaN(m.content) && m.content < 21 && m.content > 0;
 const collector = msg.channel.createMessageCollector({ filter: collectorFilter, time: 90000, max:3 });
 let played = false;
-collector.on('collect', m => {
+collector.on('collect', async m => {
     if(m.content == number) { 
         m.delete();
         played = true;
         collector.stop();
         this.edit({embeds:[embedGen(`You guessed it right!, the number was ${number}`,'Green')]},msg)
-        return "win"
+    if(onWin) await onWin();
     }
     else{
      tries--;

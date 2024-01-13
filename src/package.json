@@ -1,6 +1,6 @@
 {
   "name": "discord-mini-games.js",
-  "version": "1.3.4",
+  "version": "1.4.0",
   "description": "a package to implement mini-games using discord.js v14",
   "main": "index.js",
   "scripts": {

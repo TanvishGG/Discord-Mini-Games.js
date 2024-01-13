@@ -43,7 +43,7 @@ class Wordle{
     /**
      * Starts The Game.
      */
-async run() {
+async run(onWin) {
 if(this.isSlash == true) {
   this.message.deferReply().catch(() => {});
 }
@@ -111,15 +111,16 @@ return {embeds:[embed],files:[image] };
 const msg = await this.edit(wordEmbed(canvas,"Yellow"),this.message)
 const filter = m => m.author.id == this.player.id && m.content.length == 5 && /^[a-zA-Z]+$/.test(m.content);
 const collector = this.message.channel.createMessageCollector({filter:filter,time:this.time,max:5})
-collector.on('collect', m => {
+collector.on('collect', async m => {
   const attempt = m.content;
   const result = drawAndVerifyWord(this.word,attempt,chance)
   m.delete().catch(() => {})
   if(result == "win") {
     played = true;
     collector.stop()
-    this.edit(wordEmbed(canvas,"Green","You Won!"),msg)
-    return "win";
+    this.edit(wordEmbed(canvas,"Green","You Won!"),msg);
+    if(onWin) await onWin();
+
   }
   else {
     chance++

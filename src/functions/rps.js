@@ -55,7 +55,7 @@ class RockPaperScissors{
  /**
   * Starts the game
   */
-async run() {
+async run(onWin) {
   if(this.isSlash == true) {
     this.message.deferReply();
   }
@@ -80,7 +80,7 @@ if(i.user.id == this.player.id) {
    Row.components.find(x => x.data.custom_id == i.customId).setDisabled(true)
    if(this.win[`${bot}`] == i.customId) {
      await this.edit({embeds:[new EmbedBuilder().setThumbnail(this.player.avatarURL()).setTitle("Rock Paper Scissors").setDescription(`You Won!, Your choice: ${this.emojis[`${i.customId}`]}, My Choice: ${this.emojis[`${bot}`]}`)],components:[Row]},msg)
-     return "win";
+     if(onWin) await onWin();
    }
    else {
      if(i.customId == bot) {

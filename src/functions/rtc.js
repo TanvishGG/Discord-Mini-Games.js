@@ -41,7 +41,7 @@ class RepeatTheColor{
     /**
      * Starts The Game.
      */
-async run() {
+async run(onWin) {
   if(this.isSlash == true) {
     await this.message.deferReply().catch(() => {});
   }
@@ -86,7 +86,7 @@ setTimeout(() => {this.edit({embeds:[EditEmbed],components:[Row]},msg)}, 5000)
 const collector = msg.createMessageComponentCollector({ componentType: ComponentType.Button, time: 30000 });
 let color = 1;
 let played = false;
-collector.on('collect', i => {
+collector.on('collect', async i => {
 	if (i.user.id === this.player.id) {
     i.deferUpdate();
   if(i.customId == eval(`color${color}`)) {
@@ -96,7 +96,7 @@ collector.on('collect', i => {
    this.edit({embeds:[new EmbedBuilder().setTitle("Repeat The Color").setDescription("You Won!").setColor("Yellow")],components:[Row]},msg)
    played = true;
    collector.stop();
-   return "win";
+   if(onWin) await onWin();
   }
   {
   this.edit({components:[Row]},msg)

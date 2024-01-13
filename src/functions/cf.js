@@ -41,7 +41,7 @@ class CoinFlip{
     /**
      * Starts The Game.
      */
-async run() {
+async run(onWin) {
   if(this.isSlash == true) {
     await this.message.deferReply().catch(() => {});
   }
@@ -70,7 +70,7 @@ if(i.user.id == this.player.id) {
    Row.components.find(x => x.data.custom_id == i.customId).setDisabled(true)
    if(i.customId == bot) {
     await this.edit({embeds:[cfEm(`You won!, it was ${bot.toUpperCase()}`,`Yellow`)],components:[Row]},msg)
-    return "win";
+    if(onWin) await onWin();
    }
    else {
     await this.edit({embeds:[cfEm(`You Lost!, it was ${bot.toUpperCase()}`,`Red`)],components:[Row]},msg)

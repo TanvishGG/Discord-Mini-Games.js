@@ -41,7 +41,7 @@ class FindTheStone {
     /**
      * Starts The Game.
      */
-async run() {
+async run(onWin) {
   if(this.isSlash == true) {
     this.message.deferReply().catch(() => {});
   }
@@ -70,7 +70,7 @@ if(i.user.id == this.player.id) {
   Row.components.find(x => x.data.custom_id == i.customId).setDisabled(true)
   if(i.customId == bot) {
     await this.edit({embeds:[ftsEm(`You Won!, it was ${bot.toUpperCase()} Cup`,'Yellow')],components:[Row]},msg)
-    return "win";
+    if(onWin) await onWin();
   }
   else {
     await this.edit({embeds:[ftsEm(`You Lost!, it was ${bot.toUpperCase()} Cup`,'Red')],components:[Row]},msg)
