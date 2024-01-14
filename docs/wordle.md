@@ -9,7 +9,7 @@ Guess the 5 Letter Word, the Bot is thinking of by guessing other 5 Letter Words
 - -> 🟨 Yellow Square means that letter exists in the word but in different position.
 - -> 🟩 Green Square means that letter exists in the word in that exact position.
 
-## Formatting
+## Importing
 ```js
 const {Wordle} = require('discord-mini-games.js');
 ```
