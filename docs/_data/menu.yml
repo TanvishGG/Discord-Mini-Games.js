@@ -1,6 +1,6 @@
 - label: Menu
   items:
-    - name: Home
+    - name: Introduction
       link: /
     - name: Docs
       items:
