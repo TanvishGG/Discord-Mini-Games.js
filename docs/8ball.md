@@ -1,9 +1,5 @@
----
-title: EightBall
-subtitle: A Game, where you can ask the bot a yes/no question.
-
---- 
-
+# EightBall
+A Game, where you can ask the bot a yes/no question.
 ## Importing
 
 ```js

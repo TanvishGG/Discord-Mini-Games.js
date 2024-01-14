@@ -3,16 +3,17 @@ Get a random Joke.
 
 ## Importing
 
- ```js
+```js
  const {Joke} = require('discord-mini-games.js')
- ```
- ## Getting a joke
+```
+## Getting a joke
 
- ```js
- const joke = await Joke();
+```js
+const joke = await Joke();
 console.log(joke)
- ```
+```
  - **output:**
+
 ```
 How do construction workers party?
  ||They raise the roof.||

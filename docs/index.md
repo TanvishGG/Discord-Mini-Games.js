@@ -1,6 +1,8 @@
 
-# Home
+# Introduction
+
 Hello, Thank you for using this library.
+This Paclage is made for easy implementation of mini-games inside discord using discord.js-v14
 
 ## Available Games And Docs
 1. [RockPaperScissors](./rock-paper-scissors)

@@ -3,16 +3,17 @@ Get a random Dare.
 
 ## Importing
 
- ```js
+```js
  const {Dare} = require('discord-mini-games.js')
- ```
- ## Getting a dare
+```
+## Getting a dare
 
- ```js
+```js
  const dare = await Dare();
 console.log(dare)
- ```
+```
  - **output:**
+
 ```
 Drink 2 Glasses of Water!
 ```

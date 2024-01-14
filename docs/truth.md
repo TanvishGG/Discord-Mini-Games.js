@@ -3,16 +3,17 @@ Get a random Truth.
 
 ## Importing
 
- ```js
+```js
  const {Truth} = require('discord-mini-games.js')
- ```
- ## Getting a truth
+```
+## Getting a truth
 
- ```js
+```js
  const truth = await Truth();
 console.log(truth)
- ```
+```
  - **output:**
+
 ```
 What's the name of you current/ex bf/gf?
 ```
