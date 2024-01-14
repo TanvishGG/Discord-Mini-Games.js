@@ -1,4 +1,4 @@
-remote_theme: aksakalli/jekyll-doc-theme@gh-pages
+remote_theme: olivier3lanc/Jekyll-LibDoc
 permalink: pretty
 title: Discord-Mini-Games.js
 description: A Package to implement Mini-Games using Discord.js-v14
