@@ -61,17 +61,17 @@ function random(min, max) {
 function embedGen(text, color) {
     const embed = new discord.EmbedBuilder()
     .setTitle(this.options.title ??"Guess The Number")
-    .setDescription(`${this.options?.startDes ?? `Guess the number iam thinking of in 3 tries which lies between 1-20`} ${text ? `\n\n\`\`\`${text}\`\`\``:""}`)
+    .setDescription(`${this.options?.startDes ?? `Guess the number iam thinking of in ${this.options?.tries ?? 3 } tries which lies between 1-${this.options?.max ?? 20}`} ${text ? `\n\n\`\`\`${text}\`\`\``:""}`)
     .setColor(color)
     .setTimestamp()
     .setThumbnail(this.player.avatarURL());
     return embed;
 }
-const number = random(1,20)
-let tries = 3;
+const number = random(1,this.options?.max ?? 20)
+let tries = this.options?.tries ?? 3;
 const msg = await this.edit({embeds:[embedGen(null,"Blue")]},this.message)
 const collectorFilter = m => m && m.author.id == this.player.id && !isNaN(m.content) && m.content < 21 && m.content > 0;
-const collector = msg.channel.createMessageCollector({ filter: collectorFilter, time: 90000, max:3 });
+const collector = msg.channel.createMessageCollector({ filter: collectorFilter, time: 90000, max:this.options?.tries ?? 3 });
 let played = false;
 collector.on('collect', async m => {
     if(m.content == number) { 

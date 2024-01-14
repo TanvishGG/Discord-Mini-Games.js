@@ -1,5 +1,5 @@
 # Joke
-Get a random Joke.
+Get a random Joke using <https://jokeapi.dev/> api.
 
 ## Importing
 

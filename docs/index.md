@@ -1,8 +1,8 @@
 
 # Introduction
-
-Hello, Thank you for using this library.
-This Paclage is made for easy implementation of mini-games inside discord using discord.js-v14
+- This Paclage is made for easy implementation of mini-games inside discord using discord.js-v14
+- Multiple customization Options are available.
+- Supports Functions that can execute on win/lose
 
 ## Available Games And Docs
 1. [RockPaperScissors](./rock-paper-scissors)
@@ -22,7 +22,7 @@ npm install discord-mini-games.js@latest
 ```
 ## Bugs, Issues & Feature Requests 
 
-Make a new Issue in [Github Repo](https://github.com/TanvishGG/Discord-Mini-Games.js)
+- Mke a new Issue in [Github Repo](https://github.com/TanvishGG/Discord-Mini-Games.js)
 
 
 ### Made with ❤️ by [TanvishGG](https://github.com/TanvishGG)

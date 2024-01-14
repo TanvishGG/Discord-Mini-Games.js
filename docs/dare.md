@@ -1,5 +1,6 @@
 # Dare
-Get a random Dare.
+Get a random dare using <https://api.truthordarebot.xyz/> api.
+
 
 ## Importing
 

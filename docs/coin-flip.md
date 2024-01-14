@@ -1,5 +1,5 @@
 # CoinFlip
-A Game, where the Bot flips a Coin and you have to guess whether it's Heads or Tails
+A Game, where the Bot flips a Coin and you have to guess whether it's Heads or Tails.
 
 ## Importing
 ```js

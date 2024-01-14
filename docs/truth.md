@@ -1,5 +1,5 @@
 # Truth
-Get a random Truth.
+Get a random Truth using <https://api.truthordarebot.xyz/> api.
 
 ## Importing
 
