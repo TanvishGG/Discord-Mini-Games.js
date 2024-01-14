@@ -1,4 +1,4 @@
-- label: Example Menu
+- label: Menu
   items:
     - name: Home
       link: /
