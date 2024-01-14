@@ -38,6 +38,15 @@ class RepeatTheColor{
       this.onLose = gameOptions?.onLose ?? null;
       if(this.onWin && typeof this.onWin !== 'function') throw new TypeError('onWin must be a functon');
       if(this.onLose && typeof this.onLose !== 'function') throw new TypeError('onLose must be a funtion');
+      if(typeof this.isSlash !== 'boolean') throw new TypeError('isSlash must be a Boolean');
+      if(typeof this.time !== 'number') throw new TypeError('time must be a number');
+      if(this.time < 5000) throw new RangeError('time must be greater than 5000');
+      if(this.options?.title && typeof this.options?.title !== 'string') throw new TypeError('title must be a string');
+      if(this.options?.startDes && typeof this.options?.startDes !== 'string') throw new TypeError('startDes must be a string');
+      if(this.options?.startDes2 && typeof this.options?.startDes2 !== 'string') throw new TypeError('startDes2 must be a string');
+      if(this.options?.winDes && typeof this.options?.winDes !== 'string') throw new TypeError('winDes must be a string');
+      if(this.options?.loseDes && typeof this.options?.loseDes !== 'string') throw new TypeError('loseDes must be a string');
+      if(this.options?.timeUpDes && typeof this.options?.timeUpDes !== 'string') throw new TypeError('timeUpDes must be a string');
       }
     /**
      * Starts The Game.

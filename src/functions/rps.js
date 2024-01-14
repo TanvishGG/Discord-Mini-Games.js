@@ -55,7 +55,18 @@ class RockPaperScissors{
       if(this.onWin && typeof this.onWin !== 'function') throw new TypeError('onWin must be a functon');
       if(this.onLose && typeof this.onLose !== 'function') throw new TypeError('onLose must be a funtion');
       if(this.onTie && typeof this.onTie !== 'function') throw new TypeError('onTie must be a function');
-
+      if(typeof this.isSlash !== 'boolean') throw new TypeError('isSlash must be a Boolean');
+      if(typeof this.time !== 'number') throw new TypeError('time must be a number');
+      if(this.time < 5000) throw new RangeError('time must be greater than 5000');
+      if(this.options?.title && typeof this.options?.title !== 'string') throw new TypeError('title must be a string');
+      if(this.options?.startDes && typeof this.options?.startDes !== 'string') throw new TypeError('startDes must be a string');
+      if(this.options?.winDes && typeof this.options?.winDes !== 'string') throw new TypeError('winDes must be a string');
+      if(this.options?.loseDes && typeof this.options?.loseDes !== 'string') throw new TypeError('loseDes must be a string');
+      if(this.options?.timeUpDes && typeof this.options?.timeUpDes !== 'string') throw new TypeError('timeUpDes must be a string');
+      if(this.options?.confirmDes && typeof this.options?.confirmDes !== 'string') throw new TypeError('confirmDes must be a string');
+      if(this.options?.declineDes && typeof this.options?.declineDes !== 'string') throw new TypeError('declineDes must be a string');
+      if(this.options?.noResDes && typeof this.options?.noResDes !== 'string') throw new TypeError('noResDes must be a string');
+      if(this.options?.tieDes && typeof this.options?.tieDes !== 'string') throw new TypeError('tieDes must be a string');
     }
  /**
   * Starts the game

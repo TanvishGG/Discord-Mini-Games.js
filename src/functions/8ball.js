@@ -1,7 +1,7 @@
 const discord = require('discord.js')
 /**
  *  Start 8ball Game.
- * @param {discord.Message | discord.ChatInputCommandInteraction} message Discord Message Object Interaction Object.
+ * @param {discord.Message | discord.ChatInputCommandInteraction} message Discord Message Object or Interaction Object.
  * @param {String} question Question.
  * @returns {discord.Message} Message Object of the Game.
  */

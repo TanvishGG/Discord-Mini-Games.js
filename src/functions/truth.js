@@ -1,7 +1,7 @@
 
 /**
- * Fetch a random Truth
- * @returns {Promise<String>} - A promise that resolves to a random Truth
+ * Fetch a random Truth.
+ * @returns {Promise<String>} - A promise that resolves to a random Truth.
  */
 async function truth() {
   try {

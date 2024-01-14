@@ -1,7 +1,7 @@
 
 /**
- * Fetch a random Dare
- * @returns {Promise<String>} - A promise that resolves to a random Dare
+ * Fetch a random Dare.
+ * @returns {Promise<String>} - A promise that resolves to a random Dare.
  */
 async function dare() {
   try {

@@ -1,3 +1,8 @@
+/**
+ * Get a random Joke.
+ * @returns {Promise<String>} random Joke.
+ */
+
 async function joke() {
    try {
     var data = await fetch(`https://v2.jokeapi.dev/joke/Any?blacklistFlags=religious,political,racist,sexist,explicit`)
