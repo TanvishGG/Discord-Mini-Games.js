@@ -1,12 +1,1 @@
-remote_theme: chrisrhymes/bulma-clean-theme
-permalink: pretty
-defaults:
-  -
-    scope:
-      path: ""
-    values:
-      menubar: menu
-      show_navbar: false
-      hide_footer: true
-      navbar: null
-    
+remote_theme: just-the-docs/just-the-docs
