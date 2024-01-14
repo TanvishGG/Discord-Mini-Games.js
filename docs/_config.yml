@@ -5,7 +5,6 @@ defaults:
     scope:
       path: ""
     values:
-      layout: "project"
       menubar: menu
       show_navbar: false
       show_sidebar: false
