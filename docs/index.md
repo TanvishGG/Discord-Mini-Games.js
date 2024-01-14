@@ -1,7 +1,4 @@
----
-title: "Introduction"
-parent: Docs
----
+
 # Home
 Hello, Thank you for using this library.
 
