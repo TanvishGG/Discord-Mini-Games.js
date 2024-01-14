@@ -1,6 +1,6 @@
 ---
-show_navbar: false
-menubar: menu
+title: "Discord-Mini-Games.js"
+subtitle: "A package to implement mini-games using discord.js-v14"
 ---
 # Home
 Hello, Thank you for using this library.

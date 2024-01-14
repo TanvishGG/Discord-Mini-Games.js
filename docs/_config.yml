@@ -7,5 +7,4 @@ defaults:
     values:
       menubar: menu
       show_navbar: false
-      show_sidebar: false
-      show_hero: false
+    

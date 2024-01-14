@@ -1,10 +1,8 @@
 ---
-show_navbar: false
-menubar: menu
----
-# EightBall
+title: EightBall
+subtitle: A Game, where you can ask the bot a yes/no question.
 
-A Game, where you can ask the bot a yes/no question.
+--- 
 
 ## Importing
 
