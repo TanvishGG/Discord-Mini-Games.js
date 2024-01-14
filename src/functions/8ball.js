@@ -29,7 +29,8 @@ if(message instanceof discord.Message) {
     return await message.reply({embeds:[Embed]});
 }
 else {
-    return await message.reply({embeds:[Embed],fetchReply:true})
+    if(message.deferred) return await message.editReply({embeds:[Embed],fetchReply:true});
+    else return await message.reply({embeds:[Embed],fetchReply:true});
 }}
 catch(e) {
     throw new Error(e)

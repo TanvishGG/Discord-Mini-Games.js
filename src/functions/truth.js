@@ -1,7 +1,7 @@
 
 /**
  * Fetch a random Truth
- * @returns {Promise<Object>} - A promise that resolves to a random Truth
+ * @returns {Promise<String>} - A promise that resolves to a random Truth
  */
 async function truth() {
   try {
@@ -10,7 +10,8 @@ async function truth() {
       'Content-Type':'applocation/json'
     }
   })
-  return await data.json();
+  data = await data.json();
+  return data.question;
 }
   catch(e) {
   throw new Error(e)

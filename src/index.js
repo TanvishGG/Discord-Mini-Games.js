@@ -20,3 +20,4 @@ module.exports = {
     Joke:joke,
     EightBall:EightBall
 }
+dare().then(console.log)

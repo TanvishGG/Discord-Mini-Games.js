@@ -22,7 +22,7 @@ class CoinFlip{
       }
       this.player = this.isSlash == true ? this.message?.user : this.message?.author;
       this.options = gameOptions
-      this.time = gameOptions?.time ?? 45000;
+      this.time = gameOptions?.time ?? 30000;
       this.replied = false;
       this.randomN = (min,max) => {return Math.floor(Math.random()*max)+min;}
       this.edit = async (messageOptions,replyMessage) => {
@@ -59,7 +59,7 @@ async run() {
   }
   var Row = new ActionRowBuilder().addComponents(new ButtonBuilder().setCustomId('heads').setStyle(ButtonStyle.Secondary).setLabel('Heads'), new ButtonBuilder().setCustomId('tails').setStyle(ButtonStyle.Secondary).setLabel('Tails'))
  const msg = await this.edit({embeds:[cfEm(this.options?.startDes?? 'Choose Heads or Tails','Green')],components:[Row]},this.message)
-  const collector = msg.createMessageComponentCollector({ componentType: ComponentType.Button, time:15000})
+  const collector = msg.createMessageComponentCollector({ componentType: ComponentType.Button, time:this.time})
   let played = false;
   const choices = ['heads','tails']
   const bot = choices[randomN(0,1)]

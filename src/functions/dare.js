@@ -1,7 +1,7 @@
 
 /**
  * Fetch a random Dare
- * @returns {Promise<Object>} - A promise that resolves to a random Dare
+ * @returns {Promise<String>} - A promise that resolves to a random Dare
  */
 async function dare() {
   try {
@@ -10,7 +10,8 @@ async function dare() {
       'Content-Type':'applocation/json'
     }
   })
-  return await data.json();
+  data = await data.json()
+  return data.question;
 }
   catch(e) {
   throw new Error(e)
