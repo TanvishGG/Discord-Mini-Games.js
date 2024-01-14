@@ -171,7 +171,6 @@ collector.on('end', async() => {
     .setTitle(this.options?.title ?? 'Rock Paper Scissors')
   ],components:[]},msg)
 })
-return "timeup";
 }
 else {
   this.edit({
@@ -183,7 +182,6 @@ else {
     .setColor('Red')
   ]
   },msg)
-  return "decline";
 }
 }
 catch(e) {
@@ -195,7 +193,6 @@ catch(e) {
     .setDescription(this.options?.noResDes ?? `${this.opponent} did not respond in time`)
     .setColor('Red')],
    components:[]},msg)
-   return "timeup";
 }
 }
 }

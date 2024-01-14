@@ -9,7 +9,7 @@ const {GuessTheNumber} = require('discord-mini-games.js');
 ```js
 const gameOptions = {
     isSlash: false, // wether the game is a slash command, default: false.
-    time: 30000, // timeup duration in milliseconds, default: 30000.
+    time: 45000, // timeup duration in milliseconds, default: 45000.
     tries: 3, // Number of Tries, default: 3.
     max: 20, // Max range of the number, default: 20.
     onWin: () => {console.log("win")}, // Function to execute if player wins the game.
@@ -30,7 +30,7 @@ The texts for embed descriptions accepts following formatting.
   - **`{status}`** -> Wether user's guess is lower/higher than the actual number.
 - **winDes**
   - **`{user_option}`** -> User's Guess.
-  - **`{number}` -> Actual Number.
+  - **`{number}`** -> Actual Number.
   - both are same.
 - **loseDes**
   - **`{user_option}`** -> User's Guess.
@@ -39,7 +39,8 @@ The texts for embed descriptions accepts following formatting.
 
 ## Starting The Game
 ```js
-let message = message || interaction // message object or interaction object
-let gameOptions = "refer previous block"
-new GuessTheNumber(message,gameOptions)
+let message = message || interaction; // message object or interaction object.
+let gameOptions = "refer previous block";
+const game = new GuessTheNumber(message,gameOptions); // Initialising the Game.
+game.run(); // Starting the Game.
 ```

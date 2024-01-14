@@ -30,9 +30,10 @@ The texts for embed descriptions accepts following formatting.
   - **`{user_option}`** -> option choosen by the Player.
   - both are different.
 
-## Starting The Game
+## Starting the Game
 ```js
-let message = message || interaction // message object or interaction object
-let gameOptions = "refer previous block"
-new FindTheStone(message,gameOptions)
+let message = message || interaction; // message object or interaction object.
+let gameOptions = "refer previous block";
+const game = new FindTheStone(message,gameOptions); // Initialising the Game.
+game.run(); // Starting the Game.
 ```
