@@ -2,14 +2,25 @@
   items:
     - name: Home
       link: /
-    - name: Pages
-      link: #
+    - name: Docs
       items:
-        - name: Page With Sidebar 
-          link: /page-1/
-        - name: Page Without Sidebar
-          link: /page-2/
-        - name: Page With Menubar
-          link: /page-3/
-    - name: Blog
-      link: /blog/
+        - name: Rock Paper Scissors
+          link: /rock-paper-scissors/
+        - name: Guess The Number
+          link: /guess-the-number/
+        - name: Repeat The Color
+          link: /repeat-the-color/
+        - name: Find The Stone
+          link: /find-the-stone/
+        - name: Coin Flip
+          link: /coin-flip
+        - name: Wordle
+          link: /wordle/
+        - name: Joke
+          link: /joke/
+        - name: Truth
+          link: /truth/
+        - name: Dare
+          link: /dare/
+        - name: 8Ball
+          link: /8ball/

@@ -1,3 +1,7 @@
+---
+show_navbar: false
+menubar: menu
+---
 # EightBall
 
 A Game, where you can ask the bot a yes/no question.
