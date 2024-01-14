@@ -1,2 +1,5 @@
 remote_theme: chrisrhymes/bulma-clean-theme
 permalink: pretty
+show_navbar: true
+show_menubar: true
+menubar: menu
