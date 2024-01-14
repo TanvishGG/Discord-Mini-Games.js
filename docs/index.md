@@ -1,6 +1,6 @@
 ---
-title: "Discord-Mini-Games.js"
-subtitle: "A package to implement mini-games using discord.js-v14"
+title: "Introduction"
+parent: Docs
 ---
 # Home
 Hello, Thank you for using this library.

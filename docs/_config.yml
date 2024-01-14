@@ -1,1 +1,10 @@
 remote_theme: just-the-docs/just-the-docs
+permalink: pretty
+title: Discord-Mini-Games.js
+description: A Package to implement Mini-Games using Discord.js-v14
+url: https://discord-mini-games.js.org
+search_enabled: true
+enable_copy_code_button: true
+back_to_top: false
+footer_content: © 2024 Discord-Mini-Games.js | Made with ❤️ by [TanvishGG](https://github.com/TanvishGG)
+color_scheme: dark
