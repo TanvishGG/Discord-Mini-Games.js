@@ -4,7 +4,9 @@
 - Multiple customization Options are available.
 - Supports Functions that can execute on win/lose
 
-## Available Games And Docs
+---
+
+## => Available Games And Docs
 1. [RockPaperScissors](./rock-paper-scissors)
 2. [GuessTheNumber](./guess-the-number)
 3. [RepeatTheColor](./repeat-the-color)
@@ -16,13 +18,19 @@
 9. [Dare](./dare)
 10. [EightBall](./8ball)
 
-## Installing 
+---
+
+## => Installing 
 ```
 npm install discord-mini-games.js@latest
 ```
-## Bugs, Issues & Feature Requests 
 
-- Mke a new Issue in [Github Repo](https://github.com/TanvishGG/Discord-Mini-Games.js)
+---
 
+## => Bugs, Issues & Feature Requests 
 
-### Made with ❤️ by [TanvishGG](https://github.com/TanvishGG)
+- Make a new Issue in [Github Repo](https://github.com/TanvishGG/Discord-Mini-Games.js)
+
+---
+
+### <center>Made with ❤️ by [TanvishGG](https://github.com/TanvishGG)</center>

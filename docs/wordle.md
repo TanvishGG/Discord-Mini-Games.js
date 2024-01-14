@@ -5,9 +5,9 @@ Guess the 5 Letter Word, the Bot is thinking of by guessing other 5 Letter Words
 - -> Guess the 5 Letter Word Bot is thinking of.
 - -> You have 5 Chances
 - -> Keep guessing words for hints.
-- -> 🔴 Red Square means that letter doesn't exist in the word.
-- -> 🟡 Yellow Square means that letter exists in the word but in different position.
-- -> 🟢 Green Circle means that letter exists in the word in that exact position.
+- -> 🟥 Red Square means that letter doesn't exist in the word.
+- -> 🟨 Yellow Square means that letter exists in the word but in different position.
+- -> 🟩 Green Square means that letter exists in the word in that exact position.
 
 ## GameOptions
 ```js
