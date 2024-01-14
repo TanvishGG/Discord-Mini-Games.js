@@ -1,4 +1,4 @@
-# Dare
+# Joke
 Get a random Joke.
 
 ## Importing
