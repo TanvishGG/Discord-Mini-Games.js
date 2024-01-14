@@ -3,6 +3,11 @@ Play Rock Paper Scissors.
 - Single Player against the Bot.
 - Multiplayer against a player.
 
+## Importing
+```js
+const {RockPaperScissors} = require('discord-mini-games.js');
+```
+
 ## GameOptions
 ```js
 const gameOptions = {
