@@ -33,4 +33,4 @@ npm install discord-mini-games.js@latest
 
 ---
 
-### <center>Made with ❤️ by [TanvishGG](https://github.com/TanvishGG)</center>
+### <center>Made with ❤️ by Tanvish </center>
