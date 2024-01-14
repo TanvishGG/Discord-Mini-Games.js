@@ -7,4 +7,6 @@ defaults:
     values:
       menubar: menu
       show_navbar: false
+      hide_footer: true
+      navbar: null
     
