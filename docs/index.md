@@ -1,6 +1,6 @@
 
 # Introduction
-- This Paclage is made for easy implementation of mini-games inside discord using discord.js-v14
+- This Package is made for easy implementation of mini-games inside discord using discord.js-v14
 - Multiple customization Options are available.
 - Supports Functions that can execute on win/lose
 
