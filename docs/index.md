@@ -1,3 +1,7 @@
+---
+show_navbar: false
+menubar: menu
+---
 # Home
 Hello, Thank you for using this library.
 
