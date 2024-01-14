@@ -22,13 +22,13 @@ const gameOptions = {
 ## Formatting
 The texts for embed descriptions accepts following formatting.
 - **winDes**
-  - **`{bot_option}`** -> Heads/Tails option choosen by the Bot.
-  - **`{user_option}`** -> Heads/Tails option choosen by the Player.
+  - **`{bot_option}`** -> option choosen by the Bot.
+  - **`{user_option}`** -> option choosen by the Player.
   - both are same since, player won.
 - **loseDes**
-  - **`{bot_option}`** -> Heads/Tails option choosen by the Bot.
-  - **`{user_option}`** -> Heads/Tails option choosen by the Player.
-  - both are different
+  - **`{bot_option}`** -> option choosen by the Bot.
+  - **`{user_option}`** -> option choosen by the Player.
+  - both are different.
 
 ## Starting The Game
 ```js
