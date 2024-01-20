@@ -53,12 +53,13 @@ async run() {
   if(this.isSlash == true) {
     await this.message.deferReply().catch(() => {});
   }
+  const game = this;
   function cfEm(text,color) {
     const embed = new EmbedBuilder()
-   .setTitle(this.options?.title ?? 'CoinFlip')
+   .setTitle(game.options?.title ?? 'CoinFlip')
    .setDescription(text)
    .setColor(color)
-   .setThumbnail(this.player.avatarURL())
+   .setThumbnail(game.player.avatarURL())
    return embed;
   }
   function randomN(min,max) {

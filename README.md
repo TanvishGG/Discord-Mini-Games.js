@@ -2,19 +2,23 @@
 A package to implement mini-games using discord.js v14
 
 ## Available Games
-1. RockPaperScissors -> Single Player and Multi-Player
-2. GuessTheNumber -> Single Player
-3. RepeatTheColor -> Single Player
-4. FindTheStone -> Single Player
-5. CoinFlip -> Single Player
-6. Wordle -> Single Player
-7. Joke
-8. Truth 
-9. Dare
-10. EightBall
+- RockPaperScissors -> Single Player and Multi-Player
+- GuessTheNumber -> Single Player
+- TicTacToe -> Multi Player
+- RepeatTheColor -> Single Player
+- FindTheStone -> Single Player
+- CoinFlip -> Single Player
+- Wordle -> Single Player
+- Joke
+- Truth 
+- Dare
+- EightBall
 ##  Documentation
 
 Visit Here: [discord-mini-games.js.org](https://discord-mini-games.js)
+
+## Discord
+- https://discord.com/invite/xS8b8jQZZK
 
 --- 
 

@@ -1,11 +1,9 @@
-# Rock Paper Scissors
-Play Rock Paper Scissors.
-- Single Player against the Bot.
-- Multiplayer against a player.
+# Tic Tac Toe
+Play Tic Tac Toe
 
 ## Importing
 ```js
-const {RockPaperScissors} = require('discord-mini-games.js');
+const {TicTacToe} = require('discord-mini-games.js');
 ```
 
 ## GameOptions
@@ -17,17 +15,13 @@ const gameOptions = {
     onTie: () => {console.log('lose')}, // Function to execute when game ties.
     title: 'Rock Paper Scissors', // Embed Title.
     startDes: 'Choose your option', // Embed Description when game starts.
+    opEmoji: "🟢", // Opponent Box Emoji.
+    playerEmoji: "❌", // Player Box Emoji.
+    emptyEmoji: "◼️", // Empty Box Emoji.
+    footer: null, // Embed Footer.
     winDes: null, // Embed Description when player wins the game.
     tieDes: null, // Embed Description when game ties.
     timeUpDes: 'Game Over: Timed Out', // Embed Description when game times out.
-
-// <- Single-Player Options ->
-
-    onLose: () => {console.log('lose')}, // function to execute when player loses the game.
-    loseDes: null, // Embed Description when Player loses
-
-// <- Multi-Player Options ->
-
     resTime: 30000, // wait time for opponent response, default: 30000.
     opponent: User, // User object of the opponent.
     confirmDes: 'Do you want to play a Rock Paper Scissors match?', // Embed Description of Confirmation Embed.
@@ -36,29 +30,16 @@ const gameOptions = {
 }
 ```
 ## Formatting
-The Texts for embed description accepts following formatting.
-- ### Single Player
+The Texts for embed description accepts following formatting:
 - **winDes**
-  - **`{bot_option}`** -> option choosen by the Bot.
-  - **`{user_option}`** -> option choosen by the Player.
-- **loseDes**
-  - **`{bot_option}`** -> option choosen by the Bot.
-  - **`{user_option}`** -> option choosen by the Player.
-- **tieDes**
-  - **`{bot_option}`** -> option choosen by the Bot.
-  - **`{user_option}`** -> option choosen by the Player.
-  - both are same.
-- ### Multi Player
+  - **`{next_player}`** -> Next Player.
+  - **`{emoji}`** -> Next Player's Emoji.
 - **winDes**
   - **`{winner}`** -> Game Winner.
-  - **`{winner_choice}`** -> Winner's Choice.
-  - **`{loser}`** -> Game Loser.
-  - **`{loser_choice}`** -> Loser's Choice.
-- **tieDes**
-  - **`{option}`** -> Common Choice of both players.
+  - **`{emoji}`** -> Winner's Emoji. 
 
 ## Function Parameters
-`onWin` function of multiplayer executes with 2 function parameters to allow winner/loser based actions
+`onWin` function executes with 2 function parameters to allow winner/loser based actions
 ```js
 function onWin(winner,loser) {
     // Both are User Objects
@@ -70,6 +51,6 @@ function onWin(winner,loser) {
 ```js
 let message = message || interaction; // message object or interaction object.
 let gameOptions = "refer GameOptions block";
-const game = new RockPaperScissors(message,gameOptions); // Initialising the Game.
+const game = new TicTacToe(message,gameOptions); // Initialising the Game.
 game.run(); // Starting the Game.
 ```

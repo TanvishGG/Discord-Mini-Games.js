@@ -52,11 +52,13 @@ class RockPaperScissors{
       this.onWin = gameOptions?.onWin ?? null;
       this.onLose = gameOptions?.onLose ?? null;
       this.onTie = gameOptions?.onTie ?? null;
+      if(this.opponent && this.player.id == this.opponent.id) throw new Error('player and opponent cannot be same');
       if(this.onWin && typeof this.onWin !== 'function') throw new TypeError('onWin must be a functon');
       if(this.onLose && typeof this.onLose !== 'function') throw new TypeError('onLose must be a funtion');
       if(this.onTie && typeof this.onTie !== 'function') throw new TypeError('onTie must be a function');
       if(typeof this.isSlash !== 'boolean') throw new TypeError('isSlash must be a Boolean');
       if(typeof this.time !== 'number') throw new TypeError('time must be a number');
+      if(this.options?.resTime && typeof this.options?.resTime !== 'number') throw new TypeError('resTime must be a number');
       if(this.time < 5000) throw new RangeError('time must be greater than 5000');
       if(this.options?.title && typeof this.options?.title !== 'string') throw new TypeError('title must be a string');
       if(this.options?.startDes && typeof this.options?.startDes !== 'string') throw new TypeError('startDes must be a string');
@@ -145,7 +147,7 @@ this.edit({
 let op = {played:false,choice:null};
 let p = {played:false,choice:null};
 const filter2 = (i) => i.user.id == this.opponent.id || i.user.id == this.player.id
-const collector = msg.createMessageComponentCollector({filter:filter2,ComponentType:ComponentType.Button,time:this.time})
+const collector = msg.createMessageComponentCollector({filter:filter2,ComponentType:ComponentType.Button,time:this.resTime ?? 30000})
 collector.on('collect', async i => {
   i.deferUpdate();
 if(i.user.id == this.player.id && p.played==false) {
@@ -191,7 +193,7 @@ else {
     .setTitle(this.options?.title ?? 'Rock Paper Scissors')
     .setDescription(this.options?.declineDes ?? `${this.opponent} has declined your challenge`)
     .setColor('Red')
-  ]
+  ], components:[]
   },msg)
 }
 }

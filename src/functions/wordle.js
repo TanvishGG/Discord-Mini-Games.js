@@ -109,11 +109,12 @@ if(correctLetters == wordLetters.length) return "win";
 else return "lose";
 }
 let chance = 0,played =false;
+const game = this;
 function wordEmbed(canvas,color,des) {
 const image = new discord.AttachmentBuilder().setFile(canvas.toBuffer()).setName('wordle.png')
 const embed = new discord.EmbedBuilder()
 .setColor(color)
-.setTitle(this.options?.title ?? "Wordle")
+.setTitle(game.options?.title ?? "Wordle")
 .setImage("attachment://wordle.png")
 if(des) embed.setDescription(des)
 return {embeds:[embed],files:[image] };

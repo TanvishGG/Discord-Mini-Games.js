@@ -1,5 +1,6 @@
 const rps = require('./functions/rps');
 const gtn = require('./functions/gtn');
+const ttt = require('./functions/ttt');
 const rtc = require('./functions/rtc');
 const cf = require('./functions/cf');
 const fts = require('./functions/fts');
@@ -11,6 +12,7 @@ const EightBall = require('./functions/8ball')
 module.exports = {
     RockPaperScissors: rps,
     GuessTheNumber: gtn,
+    TicTacToe: ttt,
     RepeatTheColor: rtc,
     CoinFlip: cf,
     FindTheStone: fts,

@@ -68,12 +68,12 @@ function random(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min)
 
       } 
-
+const game = this;
 
 function embedGen(text, color) {
     const embed = new discord.EmbedBuilder()
-    .setTitle(this.options.title ??"Guess The Number")
-    .setDescription(`${this.options?.startDes ?? `Guess the number iam thinking of in ${this.options?.tries ?? 3 } tries which lies between 1-${this.options?.max ?? 20}`} ${text ? `\n\n\`\`\`${text}\`\`\``:""}`)
+    .setTitle(game.options.title ??"Guess The Number")
+    .setDescription(`${game.options?.startDes ?? `Guess the number iam thinking of in ${game.options?.tries ?? 3 } tries which lies between 1-${game.options?.max ?? 20}`} ${text ? `\n\n\`\`\`${text}\`\`\``:""}`)
     .setColor(color)
     .setTimestamp()
     .setThumbnail(this.player.avatarURL());
