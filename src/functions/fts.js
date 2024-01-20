@@ -29,7 +29,7 @@ class FindTheStone {
         messageOptions.fetchReply = true;
          if(this.replied == false) {
             this.replied=true; 
-            if(this.isSlash == true) return await messageOptions.editReply(messageOptions)
+            if(this.isSlash == true) return await replyMessage.editReply(messageOptions)
             return await this.message.reply(messageOptions);}
             else return await replyMessage.edit(messageOptions)
           };
