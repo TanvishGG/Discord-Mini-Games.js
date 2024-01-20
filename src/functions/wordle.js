@@ -119,7 +119,7 @@ const embed = new discord.EmbedBuilder()
 if(des) embed.setDescription(des)
 return {embeds:[embed],files:[image] };
 }
-const msg = await this.edit(wordEmbed(canvas,"Yellow",this,options?.startDes ?? 'Guess the 5 Letter Word I\'m thinking of'),this.message)
+const msg = await this.edit(wordEmbed(canvas,"Yellow",this.options?.startDes ?? 'Guess the 5 Letter Word I\'m thinking of'),this.message)
 const filter = m => m.author.id == this.player.id && m.content.length == 5 && /^[a-zA-Z]+$/.test(m.content);
 const collector = this.message.channel.createMessageCollector({filter:filter,time:this.time,max:5})
 collector.on('collect', async m => {

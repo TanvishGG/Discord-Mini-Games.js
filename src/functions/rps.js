@@ -117,7 +117,7 @@ if(i.user.id == this.player.id) {
  }
 }
 else {
- const msg = await this.edit({content:this.opponent,embeds:[
+ const msg = await this.edit({content:`${this.opponent}`,embeds:[
   new EmbedBuilder().setTitle(this.options?.title ?? "Rock Paper Scissors").setDescription(this.options?.confirmDes ?? `${this.player} has challenged you to a game of Rock Paper Scissors`).setColor('Navy')
  ],
 components:[new ActionRowBuilder().addComponents(
@@ -162,15 +162,15 @@ if(p.played == true && op.played == true) {
 var string = "";
 var status = {}
 collector.stop();
-if(op.choice == p.choice) { string = this.options?.tieDes?.replace(/{option}/g,this.emojis[p.choice]) ?? `Game Tied! Both choose ${this.emojis[p.choice]}`;}
-if(op.choice == this.win[p.choice]) { string = this.options?.winDes?.replace(/{winner}/g,`${this.opponent}`)?.replace(/{loser}/g,`${this.player}`)?.replace(/{winner_choice}/g,this.emojis[op.choice])?.replace(/{loser_choice}/g,this.emojis[p.choice]) ?? `${this.opponent} Won! ${this.emojis[op.choice]} beats ${this.emojis[p.choice]}`;status = {winner:this.opponent,loser:this.player}}
-if(win[op.choice] == p.choice) { string = this.options?.winDes?.replace(/{winner}/g,`${this.player}`)?.replace(/{loser}/g,`${this.opponent}`)?.replace(/{winner_choice}/g,this.emojis[p.choice])?.replace(/{loser_choice}/g,this.emojis[op.choice]) ?? `${this.player} Won! ${this.emojis[p.choice]} beats ${this.emojis[op.choice]}`;status = {winner:this.player,loser:this.opponent}}
+if(op.choice == p.choice) { string = this.options?.tieDes?.replace(/{option}/g,this.emojis[p.choice]) ?? `Game Tied! \nBoth choose ${this.emojis[p.choice]}`;}
+if(op.choice == this.win[p.choice]) { string = this.options?.winDes?.replace(/{winner}/g,`${this.opponent}`)?.replace(/{loser}/g,`${this.player}`)?.replace(/{winner_choice}/g,this.emojis[op.choice])?.replace(/{loser_choice}/g,this.emojis[p.choice]) ?? `${this.opponent} Won! \n${this.emojis[op.choice]} beats ${this.emojis[p.choice]}`;status = {winner:this.opponent,loser:this.player}}
+if(this.win[op.choice] == p.choice) { string = this.options?.winDes?.replace(/{winner}/g,`${this.player}`)?.replace(/{loser}/g,`${this.opponent}`)?.replace(/{winner_choice}/g,this.emojis[p.choice])?.replace(/{loser_choice}/g,this.emojis[op.choice]) ?? `${this.player} Won! \n${this.emojis[p.choice]} beats ${this.emojis[op.choice]}`;status = {winner:this.player,loser:this.opponent}}
 this.edit({
   embeds:[
     new EmbedBuilder().setTitle(this.options?.title ?? 'Rock Paper Scissors')
     .setDescription(string).setColor('Green')],
     components:[]
-})
+},msg)
 if(op.choice == p.choice && this.onTie) await this.onTie();
 else if(this.onWin) await this.onWin(status.winner,status.loser);
 }
@@ -193,7 +193,7 @@ else {
     .setTitle(this.options?.title ?? 'Rock Paper Scissors')
     .setDescription(this.options?.declineDes ?? `${this.opponent} has declined your challenge`)
     .setColor('Red')
-  ], components:[]
+  ] , components:[]
   },msg)
 }
 }

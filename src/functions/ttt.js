@@ -154,8 +154,7 @@ if(wonGame == 'tie') {
 })
 collector.on('end', async() => {
   if(played == true) return;
-  this.edit({embeds: [Embed(this.options?.timeUpDes ?? `Game Ended: Timed Out`,'Red')], 
-  components:[]},msg)
+  this.edit({embeds: [Embed(this.options?.timeUpDes ?? `Game Ended: Timed Out`,'Red')]},msg)
 })
 }
 else {
