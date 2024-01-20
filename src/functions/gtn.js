@@ -76,7 +76,7 @@ function embedGen(text, color) {
     .setColor(color)
     .setTimestamp()
     .setFooter({text:`Requested by ${game.player.username}`})
-    .setThumbnail(this.player.avatarURL());
+    .setThumbnail(game.player.avatarURL());
     return embed;
 }
 const number = random(1,this.options?.max ?? 20)

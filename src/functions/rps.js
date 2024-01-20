@@ -114,7 +114,7 @@ if(i.user.id == this.player.id) {
      await this.edit({embeds:[Embed(this.options?.tieDes?.replace(/{user_option}/g,this.emojis[i.customId.replace('rps_','')])?.replace(/{bot_option}/g,this.emojis[bot]) ?? `Game Tied!, Our Choice: ${this.emojis[`${bot}`]}`,'Red')],components:[Row]},msg)
      if(this.onTie) await this.onTie();
      } else {
-     await this.edit({embeds:[Embed(this.options?.loseDes?.replace(/{bot_option}/g,this.emojis[bot])?.replace(/{user_option}/g,this.emojis[i.customId.replace('rps_','')]) ?? `You Lost!, Your choice: ${this.emojis[`${i.customId}`]}, My Choice: ${this.emojis[`${bot}`]}`,'Red')],components:[Row]},msg)
+     await this.edit({embeds:[Embed(this.options?.loseDes?.replace(/{bot_option}/g,this.emojis[bot])?.replace(/{user_option}/g,this.emojis[i.customId.replace('rps_','')]) ?? `You Lost!, Your choice: ${this.emojis[`${i.customId.replace('rps_','')}`]}, My Choice: ${this.emojis[`${bot}`]}`,'Red')],components:[Row]},msg)
      if(this.onLose) await this.onLose();
      }}
  }

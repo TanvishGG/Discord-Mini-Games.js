@@ -1,5 +1,5 @@
 const discord = require('discord.js');
-const file = new discord.AttachmentBuilder().setName('fts.jpg').setFile('./assets/fts.jpg')
+const file = new discord.AttachmentBuilder().setName('fts.jpg').setFile(__dirname+'/assets/fts.jpg')
 const {EmbedBuilder,ButtonBuilder,ButtonStyle,ActionRowBuilder,ComponentType} = require('discord.js')
 class FindTheStone {
   /**
