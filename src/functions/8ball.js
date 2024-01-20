@@ -7,7 +7,7 @@ const discord = require('discord.js')
  */
 async function EightBall(message,question) {
  if(!question || typeof question !== "string") throw new TypeError('Expected a valid String question');
- if(!message || (message instanceof discord.Message || message instanceof discord.ChatInputCommandInteraction)) throw new TypeError('Expected a valid Discord Message Object or Discord ChatInputCommandInteraction Object');
+ if(!message || !(message instanceof discord.Message || message instanceof discord.CommandInteraction)) throw new TypeError('Expected a valid Discord Message Object or Discord CommandInteraction Object');
  try {
  const answer = ["yes","no","absolutely","absolutely not","maybe","maybe not","probably","i don't know"][Math.floor(Math.random() * 8 + 1)]
  const Embed = new discord.EmbedBuilder()

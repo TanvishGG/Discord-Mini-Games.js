@@ -124,7 +124,7 @@ if(i.customId == "yes") {
     new ActionRowBuilder().addComponents(Buttons('ttt_20'),Buttons('ttt_21'),Buttons('ttt_22'))
   ]
   var chances = [[this.player,this.opponent],[this.opponent,this.player]][this.randomN(0,1)]
-  await this.edit({content:"",embeds: [ Embed(this.options?.startsDes ?? `${emojis[chnaces[0].id]} ${chances[0]}'s turn`,'Aqua')],components:Rows},msg)
+  await this.edit({content:"",embeds: [ Embed(this.options?.startsDes ?? `${emojis[chances[0].id]} ${chances[0]}'s turn`,'Aqua')],components:Rows},msg)
   emojis[this.player.id] = this.options?.playerEmoji ?? "❌";
   emojis[this.opponent.id] = this.options?.opEmoji ?? "🟢";
   const filter2 = (i) => i.user.id == this.opponent.id || i.user.id == this.player.id
