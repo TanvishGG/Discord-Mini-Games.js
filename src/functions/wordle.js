@@ -39,8 +39,10 @@ class Wordle{
       this.options = gameOptions;
       this.onWin = gameOptions?.onWin ?? null;
       this.onLose = gameOptions?.onLose ?? null;
+      this.onTimeUp = gameOptions?.onTimeUp ?? null;
       if(this.onWin && typeof this.onWin !== 'function') throw new TypeError('onWin must be a functon');
       if(this.onLose && typeof this.onLose !== 'function') throw new TypeError('onLose must be a funtion');
+      if(this.onTimeUp && typeof this.onTimeUp !== 'function') throw new TypeError('onTimeUp must be a Function');
       if(typeof this.isSlash !== 'boolean') throw new TypeError('isSlash must be a Boolean');
       if(typeof this.time !== 'number') throw new TypeError('time must be a number');
       if(this.time < 5000) throw new RangeError('time must be greater than 5000');
@@ -114,6 +116,9 @@ function wordEmbed(canvas,color,des) {
 const image = new discord.AttachmentBuilder().setFile(canvas.toBuffer()).setName('wordle.png')
 const embed = new discord.EmbedBuilder()
 .setColor(color)
+.setThumbnail(game.player.avatarURL())
+.setTimestamp()
+.setFooter({text:`Requested by ${game.player.username}`})
 .setTitle(game.options?.title ?? "Wordle")
 .setImage("attachment://wordle.png")
 if(des) embed.setDescription(des)
@@ -121,33 +126,33 @@ return {embeds:[embed],files:[image] };
 }
 const msg = await this.edit(wordEmbed(canvas,"Yellow",this.options?.startDes ?? 'Guess the 5 Letter Word I\'m thinking of'),this.message)
 const filter = m => m.author.id == this.player.id && m.content.length == 5 && /^[a-zA-Z]+$/.test(m.content);
-const collector = this.message.channel.createMessageCollector({filter:filter,time:this.time,max:5})
+const collector = this.message.channel.createMessageCollector({filter:filter,idle:this.time,max:5})
 collector.on('collect', async m => {
   const attempt = m.content;
   const result = drawAndVerifyWord(this.word,attempt,chance)
-  m.delete().catch(() => {})
+  m.delete().catch((e) => null)
   if(result == "win") {
     played = true;
     collector.stop()
-    this.edit(wordEmbed(canvas,"Green",this.options?.winDes?.replace(/{word}/g,this.word) ?? "You Won!"),msg);
+    await this.edit(wordEmbed(canvas,"Green",this.options?.winDes?.replace(/{word}/g,this.word) ?? "You Won!"),msg);
     if(this.onWin) await this.onWin();
-
   }
   else {
     chance++
     if(chance == 5) {
       played = true;
-      this.edit(wordEmbed(canvas,"Red",this.options?.loseDes?.replace(/{word}/g,this.word) ?? "You Lost!, The word was "+this.word),msg)
+      await this.edit(wordEmbed(canvas,"Red",this.options?.loseDes?.replace(/{word}/g,this.word) ?? "You Lost!, the Word was "+this.word),msg)
       if(this.onLose) await this.onLose();
      }
     else {
-    this.edit(wordEmbed(canvas,"Red"),msg)
+    await this.edit(wordEmbed(canvas,"Red"),msg)
     }
   }
 })
-collector.on('end', () => {
+collector.on('end', async () => {
    if(played == false) {
-    this.edit(wordEmbed(canvas,'Red',this.options?.timeUpDes ?? 'Game Over: Timed Out!'),msg)
+    await this.edit(wordEmbed(canvas,'Red',this.options?.timeUpDes?.replace(/{word}/g,this.word) ?? 'Game Over: Timed Out!, it was ' + this.word),msg)
+    if(this.onTimeUp) await this.onTimeUp();
    }
 })
   }

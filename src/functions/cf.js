@@ -3,14 +3,14 @@ const {EmbedBuilder,ButtonBuilder,ButtonStyle,ActionRowBuilder,ComponentType} = 
 class CoinFlip{
   /**
    * Initialises a new instance of CoinFlip Game.
-   * @param {`Message/Interaction`} message The Message object.
+   * @param {`Message/Interaction`} message The Message Object.
    * @param {`GameOptions-Object`} gameOptions The game Options Object.
    * @returns {CoinFlip} Game instance.
    */
     constructor(message,gameOptions) {
       if(!message) throw new Error("message is not provided");
       this.message = message;
-      if(gameOptions && typeof gameOptions !== 'object') throw new TypeError("gameOptions must be an object");
+      if(gameOptions && typeof gameOptions !== 'object') throw new TypeError("gameOptions must be an Object");
       this.isSlash = gameOptions?.isSlash ?? false;
       if(this.isSlash == true) {
       if(!(this.message instanceof discord.CommandInteraction)){
@@ -36,15 +36,15 @@ class CoinFlip{
       this.onWin = gameOptions?.onWin ?? null;
       this.onLose = gameOptions?.onLose ?? null;
       if(typeof this.isSlash !== 'boolean') throw new TypeError('isSlash must be a Boolean');
-      if(this.onWin && typeof this.onWin !== 'function') throw new TypeError('onWin must be a functon');
-      if(this.onLose && typeof this.onLose !== 'function') throw new TypeError('onLose must be a funtion');
-      if(typeof this.time !== 'number') throw new TypeError('time must be a number');
+      if(this.onWin && typeof this.onWin !== 'function') throw new TypeError('onWin must be a Functon');
+      if(this.onLose && typeof this.onLose !== 'function') throw new TypeError('onLose must be a Funtion');
+      if(typeof this.time !== 'number') throw new TypeError('time must be a Number');
       if(this.time < 5000) throw new RangeError('time must be greater than 5000');
-      if(this.options?.title && typeof this.options?.title !== 'string') throw new TypeError('title must be a string');
-      if(this.options?.startDes && typeof this.options?.startDes !== 'string') throw new TypeError('startDes must be a string');
-      if(this.options?.winDes && typeof this.options?.winDes !== 'string') throw new TypeError('winDes must be a string');
-      if(this.options?.loseDes && typeof this.options?.loseDes !== 'string') throw new TypeError('loseDes must be a string');
-      if(this.options?.timeUpDes && typeof this.options?.timeUpDes !== 'string') throw new TypeError('timeUpDes must be a string');
+      if(this.options?.title && typeof this.options?.title !== 'string') throw new TypeError('title must be a String');
+      if(this.options?.startDes && typeof this.options?.startDes !== 'string') throw new TypeError('startDes must be a String');
+      if(this.options?.winDes && typeof this.options?.winDes !== 'string') throw new TypeError('winDes must be a String');
+      if(this.options?.loseDes && typeof this.options?.loseDes !== 'string') throw new TypeError('loseDes must be a String');
+      if(this.options?.timeUpDes && typeof this.options?.timeUpDes !== 'string') throw new TypeError('timeUpDes must be a String');
     }
     /**
      * Starts The Game.
@@ -60,41 +60,42 @@ async run() {
    .setDescription(text)
    .setColor(color)
    .setThumbnail(game.player.avatarURL())
+   .setTimestamp()
+   .setFooter({text:`Requested by ${game.player.username}`})
    return embed;
   }
-  function randomN(min,max) {
+  function random(min,max) {
     return Math.floor(Math.random() *(max-min+1) + min);
   }
-  var Row = new ActionRowBuilder().addComponents(new ButtonBuilder().setCustomId('heads').setStyle(ButtonStyle.Secondary).setLabel('Heads'), new ButtonBuilder().setCustomId('tails').setStyle(ButtonStyle.Secondary).setLabel('Tails'))
- const msg = await this.edit({embeds:[cfEm(this.options?.startDes?? 'Choose Heads or Tails','Green')],components:[Row]},this.message)
-  const collector = msg.createMessageComponentCollector({ componentType: ComponentType.Button, time:this.time})
+  var Row = new ActionRowBuilder().addComponents(new ButtonBuilder().setCustomId('cf_heads').setStyle(ButtonStyle.Secondary).setLabel('Heads'), new ButtonBuilder().setCustomId('cf_tails').setStyle(ButtonStyle.Secondary).setLabel('Tails'))
+  const msg = await this.edit({embeds:[cfEm(this.options?.startDes?? 'Choose Heads or Tails','Green')],components:[Row]},this.message)
+  const collector = msg.createMessageComponentCollector({ componentType: ComponentType.Button, idle:this.time})
   let played = false;
   const choices = ['heads','tails']
-  const bot = choices[randomN(0,1)]
+  const bot = choices[random(0,1)]
   collector.on('collect', async (i) => {
-    i.deferUpdate()
-if(i.user.id == this.player.id) {
+  await i.deferUpdate();
+  if(i.user.id == this.player.id) {
    played = true;
    collector.stop()
    Row.components.find(x => x.data.custom_id == i.customId).setDisabled(true)
-   if(i.customId == bot) {
-    await this.edit({embeds:[cfEm(this.options?.winDes?.replace(/{bot_option}/g,bot.toUpperCase())?.replace(/{user_option}/g,i.customId.toUpperCase()) ?? `You won!, it was ${bot.toUpperCase()}`,`Yellow`)],components:[Row]},msg)
+   if(i.customId.replace('cf_','') == bot) {
+    await this.edit({embeds:[cfEm(this.options?.winDes?.replace(/{bot_option}/g,bot.toUpperCase())?.replace(/{user_option}/g,i.customId.replace('cf_','').toUpperCase()) ?? `You won!, it was ${bot.toUpperCase()}`,`Yellow`)],components:[Row]},msg)
     if(this.onWin) await this.onWin();
    }
    else {
-    await this.edit({embeds:[cfEm(this.options.loseDes?.replace(/{bot_option}/g,bot.toUpperCase())?.replace(/{user_option}/g,i.customId.toUpperCase()) ?? `You Lost!, it was ${bot.toUpperCase()}`,`Red`)],components:[Row]},msg)
+    await this.edit({embeds:[cfEm(this.options.loseDes?.replace(/{bot_option}/g,bot.toUpperCase())?.replace(/{user_option}/g,i.customId.replace('cf_','').toUpperCase()) ?? `You Lost!, it was ${bot.toUpperCase()}`,`Red`)],components:[Row]},msg)
     if(this.onLose) await this.onLose();
    }
   }
   })
   collector.on('end', async () => {
     if(played == false) {
-      Row.components.forEach(x => x.setDisabled(true))
-      await this.edit({embeds:[cfEm(this.options?.timeUpDes ?? `Game Ended: Timed Out`,'Red')],components:[Row]},msg);
+    Row.components.forEach(x => x.setDisabled(true))
+    await this.edit({embeds:[cfEm(this.options?.timeUpDes ?? `Game Ended: Timed Out`,'Red')],components:[Row]},msg);
     }
   })
 }
-
-  }
+}
 
 module.exports = CoinFlip;

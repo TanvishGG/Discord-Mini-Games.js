@@ -13,6 +13,7 @@ const gameOptions = {
     time: 30000, // timeup duration in milliseconds, default: 30000.
     onWin: () => {console.log("win")}, // Function to execute if player wins the game.
     onLose: () => {console.log('lose')}, // Function to execute if player loses the game.
+    onTimeUp: () => {console.log('timeup')}, // Function to execute if game times out.
     title: 'Repeat The Color', // Embed Title.
     startDes: 'Remember the following color sequence', // Embed Description when game starts and while displaying the sequence.
     startDes2: 'Now repeat the sequence', // after the color sequence disappears.

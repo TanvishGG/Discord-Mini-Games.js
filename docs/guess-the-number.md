@@ -14,6 +14,7 @@ const gameOptions = {
     max: 20, // Max range of the number, default: 20.
     onWin: () => {console.log("win")}, // Function to execute if player wins the game.
     onLose: () => {console.log('lose')}, // Function to execute if player loses the game.
+    onTimeUp: () => {console.log('timeup')}, // Function to execute if game times out.
     title: 'Guess The Number', // Embed Title.
     startDes: 'Guess the number I\'m Thinking of between 1-20 in 3 tries', // Embed Description when game starts.
     retryDes: 'You Guessed {user_option}, but it\'s wrong. You have {tries} tries left! ' // Rety Message

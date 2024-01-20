@@ -13,6 +13,7 @@ const gameOptions = {
     time: 30000, // timeup duration in milliseconds, default: 30000.
     onWin: () => {console.log("win")}, // Function to execute if player wins the game.
     onTie: () => {console.log('lose')}, // Function to execute when game ties.
+    onTimeUp: () => {console.log('timeup')}, // Function to execute when game times out.
     title: 'Rock Paper Scissors', // Embed Title.
     startDes: 'Choose your option', // Embed Description when game starts.
     opEmoji: "🟢", // Opponent Box Emoji.
@@ -37,13 +38,23 @@ The Texts for embed description accepts following formatting:
 - **winDes**
   - **`{winner}`** -> Game Winner.
   - **`{emoji}`** -> Winner's Emoji. 
+- **timeUpDes**
+  - **`{timed_player}`** -> Player who didn't respond in time.
+  - **`{emoji}`** -> Emoji of that Player.
 
 ## Function Parameters
 `onWin` function executes with 2 function parameters to allow winner/loser based actions
 ```js
 function onWin(winner,loser) {
     // Both are User Objects
-    console.log(winner.username, "won the game against", loser.username) 
+    console.log(winner.username, "won the game against", loser.username);
+}
+```
+`onTimeUp` function executes with 2 function parameters
+```js
+function onTimeUp(timed_player,other) {
+  // Both are User Objects
+  console.log(timed_user, "didn't respond in time");
 }
 ```
 

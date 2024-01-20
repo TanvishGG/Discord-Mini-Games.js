@@ -3,7 +3,7 @@ const {EmbedBuilder,ButtonBuilder,ButtonStyle,ActionRowBuilder,ComponentType} = 
 class TicTacToe{
   /**
    * Initialises a new instance of Tic Tac Toe Game.
-   * @param {`Message/Interaction`} message The Message object.
+   * @param {`Message/Interaction`} message The Message Object.
    * @param {`GameOptions-Object`} gameOptions The Game Options Object.
    * @returns {TicTacToe} Game instance.
    */
@@ -11,14 +11,14 @@ class TicTacToe{
     constructor(message,gameOptions) {
       if(!message) throw new Error("message is not provided");
       this.message = message;
-      if(gameOptions && typeof gameOptions !== 'object') throw new TypeError("gameOptions must be an object");
+      if(gameOptions && typeof gameOptions !== 'object') throw new TypeError("gameOptions must be an Object");
       this.isSlash = gameOptions?.isSlash ?? false;
       if(this.isSlash == true){
         if(!(this.message instanceof discord.CommandInteraction)){
-        throw new TypeError("message must be an instance of command interaction") 
+        throw new TypeError("message must be an instance of Command Interaction") 
      } } else {
         if(!(this.message instanceof discord.Message)) {
-          throw new TypeError("message must be an instance of Discord message")
+          throw new TypeError("message must be an instance of Discord Message")
         }
       }
       this.player = this.isSlash == true ? this.message?.user : this.message?.author;
@@ -41,24 +41,26 @@ class TicTacToe{
       this.options = gameOptions;
       this.onWin = gameOptions?.onWin ?? null;
       this.onTie = gameOptions?.onTie ?? null;
+      this.onTimeUp = gameOptions?.onTimeUp ?? null;
       if(this.player.id == this.opponent.id) throw new Error("player and opponent cannot be same");
-      if(this.options?.playerEmoji && typeof this.options?.playerEmoji !== 'string') throw new TypeError('playerEmoji must be a string');
-      if(this.options?.opEmoji && typeof this.options?.opEmoji !== 'string') throw new TypeError('opEmoji must be a string');
-      if(this.options?.emptyEmoji && typeof this.options?.emptyEmoji !== 'string') throw new TypeError('emptyEmoji must be a string');
-      if(this.onWin && typeof this.onWin !== 'function') throw new TypeError('onWin must be a functon');
-      if(this.onTie && typeof this.onTie !== 'function') throw new TypeError('onTie must be a function');
+      if(this.options?.playerEmoji && typeof this.options?.playerEmoji !== 'string') throw new TypeError('playerEmoji must be a String');
+      if(this.options?.opEmoji && typeof this.options?.opEmoji !== 'string') throw new TypeError('opEmoji must be a String');
+      if(this.options?.emptyEmoji && typeof this.options?.emptyEmoji !== 'string') throw new TypeError('emptyEmoji must be a String');
+      if(this.onWin && typeof this.onWin !== 'function') throw new TypeError('onWin must be a Functon');
+      if(this.onTie && typeof this.onTie !== 'function') throw new TypeError('onTie must be a Function');
+      if(this.onTimeUp && typeof this.onTimeUp !== 'function') throw new TypeError('onTimeUp must be a Function');
       if(typeof this.isSlash !== 'boolean') throw new TypeError('isSlash must be a Boolean');
-      if(typeof this.time !== 'number') throw new TypeError('time must be a number');
+      if(typeof this.time !== 'number') throw new TypeError('time must be a Number');
       if(this.time < 5000) throw new RangeError('time must be greater than 5000');
-      if(this.options?.title && typeof this.options?.title !== 'string') throw new TypeError('title must be a string');
-      if(this.options?.startDes && typeof this.options?.startDes !== 'string') throw new TypeError('startDes must be a string');
-      if(this.options?.winDes && typeof this.options?.winDes !== 'string') throw new TypeError('winDes must be a string');
-      if(this.options?.retryDes && typeof this.options?.retryDes !== 'string') throw new TypeError('retryDes must be a string');
-      if(this.options?.timeUpDes && typeof this.options?.timeUpDes !== 'string') throw new TypeError('timeUpDes must be a string');
-      if(this.options?.confirmDes && typeof this.options?.confirmDes !== 'string') throw new TypeError('confirmDes must be a string');
-      if(this.options?.declineDes && typeof this.options?.declineDes !== 'string') throw new TypeError('declineDes must be a string');
-      if(this.options?.noResDes && typeof this.options?.noResDes !== 'string') throw new TypeError('noResDes must be a string');
-      if(this.options?.tieDes && typeof this.options?.tieDes !== 'string') throw new TypeError('tieDes must be a string');
+      if(this.options?.title && typeof this.options?.title !== 'string') throw new TypeError('title must be a String');
+      if(this.options?.startDes && typeof this.options?.startDes !== 'string') throw new TypeError('startDes must be a String');
+      if(this.options?.winDes && typeof this.options?.winDes !== 'string') throw new TypeError('winDes must be a String');
+      if(this.options?.retryDes && typeof this.options?.retryDes !== 'string') throw new TypeError('retryDes must be a String');
+      if(this.options?.timeUpDes && typeof this.options?.timeUpDes !== 'string') throw new TypeError('timeUpDes must be a String');
+      if(this.options?.confirmDes && typeof this.options?.confirmDes !== 'string') throw new TypeError('confirmDes must be a String');
+      if(this.options?.declineDes && typeof this.options?.declineDes !== 'string') throw new TypeError('declineDes must be a String');
+      if(this.options?.noResDes && typeof this.options?.noResDes !== 'string') throw new TypeError('noResDes must be a String');
+      if(this.options?.tieDes && typeof this.options?.tieDes !== 'string') throw new TypeError('tieDes must be a String');
     }
  /**
   * Starts the game
@@ -69,7 +71,11 @@ async run() {
   }
   const game = this;
   function Embed(des,color) {
-    return new EmbedBuilder().setDescription(des).setColor(color).setTimestamp()
+    return new EmbedBuilder()
+    .setDescription(des)
+    .setColor(color)
+    .setTimestamp()
+    .setThumbnail(game.player.avatarURL())
     .setTitle(game.options?.title ?? "Tic Tac Toe")
     .setFooter({text:game.options?.footer ?? `${game.player.username} vs ${game.opponent.username}`})
   }
@@ -91,10 +97,9 @@ async run() {
     }
     return board.size == 9 ? 'tie' : 'continue';
   }
- const msg = await this.edit({content:`${this.opponent}`,embeds:[
-Embed(this.options?.confirmDes ?? `${this.player} has challenged you to a game of Tic Tac Toe`,'Aqua')
- ],
-components:[new ActionRowBuilder().addComponents(
+ const msg = await this.edit({content:`${this.opponent}`,embeds:[Embed(this.options?.confirmDes ?? `${this.player} has challenged you to a game of Tic Tac Toe`,'Aqua')],
+components:[
+  new ActionRowBuilder().addComponents(
   new ButtonBuilder().setCustomId('yes').setLabel('Accept').setStyle(ButtonStyle.Success),
   new ButtonBuilder().setCustomId('no').setLabel('Decline').setStyle(ButtonStyle.Danger))
 ]},this.message)
@@ -114,26 +119,21 @@ function Buttons(x,y,z) {
 }
 if(i.customId == "yes") {
   var Rows = [ 
-    new ActionRowBuilder().addComponents(Buttons('00'),Buttons('01'),Buttons('02')),
-    new ActionRowBuilder().addComponents(Buttons('10'),Buttons('11'),Buttons('12')),
-    new ActionRowBuilder().addComponents(Buttons('20'),Buttons('21'),Buttons('22'))
+    new ActionRowBuilder().addComponents(Buttons('ttt_00'),Buttons('ttt_01'),Buttons('ttt_02')),
+    new ActionRowBuilder().addComponents(Buttons('ttt_10'),Buttons('ttt_11'),Buttons('ttt_12')),
+    new ActionRowBuilder().addComponents(Buttons('ttt_20'),Buttons('ttt_21'),Buttons('ttt_22'))
   ]
   var chances = [[this.player,this.opponent],[this.opponent,this.player]][this.randomN(0,1)]
-this.edit({
-  content:"",
-  embeds: [ Embed(this.options?.startsDes ?? `${chances[0]}'s turn`,'Aqua')
-  ],
-  components:Rows
-},msg)
-emojis[this.player.id] = this.options?.playerEmoji ?? "❌";
-emojis[this.opponent.id] = this.options?.opEmoji ?? "🟢";
-const filter2 = (i) => i.user.id == this.opponent.id || i.user.id == this.player.id
-const collector = msg.createMessageComponentCollector({filter:filter2,ComponentType:ComponentType.Button,time:this.time})
+  await this.edit({content:"",embeds: [ Embed(this.options?.startsDes ?? `${emojis[chnaces[0].id]} ${chances[0]}'s turn`,'Aqua')],components:Rows},msg)
+  emojis[this.player.id] = this.options?.playerEmoji ?? "❌";
+  emojis[this.opponent.id] = this.options?.opEmoji ?? "🟢";
+  const filter2 = (i) => i.user.id == this.opponent.id || i.user.id == this.player.id
+  const collector = msg.createMessageComponentCollector({filter:filter2,ComponentType:ComponentType.Button,idle:this.time})
 collector.on('collect', async i => {
   await i.deferUpdate();
   if(i.user.id !== chances[0].id) return;
-  Rows[i.customId[0]].components.find(x => x.data.custom_id == i.customId).setStyle(i.user.id == this.player.id ? ButtonStyle.Danger : ButtonStyle.Success).setEmoji(emojis[i.user.id]).setDisabled(true)
-  gameBoard.set(i.customId,i.user.id)
+  Rows[i.customId[4]].components.find(x => x.data.custom_id == i.customId).setStyle(i.user.id == this.player.id ? ButtonStyle.Danger : ButtonStyle.Success).setEmoji(emojis[i.user.id]).setDisabled(true)
+  gameBoard.set(i.customId.replace('ttt_',''),i.user.id)
   chances = chances.reverse();
   const wonGame = verifyGame(gameBoard);
   if(wonGame == 'continue') {
@@ -152,23 +152,18 @@ if(wonGame == 'tie') {
   if(this.onTie) await this.onTie();
 }
 })
-collector.on('end', async() => {
+collector.on('end', async () => {
   if(played == true) return;
-  this.edit({embeds: [Embed(this.options?.timeUpDes ?? `Game Ended: Timed Out`,'Red')]},msg)
+  await this.edit({embeds: [Embed(this.options?.timeUpDes?.replace(/{timed_player}/g,chances[0])?.replace(/{emoji}/g,emojis[chances[0].id]) ?? `Game Ended: ${emojis[chances[0].id]} ${chances[0]} took too long to respond`,'Red')]},msg)
+  if(this.onTimeUp) await this.onTimeUp(chances[0], chances[1]);
 })
 }
 else {
-  this.edit({
-  content:"",
-  embeds:[ Embed(this.options?.declineDes ?? `${this.opponent} has declined your challenge`,'Red')],
-  components:[]},msg)
+  await this.edit({ content:"", embeds:[ Embed(this.options?.declineDes ?? `${this.opponent} has declined your challenge`,'Red')],components:[]},msg)
 }
 }
 catch(e) {
-  this.edit({
-    content:"",
-    embeds: [ Embed(this.options?.noResDes ?? `${this.opponent} did not respond in time`,'Red')],
-    components:[]},msg)
+  await this.edit({ content:"", embeds: [ Embed(this.options?.noResDes ?? `${this.opponent} did not respond in time`,'Red')],  components:[]},msg)
 }
 }
 }

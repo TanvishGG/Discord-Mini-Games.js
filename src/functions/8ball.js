@@ -12,6 +12,8 @@ async function EightBall(message,question) {
  const answer = ["yes","no","absolutely","absolutely not","maybe","maybe not","probably","i don't know"][Math.floor(Math.random() * 8 + 1)]
  const Embed = new discord.EmbedBuilder()
  .setTitle('8ball')
+ .setTimestamp()
+ .setThumbnail(message.author ? message.author.avatarURL() : message.user.avatarURL())
  .addFields({
     name:"Question:",
     value: question.endsWith('?') ? question : question+'?',

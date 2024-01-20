@@ -21,6 +21,7 @@ const gameOptions = {
     time: 180000, // timeup duration in milliseconds, default: 180000.
     onWin: () => {console.log("win")}, // Function to execute if player wins the game.
     onLose: () => {console.log('lose')}, // Function to execute if player loses the game.
+    onTimeUp: () => {console.log('timeup')}, // Functuon to execute when game times out.
     title: 'CoinFlip', // Embed Title.
     startDes: 'Guess the 5 Letter word I\'m thinking of', // Embed Description when game starts
     winDes: 'You Won!', // Embed Description when player wins the game.
@@ -30,7 +31,7 @@ const gameOptions = {
 ```
 ## Formatting
 The texts for embed descriptions accepts following formatting.
-- **winDes** & **loseDes**
+- **winDes** & **loseDes** & **timeUpDes**
   - **`{word}`** -> Actual Word.
 
 ## Starting The Game
