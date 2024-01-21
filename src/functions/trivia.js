@@ -72,11 +72,12 @@ const choices = shuffleArray(question.incorrect_answers);
     const embed = new EmbedBuilder()
    .setTitle(game.options?.title ?? 'Trivia')
    .setDescription(`### ${decodeURIComponent(question.question)}
+
 **Difficulty:** ${decodeURIComponent(question.difficulty)} | **Category:** ${decodeURIComponent(question.category)}
 1️⃣ ${decodeURIComponent(choices[0])}
 2️⃣ ${decodeURIComponent(choices[1])}
 3️⃣ ${decodeURIComponent(choices[2])}
-4️⃣ ${decodeURIComponent(choices[3])} ${text ? '\n' + text : ''}`)
+4️⃣ ${decodeURIComponent(choices[3])} ${text ? '\n\n' + text : ''}`)
    .setColor(color)
    .setThumbnail(game.player.avatarURL())
    .setTimestamp()

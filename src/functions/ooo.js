@@ -78,9 +78,9 @@ async run() {
   const choices = shuffleArray(this.words_data.others)
   var Row = new ActionRowBuilder()
   for (var i=0; i<5;i++) {
-    Row.addComponents(new ButtonBuilder().setCustomId('ooo_' + choices[x]).setStyle(ButtonStyle.Secondary).setLabel(choices[x]))
+    Row.addComponents(new ButtonBuilder().setCustomId('ooo_' + choices[i]).setStyle(ButtonStyle.Secondary).setLabel(choices[i]))
   }
-  const msg = await this.edit({embeds:[oooEm(this.options?.startDes?? 'Choose The odd Word','Green')],components:[Row]},this.message)
+  const msg = await this.edit({embeds:[oooEm(this.options?.startDes?? 'Find the Odd Word','Green')],components:[Row]},this.message)
   const collector = msg.createMessageComponentCollector({ componentType: ComponentType.Button, idle:this.time})
   let played = false;
   collector.on('collect', async (i) => {
