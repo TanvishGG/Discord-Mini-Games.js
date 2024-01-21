@@ -123,10 +123,10 @@ if(i.customId == "yes") {
     new ActionRowBuilder().addComponents(Buttons('ttt_10'),Buttons('ttt_11'),Buttons('ttt_12')),
     new ActionRowBuilder().addComponents(Buttons('ttt_20'),Buttons('ttt_21'),Buttons('ttt_22'))
   ]
-  var chances = [[this.player,this.opponent],[this.opponent,this.player]][this.randomN(0,1)]
-  await this.edit({content:"",embeds: [ Embed(this.options?.startsDes ?? `${emojis[chances[0].id]} ${chances[0]}'s turn`,'Aqua')],components:Rows},msg)
   emojis[this.player.id] = this.options?.playerEmoji ?? "❌";
   emojis[this.opponent.id] = this.options?.opEmoji ?? "🟢";
+  var chances = [[this.player,this.opponent],[this.opponent,this.player]][this.randomN(0,1)]
+  await this.edit({content:"",embeds: [ Embed(this.options?.startsDes ?? `${emojis[chances[0].id]} ${chances[0]}'s turn`,'Aqua')],components:Rows},msg)
   const filter2 = (i) => i.user.id == this.opponent.id || i.user.id == this.player.id
   const collector = msg.createMessageComponentCollector({filter:filter2,ComponentType:ComponentType.Button,idle:this.time})
 collector.on('collect', async i => {

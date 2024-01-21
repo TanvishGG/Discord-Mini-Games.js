@@ -3,6 +3,8 @@ const gtn = require('./functions/gtn');
 const ttt = require('./functions/ttt');
 const rtc = require('./functions/rtc');
 const cf = require('./functions/cf');
+const ooo = require('./functions/ooo');
+const trivia = require('./functions/trivia')
 const fts = require('./functions/fts');
 const wordle = require('./functions/wordle');
 const dare = require('./functions/dare');
@@ -15,6 +17,8 @@ module.exports = {
     TicTacToe: ttt,
     RepeatTheColor: rtc,
     CoinFlip: cf,
+    OddOneOut: ooo,
+    Trivia: trivia,
     FindTheStone: fts,
     Wordle:wordle,
     Dare: dare,

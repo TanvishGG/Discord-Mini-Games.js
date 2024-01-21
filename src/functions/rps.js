@@ -164,10 +164,10 @@ if(p.played == true && op.played == true) {
     string = this.options?.tieDes?.replace(/{option}/g,this.emojis[p.choice]) ?? `Game Tied! \nBoth choose ${this.emojis[p.choice]}`;
   }
   if(op.choice == this.win[p.choice]) { 
-    string = this.options?.winDes?.replace(/{winner}/g,`${this.opponent}`)?.replace(/{loser}/g,`${this.player}`)?.replace(/{winner_choice}/g,this.emojis[op.choice])?.replace(/{loser_choice}/g,this.emojis[p.choice]) ?? `${this.opponent} Won! \n${this.emojis[op.choice]} beats ${this.emojis[p.choice]}`;status = {winner:this.opponent,loser:this.player}
+    string = this.options?.winDes?.replace(/{winner}/g,`${this.opponent}`)?.replace(/{loser}/g,`${this.player}`)?.replace(/{winner_choice}/g,this.emojis[op.choice])?.replace(/{loser_choice}/g,this.emojis[p.choice]) ?? `${this.opponent} Won! \n ${this.opponent} ${this.emojis[op.choice]} VS ${this.emojis[p.choice]} ${this.player}`;status = {winner:this.opponent,loser:this.player}
   }
   if(this.win[op.choice] == p.choice) { 
-    string = this.options?.winDes?.replace(/{winner}/g,`${this.player}`)?.replace(/{loser}/g,`${this.opponent}`)?.replace(/{winner_choice}/g,this.emojis[p.choice])?.replace(/{loser_choice}/g,this.emojis[op.choice]) ?? `${this.player} Won! \n${this.emojis[p.choice]} beats ${this.emojis[op.choice]}`;status = {winner:this.player,loser:this.opponent}
+    string = this.options?.winDes?.replace(/{winner}/g,`${this.player}`)?.replace(/{loser}/g,`${this.opponent}`)?.replace(/{winner_choice}/g,this.emojis[p.choice])?.replace(/{loser_choice}/g,this.emojis[op.choice]) ?? `${this.player} Won! \n ${this.player} ${this.emojis[p.choice]} VS ${this.emojis[op.choice]} ${this.opponent}`;status = {winner:this.player,loser:this.opponent}
   }
   await this.edit({embeds:[Embed(string,'Green')],components:[]},msg)
   if(op.choice == p.choice && this.onTie) await this.onTie();

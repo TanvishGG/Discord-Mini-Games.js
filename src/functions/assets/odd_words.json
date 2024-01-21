@@ -1,0 +1,2004 @@
+{
+  "words": [
+    {
+      "category": "dog sound",
+      "correct": "meow",
+      "others": [
+        "bark",
+        "woof",
+        "ruff",
+        "bow-wow"
+      ]
+    },
+    {
+      "category": "dough ingredient",
+      "correct": "mud",
+      "others": [
+        "flour",
+        "salt",
+        "yeast",
+        "oil"
+      ]
+    },
+    {
+      "category": "amphibians",
+      "correct": "chicken",
+      "others": [
+        "frog",
+        "toad",
+        "salamander",
+        "newt"
+      ]
+    },
+    {
+      "category": "baby sound",
+      "correct": "gunshot",
+      "others": [
+        "gurgle",
+        "laugh",
+        "hiccup",
+        "burp"
+      ]
+    },
+    {
+      "category": "method of transportation",
+      "correct": "motel",
+      "others": [
+        "boat ",
+        "train",
+        "car",
+        "spaceship"
+      ]
+    },
+    {
+      "category": "type of whale",
+      "correct": "grizzly",
+      "others": [
+        "blue",
+        "humpback",
+        "orca",
+        "beluga"
+      ]
+    },
+    {
+      "category": "cooking utensil",
+      "correct": "rake",
+      "others": [
+        "spatula",
+        "knife",
+        "whisk",
+        "ladle"
+      ]
+    },
+    {
+      "category": "wrestling move",
+      "correct": "free kick",
+      "others": [
+        "sleeper hold",
+        "headlock",
+        "full nelson",
+        "pin"
+      ]
+    },
+    {
+      "category": "military rank",
+      "correct": "judo",
+      "others": [
+        "general",
+        "private",
+        "corporal",
+        "colonel"
+      ]
+    },
+    {
+      "category": "celestial objects",
+      "correct": "turtle",
+      "others": [
+        "comet",
+        "asteroid",
+        "planet",
+        "meteor"
+      ]
+    },
+    {
+      "category": "tooth parts",
+      "correct": "fairy",
+      "others": [
+        "enamel",
+        "dentin",
+        "crown",
+        "root"
+      ]
+    },
+    {
+      "category": "sauce",
+      "correct": "shortening",
+      "others": [
+        "bechamel",
+        "hollandaise",
+        "tomato",
+        "soy"
+      ]
+    },
+    {
+      "category": "fish",
+      "correct": "cow",
+      "others": [
+        "salmon",
+        "tuna",
+        "mackerel",
+        "cod"
+      ]
+    },
+    {
+      "category": "antlered animal",
+      "correct": "camel",
+      "others": [
+        "moose",
+        "caribou",
+        "reindeer",
+        "elk"
+      ]
+    },
+    {
+      "category": "rain gear",
+      "correct": "necktie",
+      "others": [
+        "raincoat",
+        "rubber boots",
+        "umbrella",
+        "poncho"
+      ]
+    },
+    {
+      "category": "pie ingredient",
+      "correct": "wasabi",
+      "others": [
+        "apple",
+        "pecan",
+        "rhubarb",
+        "pumpkin"
+      ]
+    },
+    {
+      "category": "hors d'oeurve",
+      "correct": "cereal",
+      "others": [
+        "crackers",
+        "crudites",
+        "bruschetta",
+        "deviled eggs"
+      ]
+    },
+    {
+      "category": "plant parts",
+      "correct": "lung",
+      "others": [
+        "stem",
+        "root",
+        "flower",
+        "leaf"
+      ]
+    },
+    {
+      "category": "internal organ",
+      "correct": "diamond",
+      "others": [
+        "lung",
+        "heart",
+        "liver",
+        "stomach"
+      ]
+    },
+    {
+      "category": "phobia",
+      "correct": "euphoria",
+      "others": [
+        "agoraphobia",
+        "acrophobia",
+        "arachnophobia",
+        "claustrophobia"
+      ]
+    },
+    {
+      "category": "bird part",
+      "correct": "hand",
+      "others": [
+        "wing",
+        "feather",
+        "talon",
+        "beak"
+      ]
+    },
+    {
+      "category": "month",
+      "correct": "Wednesday",
+      "others": [
+        "January",
+        "March",
+        "November",
+        "June"
+      ]
+    },
+    {
+      "category": "type of rock",
+      "correct": "oxygen",
+      "others": [
+        "granite",
+        "quartz",
+        "limestone",
+        "marble"
+      ]
+    },
+    {
+      "category": "lap dog",
+      "correct": "labrador",
+      "others": [
+        "poodle",
+        "shih tzu",
+        "chihuahua",
+        "pekingese"
+      ]
+    },
+    {
+      "category": "sushi fish",
+      "correct": "tango",
+      "others": [
+        "hamachi",
+        "uni",
+        "unagi",
+        "toro"
+      ]
+    },
+    {
+      "category": "chinese food",
+      "correct": "gravlax",
+      "others": [
+        "chow mein",
+        "lo mein",
+        "fried rice",
+        "Peking duck"
+      ]
+    },
+    {
+      "category": "alloys",
+      "correct": "silver",
+      "others": [
+        "steel",
+        "brass",
+        "bronze",
+        "pewter"
+      ]
+    },
+    {
+      "category": "farm tool",
+      "correct": "rolling pin",
+      "others": [
+        "shovel",
+        "tractor",
+        "plow",
+        "pitchfork"
+      ]
+    },
+    {
+      "category": "vehicles",
+      "correct": "table",
+      "others": [
+        "bicycle",
+        "car",
+        "train",
+        "plane"
+      ]
+    },
+    {
+      "category": "aquatic mammal",
+      "correct": "horse",
+      "others": [
+        "whale",
+        "seal",
+        "manatee",
+        "dolphin"
+      ]
+    },
+    {
+      "category": "bird sound",
+      "correct": "snore",
+      "others": [
+        "chirp",
+        "tweet",
+        "cluck",
+        "quack"
+      ]
+    },
+    {
+      "category": "winter clothing",
+      "correct": "shorts",
+      "others": [
+        "scarf",
+        "mittens",
+        "earmuffs",
+        "coat"
+      ]
+    },
+    {
+      "category": "artist's tool",
+      "correct": "bulldozer",
+      "others": [
+        "palette",
+        "paintbrush",
+        "chisel",
+        "easel"
+      ]
+    },
+    {
+      "category": "carnivorous animal",
+      "correct": "giraffe",
+      "others": [
+        "lion",
+        "tiger",
+        "wolf",
+        "bear"
+      ]
+    },
+    {
+      "category": "type of crime",
+      "correct": "philanthropy",
+      "others": [
+        "murder",
+        "robbery",
+        "embezzlement",
+        "fraud"
+      ]
+    },
+    {
+      "category": "royal title",
+      "correct": "president",
+      "others": [
+        "king",
+        "queen",
+        "prince",
+        "princess"
+      ]
+    },
+    {
+      "category": "winter sport",
+      "correct": "swimming",
+      "others": [
+        "curling",
+        "hockey",
+        "bobsled",
+        "skiing"
+      ]
+    },
+    {
+      "category": "type of lettuce",
+      "correct": "serrano",
+      "others": [
+        "romaine",
+        "butterhead",
+        "bibb",
+        "iceberg"
+      ]
+    },
+    {
+      "category": "percussion instrument",
+      "correct": "clarinet",
+      "others": [
+        "drum",
+        "xylophone",
+        "tambourine",
+        "cymbals"
+      ]
+    },
+    {
+      "category": "political party",
+      "correct": "garden",
+      "others": [
+        "democratic",
+        "republican",
+        "green",
+        "libertarian"
+      ]
+    },
+    {
+      "category": "nocturnal animal",
+      "correct": "robin",
+      "others": [
+        "bat",
+        "owl",
+        "raccoon",
+        "coyote"
+      ]
+    },
+    {
+      "category": "type of government",
+      "correct": "atheism",
+      "others": [
+        "despotism",
+        "democracy",
+        "monarchy",
+        "communism"
+      ]
+    },
+    {
+      "category": "magnification devices",
+      "correct": "gloves",
+      "others": [
+        "microscope",
+        "telescope",
+        "magnifying glass",
+        "eyeglasses"
+      ]
+    },
+    {
+      "category": "unit of energy",
+      "correct": "centimeter",
+      "others": [
+        "joule",
+        "calorie",
+        "kilowatt-hour",
+        "BTU"
+      ]
+    },
+    {
+      "category": "changes of state",
+      "correct": "transportation",
+      "others": [
+        "melting",
+        "freezing",
+        "evaporation",
+        "condensation"
+      ]
+    },
+    {
+      "category": "cooking method",
+      "correct": "drive",
+      "others": [
+        "broil",
+        "bake",
+        "fry",
+        "saute"
+      ]
+    },
+    {
+      "category": "size adjectives",
+      "correct": "funny",
+      "others": [
+        "big",
+        "small",
+        "little",
+        "enormous"
+      ]
+    },
+    {
+      "category": "seasons",
+      "correct": "holiday",
+      "others": [
+        "summer",
+        "winter",
+        "autumn",
+        "spring"
+      ]
+    },
+    {
+      "category": "time of day",
+      "correct": "nightgown",
+      "others": [
+        "afternoon",
+        "morning",
+        "evening",
+        "midnight"
+      ]
+    },
+    {
+      "category": "type of cake",
+      "correct": "blue",
+      "others": [
+        "carrot",
+        "chocolate",
+        "devil's food",
+        "angel food"
+      ]
+    },
+    {
+      "category": "stinging insect",
+      "correct": "ladybug",
+      "others": [
+        "bumblebee",
+        "yellow jacket",
+        "wasp",
+        "hornet"
+      ]
+    },
+    {
+      "category": "funny people",
+      "correct": "executioner",
+      "others": [
+        "clown",
+        "comedian",
+        "jester",
+        "harlequin"
+      ]
+    },
+    {
+      "category": "exotic bird",
+      "correct": "bat",
+      "others": [
+        "parakeet",
+        "parrot",
+        "myna",
+        "macaw"
+      ]
+    },
+    {
+      "category": "unit of weight",
+      "correct": "liter",
+      "others": [
+        "ounce",
+        "pound",
+        "gram",
+        "ton"
+      ]
+    },
+    {
+      "category": "circus performer",
+      "correct": "mechanic",
+      "others": [
+        "juggler",
+        "lion tamer",
+        "tightrope walker",
+        "sword swallower"
+      ]
+    },
+    {
+      "category": "watercraft",
+      "correct": "crab",
+      "others": [
+        "boat ",
+        "canoe",
+        "dinghy",
+        "raft"
+      ]
+    },
+    {
+      "category": "mexican food",
+      "correct": "jambalaya",
+      "others": [
+        "taco",
+        "burrito",
+        "enchilada",
+        "quesadilla"
+      ]
+    },
+    {
+      "category": "indian food",
+      "correct": "croissant",
+      "others": [
+        "paratha",
+        "dosa",
+        "naan",
+        "papadum"
+      ]
+    },
+    {
+      "category": "coin",
+      "correct": "third",
+      "others": [
+        "nickel",
+        "penny",
+        "dime",
+        "quarter"
+      ]
+    },
+    {
+      "category": "insulting name",
+      "correct": "benefactor",
+      "others": [
+        "idiot",
+        "jerk",
+        "dummy",
+        "prick"
+      ]
+    },
+    {
+      "category": "prime number",
+      "correct": "nine",
+      "others": [
+        "three",
+        "seven",
+        "thirteen",
+        "five"
+      ]
+    },
+    {
+      "category": "speed adjectives",
+      "correct": "creative",
+      "others": [
+        "fast",
+        "slow",
+        "swift",
+        "languid"
+      ]
+    },
+    {
+      "category": "unit of length",
+      "correct": "quart",
+      "others": [
+        "inch",
+        "foot",
+        "mile",
+        "yard"
+      ]
+    },
+    {
+      "category": "apple variety",
+      "correct": "navel",
+      "others": [
+        "granny smith",
+        "fuji",
+        "mcintosh",
+        "red delicious"
+      ]
+    },
+    {
+      "category": "water sport",
+      "correct": "hockey",
+      "others": [
+        "rowing",
+        "water polo",
+        "kayaking",
+        "swimming"
+      ]
+    },
+    {
+      "category": "good smell",
+      "correct": "rotten meat",
+      "others": [
+        "perfume",
+        "cologne",
+        "flowers",
+        "pot pourri"
+      ]
+    },
+    {
+      "category": "atomic particle",
+      "correct": "hydrogen",
+      "others": [
+        "electron",
+        "neutron",
+        "proton",
+        "quark"
+      ]
+    },
+    {
+      "category": "cocktail",
+      "correct": "chicken",
+      "others": [
+        "margarita",
+        "screwdriver",
+        "mimosa",
+        "daiquiri"
+      ]
+    },
+    {
+      "category": "sandwich",
+      "correct": "diamond",
+      "others": [
+        "reuben",
+        "club",
+        "BLT",
+        "cheesesteak"
+      ]
+    },
+    {
+      "category": "horned animal",
+      "correct": "poodle",
+      "others": [
+        "rhinocerous",
+        "bull",
+        "goat",
+        "antelope"
+      ]
+    },
+    {
+      "category": "aquatic bird",
+      "correct": "coppermouth",
+      "others": [
+        "penguin",
+        "puffin",
+        "duck",
+        "pelican"
+      ]
+    },
+    {
+      "category": "direction",
+      "correct": "therefore",
+      "others": [
+        "north",
+        "up",
+        "southeast",
+        "left"
+      ]
+    },
+    {
+      "category": "pirate accessory",
+      "correct": "poodle",
+      "others": [
+        "hook",
+        "eyepatch",
+        "peg leg",
+        "parrot"
+      ]
+    },
+    {
+      "category": "mammal",
+      "correct": "cobra",
+      "others": [
+        "cat",
+        "dog",
+        "bear",
+        "leopard"
+      ]
+    },
+    {
+      "category": "bbq food",
+      "correct": "sushi",
+      "others": [
+        "chicken",
+        "ribs",
+        "hamburger",
+        "brisket"
+      ]
+    },
+    {
+      "category": "bakery item",
+      "correct": "hamburger",
+      "others": [
+        "donut",
+        "cake",
+        "cookie",
+        "\u00c3\u00a9clair"
+      ]
+    },
+    {
+      "category": "edible seed",
+      "correct": "brisket",
+      "others": [
+        "pumpkin",
+        "flax",
+        "chia",
+        "sunflower"
+      ]
+    },
+    {
+      "category": "noun of assemblage",
+      "correct": "canoe",
+      "others": [
+        "school",
+        "flock",
+        "herd",
+        "pack"
+      ]
+    },
+    {
+      "category": "kitchen appliance",
+      "correct": "chef",
+      "others": [
+        "oven",
+        "blender",
+        "microwave",
+        "can opener"
+      ]
+    },
+    {
+      "category": "shade of blue",
+      "correct": "amber",
+      "others": [
+        "navy",
+        "cobalt",
+        "azure",
+        "sky"
+      ]
+    },
+    {
+      "category": "type of knife",
+      "correct": "swimming",
+      "others": [
+        "butter",
+        "Swiss army",
+        "paring",
+        "pocket"
+      ]
+    },
+    {
+      "category": "type of bag",
+      "correct": "dresser",
+      "others": [
+        "briefcase",
+        "purse",
+        "satchel",
+        "knapsack"
+      ]
+    },
+    {
+      "category": "sweetener",
+      "correct": "lemon",
+      "others": [
+        "sugar",
+        "agave",
+        "stevia",
+        "honey"
+      ]
+    },
+    {
+      "category": "wind instrument",
+      "correct": "piano",
+      "others": [
+        "piccolo",
+        "flute",
+        "oboe",
+        "clarinet"
+      ]
+    },
+    {
+      "category": "wildflower",
+      "correct": "butternut",
+      "others": [
+        "buttercup",
+        "daisy",
+        "violet",
+        "rose"
+      ]
+    },
+    {
+      "category": "measurement devices",
+      "correct": "television",
+      "others": [
+        "ruler",
+        "graduated cylinder",
+        "scale",
+        "thermometer"
+      ]
+    },
+    {
+      "category": "renewable energy source",
+      "correct": "oil",
+      "others": [
+        "wind",
+        "solar",
+        "geothermal",
+        "hydroelectric"
+      ]
+    },
+    {
+      "category": "cardinal directions",
+      "correct": "up",
+      "others": [
+        "north",
+        "south",
+        "east",
+        "west"
+      ]
+    },
+    {
+      "category": "cake ingredient",
+      "correct": "rubber",
+      "others": [
+        "flour",
+        "sugar",
+        "water",
+        "egg"
+      ]
+    },
+    {
+      "category": "dentist's tools",
+      "correct": "stethoscope",
+      "others": [
+        "drill",
+        "floss",
+        "mirror",
+        "fluoride"
+      ]
+    },
+    {
+      "category": "herbivore",
+      "correct": "tiger",
+      "others": [
+        "deer",
+        "rabbit",
+        "cow",
+        "panda"
+      ]
+    },
+    {
+      "category": "type of makeup",
+      "correct": "high heels",
+      "others": [
+        "mascara",
+        "lipstick",
+        "blush",
+        "foundation"
+      ]
+    },
+    {
+      "category": "white food",
+      "correct": "beet",
+      "others": [
+        "daikon",
+        "cream cheese",
+        "egg white",
+        "tofu"
+      ]
+    },
+    {
+      "category": "soy product",
+      "correct": "flax seed",
+      "others": [
+        "tofu",
+        "edamame",
+        "soy milk",
+        "soy sauce"
+      ]
+    },
+    {
+      "category": "type of doctor",
+      "correct": "mixologist",
+      "others": [
+        "podiatrist",
+        "endocrinologist",
+        "cardiologist",
+        "oncologist"
+      ]
+    },
+    {
+      "category": "dinosaurs",
+      "correct": "rhinocerous",
+      "others": [
+        "brontosaurus",
+        "tyrannosaurus",
+        "triceratops",
+        "stegosaurus"
+      ]
+    },
+    {
+      "category": "part of speech",
+      "correct": "subjunctive",
+      "others": [
+        "noun",
+        "verb",
+        "adjective",
+        "preposition"
+      ]
+    },
+    {
+      "category": "precious gem",
+      "correct": "coal",
+      "others": [
+        "diamond",
+        "emerald",
+        "ruby",
+        "sapphire"
+      ]
+    },
+    {
+      "category": "edible grain",
+      "correct": "acai",
+      "others": [
+        "barley",
+        "oat",
+        "bulgur",
+        "quinoa"
+      ]
+    },
+    {
+      "category": "wealth adjectives",
+      "correct": "colorful",
+      "others": [
+        "poor",
+        "rich",
+        "wealthy",
+        "destitute"
+      ]
+    },
+    {
+      "category": "human bone",
+      "correct": "gills",
+      "others": [
+        "tibia",
+        "coccyx",
+        "sternum",
+        "clavicle"
+      ]
+    },
+    {
+      "category": "surgical procedure",
+      "correct": "chemistry",
+      "others": [
+        "rhinoplasty",
+        "vasectomy",
+        "angioplasty",
+        "appendectomy"
+      ]
+    },
+    {
+      "category": "hand tool",
+      "correct": "computer",
+      "others": [
+        "hammer",
+        "screwdriver",
+        "wrench",
+        "pliers"
+      ]
+    },
+    {
+      "category": "marsupial",
+      "correct": "kiwi",
+      "others": [
+        "kangaroo",
+        "koala",
+        "wallaby",
+        "wombat"
+      ]
+    },
+    {
+      "category": "spotted animal",
+      "correct": "collie",
+      "others": [
+        "leopard",
+        "dalmation",
+        "appaloosa",
+        "giraffe"
+      ]
+    },
+    {
+      "category": "flightless bird",
+      "correct": "eagle",
+      "others": [
+        "ostrich",
+        "penguin",
+        "emu",
+        "rhea"
+      ]
+    },
+    {
+      "category": "shellfish",
+      "correct": "tuna",
+      "others": [
+        "mussel",
+        "oyster",
+        "clam",
+        "scallop"
+      ]
+    },
+    {
+      "category": "sundae topping",
+      "correct": "peas",
+      "others": [
+        "hot fudge",
+        "cherry",
+        "whipped cream",
+        "nuts"
+      ]
+    },
+    {
+      "category": "fluidity verbs",
+      "correct": "compose",
+      "others": [
+        "gush",
+        "spurt",
+        "drip",
+        "dribble"
+      ]
+    },
+    {
+      "category": "shape",
+      "correct": "chime",
+      "others": [
+        "circle",
+        "square",
+        "rectangle",
+        "triangle"
+      ]
+    },
+    {
+      "category": "hair style",
+      "correct": "raven",
+      "others": [
+        "beehive",
+        "bob",
+        "mohawk",
+        "pixie cut"
+      ]
+    },
+    {
+      "category": "type of storm",
+      "correct": "earthquake",
+      "others": [
+        "hailstorm",
+        "thunderstorm",
+        "blizzard",
+        "hurricane"
+      ]
+    },
+    {
+      "category": "form of exercise",
+      "correct": "typewriters",
+      "others": [
+        "jumping jacks",
+        "chinups",
+        "pushups",
+        "crunches"
+      ]
+    },
+    {
+      "category": "lizard",
+      "correct": "sparrow",
+      "others": [
+        "iguana",
+        "gecko",
+        "salamander",
+        "chameleon"
+      ]
+    },
+    {
+      "category": "first aid item",
+      "correct": "caboose",
+      "others": [
+        "bandage",
+        "peroxide",
+        "cotton ball",
+        "gauze"
+      ]
+    },
+    {
+      "category": "legume",
+      "correct": "brain",
+      "others": [
+        "lima",
+        "pinto",
+        "kidney",
+        "fava"
+      ]
+    },
+    {
+      "category": "metals",
+      "correct": "hydrogen",
+      "others": [
+        "gold",
+        "aluminum",
+        "copper",
+        "tin"
+      ]
+    },
+    {
+      "category": "pack animal",
+      "correct": "sheep",
+      "others": [
+        "donkey",
+        "camel",
+        "horse",
+        "yak"
+      ]
+    },
+    {
+      "category": "sense",
+      "correct": "walk",
+      "others": [
+        "smell",
+        "touch",
+        "taste",
+        "sight"
+      ]
+    },
+    {
+      "category": "metric unit",
+      "correct": "mile",
+      "others": [
+        "joule",
+        "kilometer",
+        "kilogram",
+        "watt"
+      ]
+    },
+    {
+      "category": "intelligence adjectives",
+      "correct": "strong",
+      "others": [
+        "smart",
+        "stupid",
+        "dim",
+        "intelligent"
+      ]
+    },
+    {
+      "category": "weapon",
+      "correct": "bunnies",
+      "others": [
+        "gun",
+        "knife",
+        "grenade",
+        "bayonet"
+      ]
+    },
+    {
+      "category": "type of puzzle",
+      "correct": "tennis",
+      "others": [
+        "jigsaw puzzle",
+        "crossword",
+        "sudoku",
+        "word search"
+      ]
+    },
+    {
+      "category": "source of fire",
+      "correct": "chocolate",
+      "others": [
+        "match",
+        "charcoal",
+        "lighter",
+        "kerosene"
+      ]
+    },
+    {
+      "category": "unit of volume",
+      "correct": "kilogram",
+      "others": [
+        "liter",
+        "gallon",
+        "ounce",
+        "milliliter"
+      ]
+    },
+    {
+      "category": "medical occupation",
+      "correct": "lawyer",
+      "others": [
+        "doctor",
+        "dentist",
+        "psychologist",
+        "veterinarian"
+      ]
+    },
+    {
+      "category": "military vehicle",
+      "correct": "wheelbarrow",
+      "others": [
+        "tank",
+        "aircraft carrier",
+        "humvee",
+        "battleship"
+      ]
+    },
+    {
+      "category": "simple machines",
+      "correct": "hammer",
+      "others": [
+        "lever",
+        "pulley",
+        "wedge",
+        "screw"
+      ]
+    },
+    {
+      "category": "force of nature",
+      "correct": "bomb",
+      "others": [
+        "hurricane",
+        "tsunami",
+        "earthquake",
+        "tornado"
+      ]
+    },
+    {
+      "category": "bodily fluid",
+      "correct": "juice",
+      "others": [
+        "sweat",
+        "blood",
+        "saliva",
+        "tears"
+      ]
+    },
+    {
+      "category": "unit of time",
+      "correct": "pound",
+      "others": [
+        "minute",
+        "fortnight",
+        "hour",
+        "month"
+      ]
+    },
+    {
+      "category": "extreme sport",
+      "correct": "ballet",
+      "others": [
+        "skydiving",
+        "parkour",
+        "hang gliding",
+        "kitesurfing"
+      ]
+    },
+    {
+      "category": "big cat",
+      "correct": "bear",
+      "others": [
+        "cheetah",
+        "jaguar",
+        "lion",
+        "tiger"
+      ]
+    },
+    {
+      "category": "cookies",
+      "correct": "crab",
+      "others": [
+        "shortbread",
+        "biscotti",
+        "gingerbread",
+        "chocolate chip"
+      ]
+    },
+    {
+      "category": "construction vehicle",
+      "correct": "limousine",
+      "others": [
+        "crane",
+        "cement mixer",
+        "dump truck",
+        "bulldozer"
+      ]
+    },
+    {
+      "category": "humor adjectives",
+      "correct": "boring",
+      "others": [
+        "funny",
+        "humorous",
+        "comical",
+        "hilarious"
+      ]
+    },
+    {
+      "category": "berry",
+      "correct": "orange",
+      "others": [
+        "strawberry",
+        "raspberry",
+        "blueberry",
+        "boysenberry"
+      ]
+    },
+    {
+      "category": "forces",
+      "correct": "refutation",
+      "others": [
+        "magnetism",
+        "gravity",
+        "weak nuclear",
+        "strong nuclear"
+      ]
+    },
+    {
+      "category": "type of dwelling",
+      "correct": "train",
+      "others": [
+        "condo",
+        "house",
+        "apartment",
+        "trailer home"
+      ]
+    },
+    {
+      "category": "type of weather",
+      "correct": "spongy",
+      "others": [
+        "rainy",
+        "sunny",
+        "windy",
+        "cloudy"
+      ]
+    },
+    {
+      "category": "gland",
+      "correct": "elementary",
+      "others": [
+        "adrenal",
+        "pituitary",
+        "thyroid",
+        "mammary"
+      ]
+    },
+    {
+      "category": "branch of science",
+      "correct": "pedagogy",
+      "others": [
+        "biology",
+        "chemistry",
+        "physics",
+        "geology"
+      ]
+    },
+    {
+      "category": "branch of math",
+      "correct": "optimism",
+      "others": [
+        "statistics",
+        "calculus",
+        "logic",
+        "algebra"
+      ]
+    },
+    {
+      "category": "office equipment",
+      "correct": "wrench",
+      "others": [
+        "stapler",
+        "copier",
+        "printer",
+        "computer"
+      ]
+    },
+    {
+      "category": "brown food",
+      "correct": "strawberry",
+      "others": [
+        "beef gravy",
+        "chocolate",
+        "brown rice",
+        "portobello mushroom"
+      ]
+    },
+    {
+      "category": "type of wood",
+      "correct": "kelp",
+      "others": [
+        "balsa",
+        "cedar",
+        "pine",
+        "mahogany"
+      ]
+    },
+    {
+      "category": "element",
+      "correct": "water",
+      "others": [
+        "hydrogen",
+        "oxygen",
+        "mercury",
+        "lithium"
+      ]
+    },
+    {
+      "category": "potato chip flavor",
+      "correct": "strawberry",
+      "others": [
+        "sour cream and onion",
+        "salt and vinegar",
+        "barbecue",
+        "plain"
+      ]
+    },
+    {
+      "category": "source of light",
+      "correct": "asteroid",
+      "others": [
+        "sun",
+        "torch",
+        "lamp",
+        "star"
+      ]
+    },
+    {
+      "category": "southern food",
+      "correct": "sushi",
+      "others": [
+        "fried chicken",
+        "collards",
+        "cornbread",
+        "grits"
+      ]
+    },
+    {
+      "category": "crustacean",
+      "correct": "salmon",
+      "others": [
+        "crab",
+        "lobster",
+        "shrimp",
+        "crayfish"
+      ]
+    },
+    {
+      "category": "foot part",
+      "correct": "ear",
+      "others": [
+        "toe",
+        "heel",
+        "sole",
+        "ankle"
+      ]
+    },
+    {
+      "category": "energy types",
+      "correct": "political",
+      "others": [
+        "potential",
+        "kinetic",
+        "electrical",
+        "mechanical"
+      ]
+    },
+    {
+      "category": "desert animal",
+      "correct": "panda",
+      "others": [
+        "rattlesnake",
+        "camel",
+        "scorpion",
+        "lizard"
+      ]
+    },
+    {
+      "category": "vegetarian dishes",
+      "correct": "bacon",
+      "others": [
+        "tofu",
+        "lentils",
+        "seitan",
+        "tempeh"
+      ]
+    },
+    {
+      "category": "lizards",
+      "correct": "wasp",
+      "others": [
+        "chameleon",
+        "gila monster",
+        "iguana",
+        "gecko"
+      ]
+    },
+    {
+      "category": "monster",
+      "correct": "hacker",
+      "others": [
+        "frankenstein",
+        "werewolf",
+        "vampire",
+        "yeti"
+      ]
+    },
+    {
+      "category": "striped animal",
+      "correct": "mosquito",
+      "others": [
+        "zebra",
+        "tiger",
+        "skunk",
+        "bumblebee"
+      ]
+    },
+    {
+      "category": "vowel",
+      "correct": "W",
+      "others": [
+        "A",
+        "E",
+        "I",
+        "O"
+      ]
+    },
+    {
+      "category": "precipitation",
+      "correct": "sun",
+      "others": [
+        "rain",
+        "snow",
+        "sleet",
+        "hail"
+      ]
+    },
+    {
+      "category": "french word",
+      "correct": "coffee",
+      "others": [
+        "noir",
+        "merci",
+        "bonjour",
+        "adieu"
+      ]
+    },
+    {
+      "category": "spider",
+      "correct": "hornet",
+      "others": [
+        "black widow",
+        "tarantula",
+        "daddy longlegs",
+        "brown recluse"
+      ]
+    },
+    {
+      "category": "shade of green",
+      "correct": "crimson",
+      "others": [
+        "lime",
+        "avocado",
+        "olive",
+        "mint"
+      ]
+    },
+    {
+      "category": "explosion sound",
+      "correct": "moo",
+      "others": [
+        "boom",
+        "wham",
+        "kaboom",
+        "kapow"
+      ]
+    },
+    {
+      "category": "type of sweater",
+      "correct": "bottleneck",
+      "others": [
+        "cardigan",
+        "pullover",
+        "v-neck",
+        "turtleneck"
+      ]
+    },
+    {
+      "category": "holes",
+      "correct": "mountain",
+      "others": [
+        "crater",
+        "valley",
+        "rift",
+        "canyon"
+      ]
+    },
+    {
+      "category": "skiing equipment",
+      "correct": "toboggan",
+      "others": [
+        "skis",
+        "boots",
+        "poles",
+        "bindings"
+      ]
+    },
+    {
+      "category": "beach accessory",
+      "correct": "castanets",
+      "others": [
+        "shovel",
+        "towel",
+        "umbrella",
+        "pail"
+      ]
+    },
+    {
+      "category": "contagious disease",
+      "correct": "cancer",
+      "others": [
+        "malaria",
+        "mumps",
+        "measles",
+        "polio"
+      ]
+    },
+    {
+      "category": "pasta type",
+      "correct": "biscotti",
+      "others": [
+        "tortellini",
+        "lasagna",
+        "spaghetti",
+        "rigatoni"
+      ]
+    },
+    {
+      "category": "jewelry",
+      "correct": "tie",
+      "others": [
+        "necklace",
+        "earring",
+        "bracelet",
+        "ring"
+      ]
+    },
+    {
+      "category": "pirate phrase",
+      "correct": "holy cow",
+      "others": [
+        "walk the plank",
+        "swab the deck",
+        "keelhaul",
+        "ahoy matey"
+      ]
+    },
+    {
+      "category": "bird of prey",
+      "correct": "canary",
+      "others": [
+        "hawk",
+        "eagle",
+        "vulture",
+        "falcon"
+      ]
+    },
+    {
+      "category": "insect part",
+      "correct": "skull",
+      "others": [
+        "wing",
+        "abdomen",
+        "thorax",
+        "antenna"
+      ]
+    },
+    {
+      "category": "amusement park ride",
+      "correct": "popcorn",
+      "others": [
+        "roller coaster",
+        "carousel",
+        "ferris wheel",
+        "tilt-a-whirl"
+      ]
+    },
+    {
+      "category": "coniferous trees",
+      "correct": "oak",
+      "others": [
+        "spruce",
+        "pine",
+        "cedar",
+        "fir"
+      ]
+    },
+    {
+      "category": "bones",
+      "correct": "diameter",
+      "others": [
+        "humerus",
+        "femur",
+        "radius",
+        "ulna"
+      ]
+    },
+    {
+      "category": "fruit juice",
+      "correct": "carrot",
+      "others": [
+        "apple",
+        "pomegranate",
+        "orange",
+        "lemon"
+      ]
+    },
+    {
+      "category": "edible plant",
+      "correct": "grass",
+      "others": [
+        "carrot",
+        "celery",
+        "potato",
+        "asparagus"
+      ]
+    },
+    {
+      "category": "movie snack",
+      "correct": "pasta",
+      "others": [
+        "popcorn",
+        "soda",
+        "pretzel",
+        "candy"
+      ]
+    },
+    {
+      "category": "mushroom",
+      "correct": "gala",
+      "others": [
+        "shiitake",
+        "cremini",
+        "portobello",
+        "chanterelle"
+      ]
+    },
+    {
+      "category": "medical instrument",
+      "correct": "escalator",
+      "others": [
+        "stethoscope",
+        "scalpel",
+        "defibrillator",
+        "thermometer"
+      ]
+    },
+    {
+      "category": "farm crop",
+      "correct": "oil",
+      "others": [
+        "corn",
+        "wheat",
+        "soybean",
+        "rice"
+      ]
+    },
+    {
+      "category": "playground game",
+      "correct": "luge",
+      "others": [
+        "hide and seek",
+        "tag",
+        "hopscotch",
+        "tetherball"
+      ]
+    },
+    {
+      "category": "body of water",
+      "correct": "desert",
+      "others": [
+        "river",
+        "stream",
+        "lake",
+        "pond"
+      ]
+    },
+    {
+      "category": "unit of liquid measurement",
+      "correct": "pound",
+      "others": [
+        "gallon",
+        "milliliter",
+        "quart",
+        "liter"
+      ]
+    },
+    {
+      "category": "flower part",
+      "correct": "corn",
+      "others": [
+        "stamen",
+        "pistil",
+        "petal",
+        "calyx"
+      ]
+    },
+    {
+      "category": "building material",
+      "correct": "marshmallow",
+      "others": [
+        "wood",
+        "concrete",
+        "metal",
+        "brick"
+      ]
+    },
+    {
+      "category": "math operation",
+      "correct": "collate",
+      "others": [
+        "multiply",
+        "divide",
+        "add",
+        "subtract"
+      ]
+    },
+    {
+      "category": "face part",
+      "correct": "toe",
+      "others": [
+        "nose",
+        "eye",
+        "cheek",
+        "chin"
+      ]
+    },
+    {
+      "category": "baseball equipment",
+      "correct": "vampire",
+      "others": [
+        "bat",
+        "glove",
+        "baseball",
+        "base"
+      ]
+    },
+    {
+      "category": "primate",
+      "correct": "lobster",
+      "others": [
+        "orangutan",
+        "chimpanzee",
+        "gorilla",
+        "monkey"
+      ]
+    },
+    {
+      "category": "stringed instrument",
+      "correct": "oboe",
+      "others": [
+        "guitar",
+        "harp",
+        "violin",
+        "banjo"
+      ]
+    },
+    {
+      "category": "meat",
+      "correct": "eggplant",
+      "others": [
+        "pork",
+        "venison",
+        "veal",
+        "beef"
+      ]
+    },
+    {
+      "category": "speech verbs",
+      "correct": "collapse",
+      "others": [
+        "reply",
+        "say",
+        "ask",
+        "inquire"
+      ]
+    },
+    {
+      "category": "coffee drink",
+      "correct": "rooibos",
+      "others": [
+        "mocha",
+        "macchiato",
+        "latte",
+        "cappuccino"
+      ]
+    },
+    {
+      "category": "type of cloud",
+      "correct": "rainbow",
+      "others": [
+        "cumulus",
+        "cirrus",
+        "funnel",
+        "stratus"
+      ]
+    },
+    {
+      "category": "eating utensil",
+      "correct": "vase",
+      "others": [
+        "fork",
+        "spoon",
+        "knife",
+        "chopsticks"
+      ]
+    },
+    {
+      "category": "chess piece",
+      "correct": "spade",
+      "others": [
+        "king",
+        "queen",
+        "pawn",
+        "rook"
+      ]
+    },
+    {
+      "category": "type of fabric",
+      "correct": "plaid",
+      "others": [
+        "cotton",
+        "silk",
+        "polyester",
+        "rayon"
+      ]
+    }
+  ]
+}

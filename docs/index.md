@@ -13,6 +13,8 @@
 - [RepeatTheColor](./repeat-the-color)
 - [FindTheStone](./find-the-stone)
 - [CoinFlip](./coin-flip)
+- [OddOneOut](./odd-one-out)
+- [Trivia](./trivia)
 - [Wordle](./wordle)
 - [Joke](./joke)
 - [Truth](./truth)

@@ -1,9 +1,9 @@
 # CoinFlip
-A Game, where the Bot flips a Coin and you have to guess whether it's Heads or Tails.
+Find the odd word from the given list of 5 words.
 
 ## Importing
 ```js
-const {CoinFlip} = require('discord-mini-games.js');
+const {OddOneOut} = require('discord-mini-games.js');
 ```
 ## GameOptions
 ```js
@@ -22,19 +22,20 @@ const gameOptions = {
 ## Formatting
 The texts for embed descriptions accepts following formatting.
 - **winDes**
-  - **`{bot_option}`** -> Heads/Tails option choosen by the Bot.
-  - **`{user_option}`** -> Heads/Tails option choosen by the Player.
+  - **`{answer}`** -> Answer.
+  - **`{user_option}`** -> option choosen by the Player.
   - both are same since, player won.
 - **loseDes**
-  - **`{bot_option}`** -> Heads/Tails option choosen by the Bot.
-  - **`{user_option}`** -> Heads/Tails option choosen by the Player.
+  - **`{answer}`** -> Answer.
+  - **`{user_option}`** -> option choosen by the Player.
   - both are different
 - **timeUpDes**
-  - **`{bot_option}`** -> Heads/Tails option choosen by the Bot.
+  - **`{answer}`** -> Answer
+
 ## Starting the Game
 ```js
 let message = message || interaction; // message object or interaction object.
 let gameOptions = "refer previous block";
-const game = new CoinFlip(message,gameOptions); // Initialising the Game.
+const game = new OddOneOut(message,gameOptions); // Initialising the Game.
 game.run() // Starting the Game.
 ```

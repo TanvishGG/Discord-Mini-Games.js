@@ -1,11 +1,12 @@
 const discord = require('discord.js');
+const words_list = require('./assets/odd_words.json')
 const {EmbedBuilder,ButtonBuilder,ButtonStyle,ActionRowBuilder,ComponentType} = require('discord.js')
-class CoinFlip{
+class OddOneOut{
   /**
-   * Initialises a new instance of CoinFlip Game.
+   * Initialises a new instance of OddOneOut Game.
    * @param {`Message/Interaction`} message The Message Object.
    * @param {`GameOptions-Object`} gameOptions The game Options Object.
-   * @returns {CoinFlip} Game instance.
+   * @returns {OddOneOut} Game instance.
    */
     constructor(message,gameOptions) {
       if(!message) throw new Error("message is not provided");
@@ -24,7 +25,7 @@ class CoinFlip{
       this.options = gameOptions
       this.time = gameOptions?.time ?? 30000;
       this.replied = false;
-      this.randomN = (min,max) => {return Math.floor(Math.random()*max)+min;}
+      this.words_data = words_list.words[Math.floor(Math.random()*(words_list.words.length - 1))];
       this.edit = async (messageOptions,replyMessage) => {
         messageOptions.fetchReply = true;
          if(this.replied == false) {
@@ -54,9 +55,9 @@ async run() {
     await this.message.deferReply().catch(() => {});
   }
   const game = this;
-  function cfEm(text,color) {
+  function oooEm(text,color) {
     const embed = new EmbedBuilder()
-   .setTitle(game.options?.title ?? 'CoinFlip')
+   .setTitle(game.options?.title ?? 'Odd One Out')
    .setDescription(text)
    .setColor(color)
    .setThumbnail(game.player.avatarURL())
@@ -64,27 +65,36 @@ async run() {
    .setFooter({text:`Requested by ${game.player.username}`})
    return embed;
   }
-  function random(min,max) {
-    return Math.floor(Math.random() *(max-min+1) + min);
+  function shuffleArray(lol) {
+    let New = new Array().concat(lol)
+    for (let i = New.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [New[i], New[j]] = [New[j], New[i]];
+    }
+    return New;
   }
-  var Row = new ActionRowBuilder().addComponents(new ButtonBuilder().setCustomId('cf_heads').setStyle(ButtonStyle.Secondary).setLabel('Heads'), new ButtonBuilder().setCustomId('cf_tails').setStyle(ButtonStyle.Secondary).setLabel('Tails'))
-  const msg = await this.edit({embeds:[cfEm(this.options?.startDes?? 'Choose Heads or Tails','Green')],components:[Row]},this.message)
+  const  answer = this.words_data.correct;
+  this.words.others[4] = answer;
+  const choices = shuffleArray(this.words_data.others)
+  var Row = new ActionRowBuilder()
+  for (var i=0; i<5;i++) {
+    Row.addComponents(new ButtonBuilder().setCustomId('ooo_' + choices[x]).setStyle(ButtonStyle.Secondary).setLabel(choices[x]))
+  }
+  const msg = await this.edit({embeds:[oooEm(this.options?.startDes?? 'Choose The odd Word','Green')],components:[Row]},this.message)
   const collector = msg.createMessageComponentCollector({ componentType: ComponentType.Button, idle:this.time})
   let played = false;
-  const choices = ['heads','tails']
-  const bot = choices[random(0,1)]
   collector.on('collect', async (i) => {
   await i.deferUpdate();
   if(i.user.id == this.player.id) {
    played = true;
    collector.stop()
    Row.components.find(x => x.data.custom_id == i.customId).setDisabled(true)
-   if(i.customId.replace('cf_','') == bot) {
-    await this.edit({embeds:[cfEm(this.options?.winDes?.replace(/{bot_option}/g,bot.toUpperCase())?.replace(/{user_option}/g,i.customId.replace('cf_','').toUpperCase()) ?? `You won!, it was ${bot.toUpperCase()}`,`Yellow`)],components:[Row]},msg)
+   if(i.customId.replace('ooo_','') == answer) {
+    await this.edit({embeds:[oooEm(this.options?.winDes?.replace(/{answer}/g,answer)?.replace(/{user_option}/g,i.customId.replace('ooo_','')) ?? `You won!, it was ${answer}`,`Yellow`)],components:[Row]},msg)
     if(this.onWin) await this.onWin();
    }
    else {
-    await this.edit({embeds:[cfEm(this.options?.loseDes?.replace(/{bot_option}/g,bot.toUpperCase())?.replace(/{user_option}/g,i.customId.replace('cf_','').toUpperCase()) ?? `You Lost!, it was ${bot.toUpperCase()}`,`Red`)],components:[Row]},msg)
+    await this.edit({embeds:[oooEm(this.options?.loseDes?.replace(/{answer}/g,answer)?.replace(/{user_option}/g,i.customId.replace('ooo_','')) ?? `You Lost!, it was ${answer}`,`Red`)],components:[Row]},msg)
     if(this.onLose) await this.onLose();
    }
   }
@@ -92,10 +102,10 @@ async run() {
   collector.on('end', async () => {
     if(played == false) {
     Row.components.forEach(x => x.setDisabled(true))
-    await this.edit({embeds:[cfEm(this.options?.timeUpDes?.replace(/{bot_option}/g,bot.toUpperCase()) ?? `Game Ended: Timed Out, it was `+bot.toUpperCase(),'Red')],components:[Row]},msg);
+    await this.edit({embeds:[oooEm(this.options?.timeUpDes?.replace(/{answer}/g,answer) ?? `Game Ended: Timed Out, it was ` + answer,'Red')],components:[Row]},msg);
     }
   })
 }
 }
 
-module.exports = CoinFlip;
+module.exports = OddOneOut;

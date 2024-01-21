@@ -8,6 +8,8 @@ A package to implement mini-games using discord.js v14
 - RepeatTheColor -> Single Player
 - FindTheStone -> Single Player
 - CoinFlip -> Single Player
+- OddOneOut -> Single Player
+- Trivia -> Single Player
 - Wordle -> Single Player
 - Joke
 - Truth 
