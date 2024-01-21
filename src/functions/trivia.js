@@ -57,7 +57,7 @@ async run() {
 async function fetchQuestion() {
     var res = 1;
 while(res !== 0){
-const data = await fetch(`https://opentdb.com/api.php?amount=1&type=multiple&encode=url3986&difficulty=${this.difficulty}`)
+const data = await fetch(`https://opentdb.com/api.php?amount=1&type=multiple&encode=url3986&difficulty=${game.difficulty}`)
 const json = await data.json();
 res = json.response_code;
 if(res == 0) return json.results[0];

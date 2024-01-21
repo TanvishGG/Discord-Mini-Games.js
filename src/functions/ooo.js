@@ -74,7 +74,7 @@ async run() {
     return New;
   }
   const  answer = this.words_data.correct;
-  this.words.others[4] = answer;
+  this.words_data.others[4] = answer;
   const choices = shuffleArray(this.words_data.others)
   var Row = new ActionRowBuilder()
   for (var i=0; i<5;i++) {
