@@ -1,5 +1,5 @@
 # Truth
-Get a random Truth using <https://api.truthordarebot.xyz/> api.
+Get a random Truth.
 
 ## Importing
 
@@ -9,8 +9,8 @@ Get a random Truth using <https://api.truthordarebot.xyz/> api.
 ## Getting a truth
 
 ```js
- const truth = await Truth();
-console.log(truth)
+ const truth = Truth();
+ console.log(truth)
 ```
  - **output:**
 

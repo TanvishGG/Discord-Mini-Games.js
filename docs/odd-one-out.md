@@ -12,8 +12,8 @@ const gameOptions = {
     time: 30000, // timeup duration in milliseconds, default: 30000.
     onWin: () => {console.log("win")}, // Function to execute if player wins the game.
     onLose: () => {console.log('lose')}, // Function to execute if player loses the game.
-    title: 'CoinFlip', // Embed Title.
-    startDes: 'Choose Heads or Tails', // Embed Description when game starts.
+    title: 'Odd One Out', // Embed Title.
+    startDes: null, // Embed Description when game starts.
     winDes: 'You Won!', // Embed Description when player wins the game.
     loseDes: 'You Lost', // Embed Description when player loses the game.
     timeUpDes: 'Game Over: Timed Out', // Embed Description when game times out.

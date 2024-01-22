@@ -1,9 +1,9 @@
-# Tic Tac Toe
-Play Tic Tac Toe
+# Connect4
+Play Connect4 Game, where u have to get 4 balls in a sequence i.e vertical, horizontal & cross.
 
 ## Importing
 ```js
-const {TicTacToe} = require('discord-mini-games.js');
+const {Connect4} = require('discord-mini-games.js');
 ```
 
 ## GameOptions
@@ -14,13 +14,13 @@ const gameOptions = {
     onWin: () => {console.log("win")}, // Function to execute if player wins the game.
     onTie: () => {console.log('lose')}, // Function to execute when game ties.
     onTimeUp: () => {console.log('timeup')}, // Function to execute when game times out.
-    title: 'Tic Tac Toe', // Embed Title.
-    opEmoji: "🟢", // Opponent Box Emoji.
-    playerEmoji: "❌", // Player Box Emoji.
-    emptyEmoji: "◼️", // Empty Box Emoji.
+    title: 'Connect4', // Embed Title.
+    nextDes: null, // Next Player display
+    emoji1: "🔴", // Opponent Box Emoji.
+    emoji2: "🟢", // Player Box Emoji.
+    emptyEmoji: "⬛", // Empty Box Emoji.
     footer: null, // Embed Footer.
     winDes: null, // Embed Description when player wins the game.
-    nextDes: null, // Embed Description for next move
     tieDes: null, // Embed Description when game ties.
     timeUpDes: 'Game Over: Timed Out', // Embed Description when game times out.
     resTime: 30000, // wait time for opponent response, default: 30000.
@@ -62,6 +62,6 @@ function onTimeUp(timed_player,other) {
 ```js
 let message = message || interaction; // message object or interaction object.
 let gameOptions = "refer GameOptions block";
-const game = new TicTacToe(message,gameOptions); // Initialising the Game.
+const game = new Connect4(message,gameOptions); // Initialising the Game.
 game.run(); // Starting the Game.
 ```

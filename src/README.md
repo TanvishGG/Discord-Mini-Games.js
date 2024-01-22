@@ -5,6 +5,8 @@ A package to implement mini-games using discord.js v14
 - RockPaperScissors -> Single Player and Multi-Player
 - GuessTheNumber -> Single Player
 - TicTacToe -> Multi Player
+- Connect4 -> Multi Player
+- TypeRunner -> Single Player
 - RepeatTheColor -> Single Player
 - FindTheStone -> Single Player
 - CoinFlip -> Single Player
@@ -12,6 +14,8 @@ A package to implement mini-games using discord.js v14
 - Trivia -> Single Player
 - Wordle -> Single Player
 - Joke
+- Paranoia
+- WouldYouRather
 - Truth 
 - Dare
 - EightBall

@@ -22,7 +22,7 @@ const gameOptions = {
     onWin: () => {console.log("win")}, // Function to execute if player wins the game.
     onLose: () => {console.log('lose')}, // Function to execute if player loses the game.
     onTimeUp: () => {console.log('timeup')}, // Functuon to execute when game times out.
-    title: 'CoinFlip', // Embed Title.
+    title: 'Wordle', // Embed Title.
     startDes: 'Guess the 5 Letter word I\'m thinking of', // Embed Description when game starts
     winDes: 'You Won!', // Embed Description when player wins the game.
     loseDes: 'You Lost', // Embed Description when player loses the game.

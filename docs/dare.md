@@ -1,7 +1,5 @@
 # Dare
-Get a random dare using <https://api.truthordarebot.xyz/> api.
-
-
+Get a random Dare.
 ## Importing
 
 ```js
@@ -10,8 +8,8 @@ Get a random dare using <https://api.truthordarebot.xyz/> api.
 ## Getting a dare
 
 ```js
- const dare = await Dare();
-console.log(dare)
+ const dare = Dare();
+ console.log(dare)
 ```
  - **output:**
 

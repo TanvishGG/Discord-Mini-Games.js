@@ -1,28 +1,17 @@
-const rps = require('./functions/rps');
-const gtn = require('./functions/gtn');
-const ttt = require('./functions/ttt');
-const rtc = require('./functions/rtc');
-const cf = require('./functions/cf');
-const ooo = require('./functions/ooo');
-const trivia = require('./functions/trivia')
-const fts = require('./functions/fts');
-const wordle = require('./functions/wordle');
-const dare = require('./functions/dare');
-const truth = require('./functions/truth');
-const joke = require('./functions/joke');
-const EightBall = require('./functions/8ball')
-module.exports = {
-    RockPaperScissors: rps,
-    GuessTheNumber: gtn,
-    TicTacToe: ttt,
-    RepeatTheColor: rtc,
-    CoinFlip: cf,
-    OddOneOut: ooo,
-    Trivia: trivia,
-    FindTheStone: fts,
-    Wordle:wordle,
-    Dare: dare,
-    Truth: truth,
-    Joke:joke,
-    EightBall:EightBall
-}
+module.exports.RockPaperScissors = require('./functions/rps');
+module.exports.GuessTheNumber = require('./functions/gtn');
+module.exports.TicTacToe = require('./functions/ttt');
+module.exports.RepeatTheColor = require('./functions/rtc');
+module.exports.CoinFlip = require('./functions/cf');
+module.exports.OddOneOut = require('./functions/ooo');
+module.exports.Connect4 = require('./functions/c4');
+module.exports.Trivia = require('./functions/trivia');
+module.exports.TypeRunner = require('./functions/tr');
+module.exports.FindTheStone = require('./functions/fts');
+module.exports.Wordle = require('./functions/wordle');
+module.exports.Dare = require('./functions/dare');
+module.exports.Truth = require('./functions/truth');
+module.exports.Paranoia = require('./functions/paranoia');
+module.exports.WouldYouRather = require('./functions/wyr');
+module.exports.Joke = require('./functions/joke');
+module.exports.EightBall = require('./functions/8ball');

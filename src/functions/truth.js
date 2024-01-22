@@ -1,20 +1,9 @@
+const truths = require('./assets/truth.json').truth;
 /**
- * Fetch a random Truth.
- * @returns {Promise<String>} - A promise that resolves to a random Truth.
+ * Get a random Truth.
+ * @returns {String} - Random Truth.
  */
-
-async function truth() {
-  try {
-  var data = await fetch(`https://api.truthordarebot.xyz/v1/truth`,{
-    headers: {
-      'Content-Type':'applocation/json'
-    }
-  })
-  data = await data.json();
-  return data.question;
+function Truth() {
+ return truths[Math.floor(Math.random() * (truths.length - 1))];
 }
-  catch(e) {
-  throw new Error(e)
-  }
-}
-module.exports = truth;
+module.exports = Truth;
