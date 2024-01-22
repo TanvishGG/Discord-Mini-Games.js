@@ -24,7 +24,7 @@ const gameOptions = {
 ## Formatting
 The texts for embed descriptions accepts following formatting.
 - **winDes** & **loseDes**
-  - **`{time}`** -> Actual Word.
+  - **`{time}`** -> Time took to complete the sentence.
 
 ## Starting The Game
 ```js
