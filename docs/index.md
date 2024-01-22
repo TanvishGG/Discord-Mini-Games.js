@@ -9,6 +9,8 @@
 ## => Available Games And Docs
 - [RockPaperScissors](./rock-paper-scissors)
 - [GuessTheNumber](./guess-the-number)
+- [GuessThePokemon](./guess-the-pokemon)
+- [GuessTheFlag](./guess-the-flag)
 - [TicTacToe](./tic-tac-toe)
 - [Connect4](./connect4)
 - [TypeRunner](./type-runner)
@@ -39,7 +41,7 @@ npm install discord-mini-games.js@latest
 - Make a new Issue in [Github Repo](https://github.com/TanvishGG/Discord-Mini-Games.js)
 
 ## Discord
-- https://discord.com/invite/xS8b8jQZZK
+- [Server](https://discord.com/invite/xS8b8jQZZK)
 
 ---
 

@@ -1,11 +1,12 @@
 const discord = require('discord.js');
+const pokemons = require('./assets/pokemon.json').pokemons;
 const {EmbedBuilder,ButtonBuilder,ButtonStyle,ActionRowBuilder,ComponentType} = require('discord.js')
-class GuessTheNumber{
+class GuessThePokemon{
   /**
-   * Initialises a new instance of Guess The Number Game.
+   * Initialises a new instance of Guess The Pokemon Game.
    * @param {`Message/Interaction`} message The Message Object.
    * @param {`GameOptions-Object`} gameOptions The game Options Object.
-   * @returns {GuessTheNumber} Game instance.
+   * @returns {GuessThePokemon} Game instance.
    */
 
     constructor(message,gameOptions) {
@@ -25,6 +26,7 @@ class GuessTheNumber{
       this.time = gameOptions?.time ?? 45000;
       this.replied = false;
       this.randomN = (min,max) => {return Math.floor(Math.random()*max)+min;}
+      this.pokemon = pokemons[this.randomN(0,pokemons.length-1)]
       this.edit = async (messageOptions,replyMessage) => {
         messageOptions.fetchReply = true;
          if(this.replied == false) {
@@ -44,9 +46,7 @@ class GuessTheNumber{
       if(typeof this.time !== 'number') throw new TypeError('time must be a Number');
       if(this.time < 5000) throw new RangeError('time must be greater than 5000');
       if(this.options?.tries && typeof this.options?.tries !== 'number') throw new TypeError('tries must be a Number');
-      if(this.options?.tries && (this.options?.tries < 3 || this.options?.tries > 10)) throw new RangeError('tries must be between 3 and 10');
-      if(this.options?.max && typeof this.options?.max !== 'number') throw new TypeError('max must be a Number');
-      if(this.options?.max && (this.options?.max < 10 || this.options?.max > 100)) throw new RangeError('max must be between 10 and 100');
+      if(this.options?.tries && (this.options?.tries < 2 || this.options?.tries > 10)) throw new RangeError('tries must be between 3 and 10');
       if(this.options?.title && typeof this.options?.title !== 'string') throw new TypeError('title must be a String');
       if(this.options?.startDes && typeof this.options?.startDes !== 'string') throw new TypeError('startDes must be a String');
       if(this.options?.retryDes && typeof this.options?.retryDes !== 'string') throw new TypeError('retryDes must be a String');
@@ -61,36 +61,31 @@ async run() {
   if(this.isSlash == true) {
     await this.message.deferReply().catch(() => {});
   }
-function lower(number,guess) {
-  if(number >= guess) { return "HIGHER" }
-  else { return "LOWER" }
-}
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min)
- } 
 const game = this;
 function embedGen(text, color) {
     const embed = new discord.EmbedBuilder()
-    .setTitle(game.options?.title ??"Guess The Number")
-    .setDescription(`${game.options?.startDes ?? `Guess the Number I\'m thinking of in ${game.options?.tries ?? 3 } tries which lies between 1-${game.options?.max ?? 20}`} ${text ? `\n\n\`\`\`${text}\`\`\``:""}`)
+    .setTitle(game.options?.title ??"Guess The Pokemon")
+    .setDescription(text)
     .setColor(color)
     .setTimestamp()
+    .setImage(`https://tanvishgg.github.io/assets/pokemons/${game.pokemon.name}.png`)
     .setFooter({text:`Requested by ${game.player.username}`})
     .setThumbnail(game.player.avatarURL());
     return embed;
 }
-const number = random(1,this.options?.max ?? 20)
-let tries = this.options?.tries ?? 3;
-const msg = await this.edit({embeds:[embedGen(null,"Blue")]},this.message)
-const collectorFilter = m => m && m.author.id == this.player.id && !isNaN(m.content) && m.content < 21 && m.content > 0;
-const collector = msg.channel.createMessageCollector({ filter: collectorFilter, idle: this.time, max:this.options?.tries ?? 3 });
+const pokemon = this.pokemon.name.replace(/-/g," ");
+const hint = `\`${pokemon.replace(/-/g," ").replace(/[^0-9\s]/g, '_')}\``;
+let tries = this.options?.tries ?? 2;
+const msg = await this.edit({embeds:[embedGen(this.options?.startDes?.replace(/{hint}/g,hint)?.replace(/{tries}/g,tries) ?? `Guess the below Pikemon in ${tries} tries. \n Hint: ${hint}`,"Blue")]},this.message)
+const collectorFilter = m => m && m.author.id == this.player.id;
+const collector = msg.channel.createMessageCollector({ filter: collectorFilter, idle: this.time, max:tries});
 let played = false;
 collector.on('collect', async m => {
-    if(m.content == number) { 
+    if(m.content.toLowerCase() == pokemon.toLowerCase()) { 
         m.delete();
         played = true;
         collector.stop();
-        this.edit({embeds:[embedGen(this.options?.winDes?.replace(/{number}/g,number) ?? `You guessed it right!, the Number was ${number}`,'Green')]},msg)
+        this.edit({embeds:[embedGen(this.options?.winDes?.replace(/{pokemon}/g,`\`${pokemon}\``) ?? `You guessed it right!, the Pokemon is \`${pokemon}\``,'Green')]},msg)
     if(this.onWin) await this.onWin();
     }
     else{
@@ -98,16 +93,16 @@ collector.on('collect', async m => {
      m.delete()
      if(tries == 0) {
      played = true;
-     this.edit({embeds:[embedGen(this.options?.loseDes?.replace(/{user_option}/g,m.content)?.replace(/{number}/g,number) ?? `You Lost. You guessed ${m.content}, but the Number was ${number}`,'Red')]},msg)
+     this.edit({embeds:[embedGen(this.options?.loseDes?.replace(/{user_option}/g,`\`${m.content}\``)?.replace(/{pokemon}/g,`\`${pokemon}\``) ?? `You Lost. You guessed \`${m.content}\`, but the Pokemon is \`${pokemon}\``,'Red')]},msg)
      }
      else {
-      this.edit({embeds:[embedGen(this.options?.retryDes?.replace(/{user_option}/g,m.content)?.replace(/{tries}/g,tries)?.replace(/{status}/g,lower(number,m.content)) ?? `You guessed ${m.content} which is wrong, you have ${tries} tries left\nNumber is ${lower(number,m.content)} than ${m.content}`,'Red')]},msg)
+      this.edit({embeds:[embedGen(this.options?.retryDes?.replace(/{user_option}/g,`\`${m.content}\``)?.replace(/{tries}/g,tries)?.replace(/{hint}/g,hint) ?? `You guessed \`${m.content}\` which is wrong, you have ${tries} tries left\nHint: ${hint}`,'Red')]},msg)
       if(this.onLose) await this.onLose();
     }}
     });
 collector.on('end', async () => {
     if(played == false) {
-    await this.edit({embeds:[embedGen(this.options?.timeUpDes ?? 'Game Ended: Timed Out','Red')]},msg)
+    await this.edit({embeds:[embedGen(this.options?.timeUpDes?.replace(/{pokemon}/g,`\`${pokemon}\``) ?? `Game Ended: Timed Out, the Flag belongs to \`${pokemon}\``,'Red')]},msg)
     if(this.onTimeUp) await this.onTimeUp();
     }
 })
@@ -115,4 +110,4 @@ collector.on('end', async () => {
 
   }
 
-  module.exports = GuessTheNumber;
+  module.exports = GuessThePokemon;

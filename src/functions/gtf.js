@@ -1,11 +1,12 @@
 const discord = require('discord.js');
+const flags = require('./assets/flags.json').flags;
 const {EmbedBuilder,ButtonBuilder,ButtonStyle,ActionRowBuilder,ComponentType} = require('discord.js')
-class GuessTheNumber{
+class GuessTheFlag{
   /**
-   * Initialises a new instance of Guess The Number Game.
+   * Initialises a new instance of Guess The Flag Game.
    * @param {`Message/Interaction`} message The Message Object.
    * @param {`GameOptions-Object`} gameOptions The game Options Object.
-   * @returns {GuessTheNumber} Game instance.
+   * @returns {GuessTheFlag} Game instance.
    */
 
     constructor(message,gameOptions) {
@@ -25,6 +26,7 @@ class GuessTheNumber{
       this.time = gameOptions?.time ?? 45000;
       this.replied = false;
       this.randomN = (min,max) => {return Math.floor(Math.random()*max)+min;}
+      this.flag = flags[this.randomN(0,flags.length-1)]
       this.edit = async (messageOptions,replyMessage) => {
         messageOptions.fetchReply = true;
          if(this.replied == false) {
@@ -44,9 +46,7 @@ class GuessTheNumber{
       if(typeof this.time !== 'number') throw new TypeError('time must be a Number');
       if(this.time < 5000) throw new RangeError('time must be greater than 5000');
       if(this.options?.tries && typeof this.options?.tries !== 'number') throw new TypeError('tries must be a Number');
-      if(this.options?.tries && (this.options?.tries < 3 || this.options?.tries > 10)) throw new RangeError('tries must be between 3 and 10');
-      if(this.options?.max && typeof this.options?.max !== 'number') throw new TypeError('max must be a Number');
-      if(this.options?.max && (this.options?.max < 10 || this.options?.max > 100)) throw new RangeError('max must be between 10 and 100');
+      if(this.options?.tries && (this.options?.tries < 2 || this.options?.tries > 10)) throw new RangeError('tries must be between 3 and 10');
       if(this.options?.title && typeof this.options?.title !== 'string') throw new TypeError('title must be a String');
       if(this.options?.startDes && typeof this.options?.startDes !== 'string') throw new TypeError('startDes must be a String');
       if(this.options?.retryDes && typeof this.options?.retryDes !== 'string') throw new TypeError('retryDes must be a String');
@@ -61,36 +61,32 @@ async run() {
   if(this.isSlash == true) {
     await this.message.deferReply().catch(() => {});
   }
-function lower(number,guess) {
-  if(number >= guess) { return "HIGHER" }
-  else { return "LOWER" }
-}
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min)
- } 
 const game = this;
 function embedGen(text, color) {
     const embed = new discord.EmbedBuilder()
-    .setTitle(game.options?.title ??"Guess The Number")
-    .setDescription(`${game.options?.startDes ?? `Guess the Number I\'m thinking of in ${game.options?.tries ?? 3 } tries which lies between 1-${game.options?.max ?? 20}`} ${text ? `\n\n\`\`\`${text}\`\`\``:""}`)
+    .setTitle(game.options?.title ??"Guess The Flag")
+    .setDescription(text)
     .setColor(color)
     .setTimestamp()
+    .setImage('attachment://flag.png')
     .setFooter({text:`Requested by ${game.player.username}`})
     .setThumbnail(game.player.avatarURL());
     return embed;
 }
-const number = random(1,this.options?.max ?? 20)
-let tries = this.options?.tries ?? 3;
-const msg = await this.edit({embeds:[embedGen(null,"Blue")]},this.message)
-const collectorFilter = m => m && m.author.id == this.player.id && !isNaN(m.content) && m.content < 21 && m.content > 0;
-const collector = msg.channel.createMessageCollector({ filter: collectorFilter, idle: this.time, max:this.options?.tries ?? 3 });
+const country = this.flag.name;
+const hint = `\`${country.replace(/[^0-9\s]/g, '_')}\``;
+const file = new discord.AttachmentBuilder().setFile(Buffer.from(this.flag.flag,'base64')).setName('flag.png');
+let tries = this.options?.tries ?? 2;
+const msg = await this.edit({embeds:[embedGen(this.options?.startDes?.replace(/{hint}/g,hint)?.replace(/{tries}/g,tries) ?? `Guess the Country name to which the following Flag belongs in ${tries} tries. \n Hint: ${hint}`,"Blue")],files:[file]},this.message)
+const collectorFilter = m => m && m.author.id == this.player.id;
+const collector = msg.channel.createMessageCollector({ filter: collectorFilter, idle: this.time, max:tries});
 let played = false;
 collector.on('collect', async m => {
-    if(m.content == number) { 
+    if(m.content.toLowerCase() == country.toLowerCase()) { 
         m.delete();
         played = true;
         collector.stop();
-        this.edit({embeds:[embedGen(this.options?.winDes?.replace(/{number}/g,number) ?? `You guessed it right!, the Number was ${number}`,'Green')]},msg)
+        this.edit({embeds:[embedGen(this.options?.winDes?.replace(/{country}/g,`\`${country}\``) ?? `You guessed it right!, the Flag belongs to \`${country}\``,'Green')]},msg)
     if(this.onWin) await this.onWin();
     }
     else{
@@ -98,16 +94,16 @@ collector.on('collect', async m => {
      m.delete()
      if(tries == 0) {
      played = true;
-     this.edit({embeds:[embedGen(this.options?.loseDes?.replace(/{user_option}/g,m.content)?.replace(/{number}/g,number) ?? `You Lost. You guessed ${m.content}, but the Number was ${number}`,'Red')]},msg)
+     this.edit({embeds:[embedGen(this.options?.loseDes?.replace(/{user_option}/g,`\`${m.content}\``)?.replace(/{country}/g,`\`${country}\``) ?? `You Lost. You guessed \`${m.content}\`, but the Flag belongs to \`${country}\``,'Red')]},msg)
      }
      else {
-      this.edit({embeds:[embedGen(this.options?.retryDes?.replace(/{user_option}/g,m.content)?.replace(/{tries}/g,tries)?.replace(/{status}/g,lower(number,m.content)) ?? `You guessed ${m.content} which is wrong, you have ${tries} tries left\nNumber is ${lower(number,m.content)} than ${m.content}`,'Red')]},msg)
+      this.edit({embeds:[embedGen(this.options?.retryDes?.replace(/{user_option}/g,`\`${m.content}\``)?.replace(/{tries}/g,tries)?.replace(/{hint}/g,hint) ?? `You guessed \`${m.content}\` which is wrong, you have ${tries} tries left\nHint: ${hint}`,'Red')]},msg)
       if(this.onLose) await this.onLose();
     }}
     });
 collector.on('end', async () => {
     if(played == false) {
-    await this.edit({embeds:[embedGen(this.options?.timeUpDes ?? 'Game Ended: Timed Out','Red')]},msg)
+    await this.edit({embeds:[embedGen(this.options?.timeUpDes?.replace(/{country}/g,`\`${country}\``) ?? `Game Ended: Timed Out, the Flag belongs to \`${country}\``,'Red')]},msg)
     if(this.onTimeUp) await this.onTimeUp();
     }
 })
@@ -115,4 +111,4 @@ collector.on('end', async () => {
 
   }
 
-  module.exports = GuessTheNumber;
+  module.exports = GuessTheFlag;

@@ -2,8 +2,10 @@
 A package to implement mini-games using discord.js v14
 
 ## Available Games
-- RockPaperScissors -> Single Player and Multi-Player
+- RockPaperScissors -> Single Player and Multi Player
 - GuessTheNumber -> Single Player
+- GuessTheFlag -> Single Player
+- GuessThePokemon -> Single Player
 - TicTacToe -> Multi Player
 - Connect4 -> Multi Player
 - TypeRunner -> Single Player
