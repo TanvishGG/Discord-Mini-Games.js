@@ -1,6 +1,6 @@
 {
   "name": "discord-mini-games.js",
-  "version": "2.6.0",
+  "version": "2.6.2",
   "description": "a package to implement mini-games using discord.js-v14",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/TanvishGG/Discord-Mini-Games.js#readme",
   "dependencies": {
     "canvas": "^2.11.2",
-    "discord.js": "^14.14.1"
+    "discord.js": "^14.14.1",
+    "mathjs": "^12.3.0"
   }
 }

@@ -76,7 +76,7 @@ function embedGen(text, color) {
 const pokemon = this.pokemon.name.replace(/-/g," ");
 const hint = `\`${pokemon.replace(/-/g," ").replace(/[^0-9\s]/g, '_')}\``;
 let tries = this.options?.tries ?? 2;
-const msg = await this.edit({embeds:[embedGen(this.options?.startDes?.replace(/{hint}/g,hint)?.replace(/{tries}/g,tries) ?? `Guess the below Pikemon in ${tries} tries. \n Hint: ${hint}`,"Blue")]},this.message)
+const msg = await this.edit({embeds:[embedGen(this.options?.startDes?.replace(/{hint}/g,hint)?.replace(/{tries}/g,tries) ?? `Guess the below Pokemon in ${tries} tries. \n Hint: ${hint}`,"Blue")]},this.message)
 const collectorFilter = m => m && m.author.id == this.player.id;
 const collector = msg.channel.createMessageCollector({ filter: collectorFilter, idle: this.time, max:tries});
 let played = false;

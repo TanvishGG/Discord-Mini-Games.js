@@ -177,7 +177,7 @@ collector.on('collect', async i => {
      }
    }
    if (block.y === 0) {
-      Rows[column > 2 ? 1 : 0].components.find(c => c.data.custom_id == `c4_${column+1}`).setDisabled(true)
+      Rows[column > 3 ? 1 : 0].components.find(c => c.data.custom_id == `c4_${column+1}`).setDisabled(true)
    }
    
    const gameStatus = verifyGame(block.x,block.y,emojis[1]);

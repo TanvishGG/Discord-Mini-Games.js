@@ -1,19 +1,18 @@
-# Trivia
-Gives you a multiple choice trivia
+# Maths Magic
+Gives you a multiple choice Maths Question.
 
 ## Importing
 ```js
-const {Trivia} = require('discord-mini-games.js');
+const {MathsMagic} = require('discord-mini-games.js');
 ```
 ## GameOptions
 ```js
 const gameOptions = {
     isSlash: false, // wether the game is a slash command, default: false.
-    time: 30000, // timeup duration in milliseconds, default: 30000.
-    difficulty: 'medium', // question difficulty: easy, medium, hard, default: medium .
+    time: 300000, // timeup duration in milliseconds, default: 300000.
     onWin: () => {console.log("win")}, // Function to execute if player wins the game.
     onLose: () => {console.log('lose')}, // Function to execute if player loses the game.
-    title: 'Trivia', // Embed Title.
+    title: 'Maths Magic', // Embed Title.
     winDes: 'You Won!', // Embed Description when player wins the game.
     loseDes: 'You Lost', // Embed Description when player loses the game.
     timeUpDes: 'Game Over: Timed Out', // Embed Description when game times out.
@@ -35,6 +34,6 @@ The texts for embed descriptions accepts following formatting.
 ```js
 let message = message || interaction; // message object or interaction object.
 let gameOptions = "refer previous block";
-const game = new Trivia(message,gameOptions); // Initialising the Game.
+const game = new MathsMagic(message,gameOptions); // Initialising the Game.
 game.run() // Starting the Game.
 ```

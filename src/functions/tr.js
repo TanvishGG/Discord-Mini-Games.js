@@ -83,7 +83,7 @@ const embed = new discord.EmbedBuilder()
 if(des) embed.setDescription(des)
 return {embeds:[embed],files:[image] };
 }
-const msg = await this.edit(wordEmbed(canvas,'Aqua',this.options?.startDes ?? "Type the following sentence as fast as you can."),this.message)
+const msg = await this.edit(wordEmbed(canvas,'Aqua',this.options?.startDes ?? "Type the following sentence as fast as you can. (including Capitals)"),this.message)
 try {
 const start = Date.now();
 const response = await msg.channel.awaitMessages({filter: (m) => m.content && m.author.id == (this.message.user ? this.message.user.id : this.message.author.id), time: this.time,max:1})

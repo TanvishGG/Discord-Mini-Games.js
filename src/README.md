@@ -14,6 +14,7 @@ A package to implement mini-games using discord.js v14
 - CoinFlip -> Single Player
 - OddOneOut -> Single Player
 - Trivia -> Single Player
+- MathsMagic -> Single Player
 - Wordle -> Single Player
 - Joke
 - Paranoia

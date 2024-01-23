@@ -6,6 +6,7 @@ module.exports.CoinFlip = require('./functions/cf');
 module.exports.OddOneOut = require('./functions/ooo');
 module.exports.Connect4 = require('./functions/c4');
 module.exports.Trivia = require('./functions/trivia');
+module.exports.MathsMagic = require('./functions/mm');
 module.exports.TypeRunner = require('./functions/tr');
 module.exports.GuessThePokemon = require('./functions/gtp');
 module.exports.GuessTheFlag = require('./functions/gtf');
