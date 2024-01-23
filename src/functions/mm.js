@@ -64,7 +64,8 @@ const choices = this.question.options;
 1️⃣ ${choices[0]}
 2️⃣ ${choices[1]}
 3️⃣ ${choices[2]}
-4️⃣ ${choices[3]} ${text ? '\n\n' + text : ''}`)
+4️⃣ ${choices[3]}
+5️⃣ ${choices[4]} ${text ? '\n\n' + text : ''}`)
    .setColor(color)
    .setThumbnail(game.player.avatarURL())
    .setTimestamp()
@@ -75,7 +76,8 @@ const choices = this.question.options;
     new ButtonBuilder().setCustomId('mm_0').setStyle(ButtonStyle.Secondary).setLabel("1️⃣"),
     new ButtonBuilder().setCustomId('mm_1').setStyle(ButtonStyle.Secondary).setLabel("2️⃣"),
     new ButtonBuilder().setCustomId('mm_2').setStyle(ButtonStyle.Secondary).setLabel("3️⃣"),
-    new ButtonBuilder().setCustomId('mm_3').setStyle(ButtonStyle.Secondary).setLabel("4️⃣"))
+    new ButtonBuilder().setCustomId('mm_3').setStyle(ButtonStyle.Secondary).setLabel("4️⃣"),
+    new ButtonBuilder().setCustomId('mm_4').setStyle(ButtonStyle.Secondary).setLabel("5️⃣"))
   const msg = await this.edit({embeds:[oooEm(null,'Green')],components:[Row]},this.message)
   const collector = msg.createMessageComponentCollector({ componentType: ComponentType.Button, idle:this.time})
   let played = false;
