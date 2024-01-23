@@ -71,7 +71,7 @@ const choices = shuffleArray(question.incorrect_answers);
   function oooEm(text,color) {
     const embed = new EmbedBuilder()
    .setTitle(game.options?.title ?? 'Trivia')
-   .setDescription(`### ${decodeURIComponent(question.question)}
+   .setDescription(`**${decodeURIComponent(question.question)}**
 
 **Difficulty:** ${decodeURIComponent(question.difficulty)} | **Category:** ${decodeURIComponent(question.category)}
 1️⃣ ${decodeURIComponent(choices[0])}

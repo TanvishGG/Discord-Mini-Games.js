@@ -19,6 +19,7 @@
 - [CoinFlip](./coin-flip)
 - [OddOneOut](./odd-one-out)
 - [Trivia](./trivia)
+- [MathsMagic](./maths-magic)
 - [Wordle](./wordle)
 - [Joke](./joke)
 - [Paranoia](./paranoia)

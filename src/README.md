@@ -25,7 +25,7 @@ A package to implement mini-games using discord.js v14
 
 ##  Documentation
 
-Visit Here: [discord-mini-games.js.org](https://discord-mini-games.js)
+Visit Here: [discord-mini-games.js.org](https://discord-mini-games.js.org)
 
 ## Discord
 - https://discord.com/invite/xS8b8jQZZK
